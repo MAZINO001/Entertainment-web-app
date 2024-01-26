@@ -1,9 +1,9 @@
-import Wrapper from "./Components/Wrapper";
-
-function App() {
-  return <div className="App">
-    <Wrapper/>
-  </div>;
+import Wrapper from "./Components/wrapper";
+export default function App() {
+  return (
+    <div className="App">
+      <Wrapper />
+    </div>
+  );
 }
 
-export default App;
