@@ -5,20 +5,20 @@ import { PiTelevisionSimpleFill } from "react-icons/pi";
 import { FaBookmark } from "react-icons/fa";
 export default function SideBar() {
   return (
-    <div className="bg-blue-300 w-[10%] mx-2 my-2 h-[95vh] flex flex-col items-center justify-between">
+    <div className="w-[10%] mx-2 my-2 h-[95vh] flex flex-col items-center justify-between bg-gray-700">
       <div className="mt-5 ">
-        <PiFilmReelFill className="w-[50px] h-[50px] text-red-500 cursor-pointer" />
+        <PiFilmReelFill className="w-[50px] h-[50px] fill-red-500 cursor-pointer" />
       </div>
 
-      <div className="  flex itmes-center flex-col gap-8 cursor-pointer ">
-        <HiMiniSquares2X2 className="w-[35px] h-[35px] text-red-500" />
-        <MdLocalMovies className="w-[35px] h-[35px] text-red-500" />
-        <PiTelevisionSimpleFill className="w-[35px] h-[35px] text-red-500" />
-        <FaBookmark className="w-[35px] h-[35px] text-red-500" />
+      <div className="  flex itmes-center flex-col gap-[4rem] cursor-pointer ">
+        <HiMiniSquares2X2 className="w-[30px] h-[30px] fill-red-500" />
+        <MdLocalMovies className="w-[30px] h-[30px] " />
+        <PiTelevisionSimpleFill className="w-[30px] h-[30px] " />
+        <FaBookmark className="w-[30px] h-[30px] " />
       </div>
 
       <div className="mb-5 ">
-      <PiFilmReelFill className="w-[30px] h-[30px] text-red-500 cursor-pointer" />
+        <PiFilmReelFill className="w-[30px] h-[30px]  cursor-pointer" />
       </div>
     </div>
   );
