@@ -5,7 +5,7 @@ import { PiTelevisionSimpleFill } from "react-icons/pi";
 import { FaBookmark } from "react-icons/fa";
 export default function SideBar() {
   return (
-    <div className="w-[10%] mx-2 my-2 h-[95vh] flex flex-col items-center justify-between bg-gray-700">
+    <div className="w-[5%] mx-4 my-4 h-[95vh] flex flex-col items-center justify-between bg-gray-700   rounded-md bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-20 border border-gray-100">
       <div className="mt-5 ">
         <PiFilmReelFill className="w-[50px] h-[50px] fill-red-500 cursor-pointer" />
       </div>
