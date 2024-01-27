@@ -5,38 +5,14 @@ import { PiTelevisionSimpleFill } from "react-icons/pi";
 import { FaBookmark } from "react-icons/fa";
 import Avatar from "../Assets/avatar-06.png";
 import { useState } from "react";
-import {
-  Route,
-  createBrowserRouter,
-  createRoutesFromElements,
-  RouterProvider,
-  // NavLink,
-} from "react-router-dom";
-import Home from "../containerFolder/Home";
-import Movies from "./Movies";
-import TVShows from "./TvShows";
-import Library from "./Library";
-import RootLayout from "./RouterLayout";
+
 
 export default function SideBar() {
   const [activeMiniSquares, setActiveMiniSquares] = useState(false);
   const [activeLocalMovies, setActiveLocalMovies] = useState(false);
   const [activeTelevision, setActiveTelevision] = useState(false);
   const [activeBookmark, setActiveBookmark] = useState(false);
-
-  const router = createBrowserRouter(
-    createRoutesFromElements(
-      <Route path="/" element={<RootLayout />}>
-        <Route path="Home" element={<Home />} />
-        <Route path="Movies" element={<Movies />} />
-        <Route path="TVShows" element={<TVShows />} />
-        <Route path="Library" element={<Library />} />
-
-        {/* <Route path="*" element={<NotFound />} /> */}
-      </Route>
-    )
-  );
-  const handleDesactive = () => {
+  const handleDeActive = () => {
     setActiveMiniSquares(false);
     setActiveLocalMovies(false);
     setActiveTelevision(false);
@@ -44,7 +20,7 @@ export default function SideBar() {
   };
 
   return (
-    <div className="w-[5%] h-full mx-4 my-4  flex flex-col items-center justify-between bg-gray-700   rounded-md bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-20 border border-gray-100">
+    <div className="w-[5rem] h-full mx-4 my-4  flex flex-col items-center justify-between bg-gray-700   rounded-md bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-20 border border-gray-100">
       <div className="mt-4 mb-14 ">
         <PiFilmReelFill className="w-[50px] h-[50px] fill-red-500 cursor-pointer" />
       </div>
@@ -55,7 +31,7 @@ export default function SideBar() {
             activeMiniSquares ? "fill-red-500" : ""
           }`}
           onClick={() => {
-            handleDesactive();
+            handleDeActive();
             setActiveMiniSquares(true);
           }}
         />
@@ -65,7 +41,7 @@ export default function SideBar() {
             activeLocalMovies ? "fill-red-500" : ""
           }`}
           onClick={() => {
-            handleDesactive();
+            handleDeActive();
             setActiveLocalMovies(true);
           }}
         />
@@ -74,7 +50,7 @@ export default function SideBar() {
             activeTelevision ? "fill-red-500" : ""
           }`}
           onClick={() => {
-            handleDesactive();
+            handleDeActive();
             setActiveTelevision(true);
           }}
         />
@@ -83,7 +59,7 @@ export default function SideBar() {
             activeBookmark ? "fill-red-500" : ""
           }`}
           onClick={() => {
-            handleDesactive();
+            handleDeActive();
             setActiveBookmark(true);
           }}
         />
@@ -96,7 +72,6 @@ export default function SideBar() {
           className="rounded-full w-[40px] h-[40px] border-[2px] border-spacing-1 border-red-500"
         />
       </div>
-      <RouterProvider router={router} />
     </div>
   );
 }

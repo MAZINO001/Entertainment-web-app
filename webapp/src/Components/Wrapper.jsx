@@ -1,11 +1,11 @@
 import SideBar from "./SideBarFolder/SideBar";
-import Home from "./containerFolder/Home";
+import Container from "./containerFolder/Container";
 
 export default function Wrapper() {
   return (
     <div className="flex ">
       <SideBar />
-      <Home />
+      <Container />
     </div>
   );
 }
