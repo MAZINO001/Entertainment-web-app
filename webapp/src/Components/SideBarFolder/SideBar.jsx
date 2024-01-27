@@ -4,8 +4,6 @@ import { MdLocalMovies } from "react-icons/md";
 import { PiTelevisionSimpleFill } from "react-icons/pi";
 import { FaBookmark } from "react-icons/fa";
 import Avatar from "../Assets/avatar-06.png";
-// import { useState } from "react";
-
 export default function SideBar({
   activeMiniSquares,
   activeLocalMovies,

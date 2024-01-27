@@ -1,6 +1,6 @@
 import { CgSearch } from "react-icons/cg";
-export default function SearchBar() {
-  const openSearch = ({ Query, setactive, setQuery }) => {
+export default function SearchBar({Query, setactive, setQuery}) {
+  const openSearch = () => {
     setactive(true);
     console.log(Query);
   };
