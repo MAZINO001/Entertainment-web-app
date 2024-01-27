@@ -5,13 +5,10 @@ export default function RootLayout() {
     <div className="">
       <header>
         <nav>
-          <h1>Job routers</h1>
-          <NavLink to="/home">Home</NavLink>
-          <NavLink to="/movies">Movies</NavLink>
-          <NavLink to="/tvshows">TvShows</NavLink>
-          <NavLink to="/library">Library</NavLink>
-          
-          
+          <NavLink to="Home">Home</NavLink>
+          <NavLink to="Movies">Movies</NavLink>
+          <NavLink to="TVShows">TvShows</NavLink>
+          <NavLink to="Library">Library</NavLink>
         </nav>
       </header>
       <main>
