@@ -3,7 +3,7 @@ import Container from "./containerFolder/Container";
 
 export default function Wrapper() {
   return (
-    <div className="flex w-[100%] h-[100%]">
+    <div className="flex ">
       <SideBar />
       <Container />
     </div>
