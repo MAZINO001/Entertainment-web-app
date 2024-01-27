@@ -4,14 +4,18 @@ import { MdLocalMovies } from "react-icons/md";
 import { PiTelevisionSimpleFill } from "react-icons/pi";
 import { FaBookmark } from "react-icons/fa";
 import Avatar from "../Assets/avatar-06.png";
-import { useState } from "react";
+// import { useState } from "react";
 
-
-export default function SideBar() {
-  const [activeMiniSquares, setActiveMiniSquares] = useState(false);
-  const [activeLocalMovies, setActiveLocalMovies] = useState(false);
-  const [activeTelevision, setActiveTelevision] = useState(false);
-  const [activeBookmark, setActiveBookmark] = useState(false);
+export default function SideBar({
+  activeMiniSquares,
+  activeLocalMovies,
+  activeTelevision,
+  activeBookmark,
+  setActiveMiniSquares,
+  setActiveLocalMovies,
+  setActiveTelevision,
+  setActiveBookmark,
+}) {
   const handleDeActive = () => {
     setActiveMiniSquares(false);
     setActiveLocalMovies(false);
