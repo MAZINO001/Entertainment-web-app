@@ -2,7 +2,7 @@ import { CgSearch } from "react-icons/cg";
 export default function SearchBar() {
   return (
     <div className="flex items-center justify-between bg-red-500">
-      <CgSearch className="w-[30px] h-[30px] m-2" />
+      <CgSearch className="w-[2rem] h-[2rem] m-2" />
       <input
         className="w-full bg-transparent border-none outline-none px-4 py-2 placeholder:text-gray-300"
         type="search"
