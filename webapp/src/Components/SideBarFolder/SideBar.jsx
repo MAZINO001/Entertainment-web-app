@@ -18,6 +18,9 @@ export default function SideBar() {
     setActiveTelevision(false);
     setActiveBookmark(false);
   };
+  const hadleToggling = ()=>{
+    console.log("hello")
+  }
 
   return (
     <div className="w-[5%] h-full mx-4 my-4  flex flex-col items-center justify-between bg-gray-700   rounded-md bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-20 border border-gray-100">
