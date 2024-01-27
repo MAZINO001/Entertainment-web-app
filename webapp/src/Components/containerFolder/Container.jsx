@@ -9,12 +9,11 @@ export default function Container({
   activeLocalMovies,
   activeTelevision,
   activeBookmark,
-  activeSearchContainer,
 }) {
   const [Query, setQuery] = useState("");
   return (
     <div className="bg-blue-500 w-[95%] mr-4 my-4 flex flex-col">
-      <SearchBar setQuery={setQuery} Query={Query}  />
+      <SearchBar setQuery={setQuery} Query={Query} />
       {activeMiniSquares && <Home />}
       {activeLocalMovies && <Movies />}
       {activeTelevision && <TvShows />}
