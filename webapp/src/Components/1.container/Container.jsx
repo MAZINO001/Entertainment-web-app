@@ -1,9 +1,11 @@
+/* eslint-disable react/prop-types */
 import Home from "./Home";
-import Movies from "../SideBarFolder/Movies";
-import TvShows from "../SideBarFolder/TvShows";
-import Library from "../SideBarFolder/Library";
+import Movies from "../2.SideBar/Movies";
+import TvShows from "../2.SideBar/TvShows";
+import Library from "../2.SideBar/Library";
 import SearchBar from "./SearchBar";
 import { useState } from "react";
+
 export default function Container({
   activeMiniSquares,
   activeLocalMovies,
@@ -11,6 +13,7 @@ export default function Container({
   activeBookmark,
 }) {
   const [Query, setQuery] = useState("");
+
   return (
     <div className="bg-blue-500 w-[95%] mr-4 my-4 flex flex-col">
       <SearchBar setQuery={setQuery} Query={Query} />

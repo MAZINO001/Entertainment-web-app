@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { PiFilmReelFill } from "react-icons/pi";
 import { HiMiniSquares2X2 } from "react-icons/hi2";
 import { MdLocalMovies } from "react-icons/md";
