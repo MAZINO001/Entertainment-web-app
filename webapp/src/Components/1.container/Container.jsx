@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Home from "./Home";
 import Movies from "../2.SideBar/Movies";
 import TvShows from "../2.SideBar/TvShows";
@@ -25,16 +25,19 @@ export default function Container({
     setIsSearchContainerOpen(false);
   };
 
-
   return (
-    <div className="bg-blue-500 w-[95%] mr-4 my-4 flex flex-col">
+    <div className="bg-blue-500 lg:w-full  ml-0 md:ml-4 lg:mr-4 md:mr-4 lg:ml-0 my-4 flex flex-col ">
       <SearchBar
         setQuery={setQuery}
         Query={query}
         onSearchClick={handleSearchClick}
       />
       {isSearchContainerOpen ? (
-        <SearchContainer query={query} setQuery={setQuery} onClose={handleSearchContainerClose} />
+        <SearchContainer
+          query={query}
+          setQuery={setQuery}
+          onClose={handleSearchContainerClose}
+        />
       ) : (
         <>
           {activeMiniSquares && <Home />}

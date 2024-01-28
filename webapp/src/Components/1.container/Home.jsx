@@ -9,7 +9,7 @@ export default function Home() {
     <Trending/>
     <Popular/>
     <NowPlaying/>
-    <TopRated/>
     <UpComming/>
+    <TopRated/>
   </div>;
 }
