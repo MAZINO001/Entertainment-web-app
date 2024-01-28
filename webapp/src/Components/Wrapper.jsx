@@ -1,5 +1,5 @@
-import SideBar from "./SideBarFolder/SideBar";
-import Container from "./containerFolder/Container";
+import SideBar from "./2.SideBar/SideBar";
+import Container from "./1.container/Container";
 import { useState } from "react";
 export default function Wrapper() {
   const [activeMiniSquares, setActiveMiniSquares] = useState(true);
