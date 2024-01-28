@@ -23,8 +23,8 @@ export default function SideBar({
   };
 
   return (
-    <div className=" md:w-full lg:w-[5rem]  h-full mx-4 my-4  flex lg:flex-col md:flex-row items-center justify-between bg-gray-700   rounded-md bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-20 border border-gray-100">
-      <div className="mt-4 mb-14 ">
+    <div className=" lg:w-[5rem]  md:h-[5rem] lg:h-full mx-4 my-4  flex lg:flex-col md:flex-row items-center justify-between bg-gray-700   rounded-md bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-20 border border-gray-100">
+      <div className="lg:mt-4 lg:mb-14 items-center lg:ml-0 md:ml-4">
         <PiFilmReelFill className="w-[50px] h-[50px] fill-red-500 cursor-pointer" />
       </div>
 
@@ -68,7 +68,7 @@ export default function SideBar({
         />
       </div>
 
-      <div className=" mt-14 mb-4 ">
+      <div className=" lg:mt-14 lg:mb-4 items-center md:mr-4 lg:mr-0">
         <img
           src={Avatar}
           alt="avatar"
