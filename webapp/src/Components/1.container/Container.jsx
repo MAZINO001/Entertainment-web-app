@@ -25,13 +25,6 @@ export default function Container({
     setIsSearchContainerOpen(false);
   };
 
-  useEffect(() => {
-    // Close the SearchContainer if activeMiniSquares becomes true
-    if (activeMiniSquares && isSearchContainerOpen) {
-      setIsSearchContainerOpen(false);
-      
-    }
-  }, [activeMiniSquares]);
 
   return (
     <div className="bg-blue-500 w-[95%] mr-4 my-4 flex flex-col">
@@ -41,7 +34,7 @@ export default function Container({
         onSearchClick={handleSearchClick}
       />
       {isSearchContainerOpen ? (
-        <SearchContainer query={query} onClose={handleSearchContainerClose} />
+        <SearchContainer query={query} setQuery={setQuery} onClose={handleSearchContainerClose} />
       ) : (
         <>
           {activeMiniSquares && <Home />}
