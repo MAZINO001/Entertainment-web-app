@@ -7,6 +7,7 @@ export default function SearchBar({ setQuery, Query, onSearchClick }) {
     onSearchClick();
   };
 
+
   return (
     <form
       onSubmit={handleSubmit}
@@ -30,3 +31,4 @@ export default function SearchBar({ setQuery, Query, onSearchClick }) {
     </form>
   );
 }
+//you need to add this rto see the path https://image.tmdb.org/t/p/original/
