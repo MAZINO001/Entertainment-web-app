@@ -21,6 +21,8 @@ export default function Container({
 }) {
   const [query, setQuery] = useState("");
   const [data, setData] = useState(null);
+  const [TotalResults, setTotalResults] = useState(null);
+  const [TotalPages, setTotalPages] = useState(null);
   useEffect(() => {
     const options = {
       method: "GET",
@@ -37,9 +39,12 @@ export default function Container({
     )
       .then((response) => response.json())
       .then((response) => setData(response.results))
+      .then((response) => setTotalResults(response.total_pages))
+      .then((response) => setTotalPages(response.total_results))
       .catch((err) => console.error(err));
-  // }, [query]);
-  }, []);
+  }, [query]);
+  // }, []);
+
   return (
     <div className=" sm:mx-4 sm:my-4 mt-2 md:w-[100%]">
       <SearchBar
@@ -53,6 +58,8 @@ export default function Container({
           setQuery={setQuery}
           onClose={handleSearchContainerClose}
           Data={data}
+          TotalResults={TotalResults}
+          TotalPages={TotalPages}
         />
       ) : (
         <>

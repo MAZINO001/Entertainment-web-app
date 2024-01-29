@@ -1,11 +1,13 @@
 /* eslint-disable react/prop-types */
 import { FaXmark } from "react-icons/fa6";
-export default function SearchContainer({ query, onClose, setQuery, Data }) {
+export default function SearchContainer({ query, onClose, setQuery, Data ,TotalResults,
+  TotalPages}) {
   const handleContainerClose = () => {
     onClose();
     setQuery("");
   };
-  console.log(Data);
+  console.log(TotalResults);
+  console.log(TotalPages);
 
   return (
     <div className="flex flex-col">
@@ -15,13 +17,13 @@ export default function SearchContainer({ query, onClose, setQuery, Data }) {
           <FaXmark />
         </button>
       </div>
-      <div className="grid grid-cols-4 ">
+      <div className="grid grid-cols-4 justufy-center">
         {Array.isArray(Data) ? (
           Data.filter((item) => item.backdrop_path         ).map((item) => (
             <div key={item.id} className="mb-6">
               <img
-                className="w-[13rem] h-auto rounded-lg"
-                src={`https://image.tmdb.org/t/p/original/${item.backdrop_path              }`}
+                className="w-[13rem] h-auto rounded-lg cursor-pointer"
+                src={`https://image.tmdb.org/t/p/original/${item.backdrop_path }`}
                 alt="Poster"
               />
               <p>
