@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-
 export default function SearchContainer({ query, onClose, setQuery }) {
   const handleContainerClose = () => {
     onClose();
@@ -7,7 +6,7 @@ export default function SearchContainer({ query, onClose, setQuery }) {
   };
 
   return (
-    <div className="search-container">
+    <div className=" ">
       Search results for: {query}
       <button onClick={handleContainerClose}>Close</button>
     </div>
