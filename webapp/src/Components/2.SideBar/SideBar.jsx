@@ -24,52 +24,51 @@ export default function SideBar({
   };
 
   return (
-    <div className="  h-[4rem] sm:mx-4 md:mr-0 sm:mt-4 md:mb-4  flex flex-row md:flex-col md:w-[5rem] md:h-full  items-center justify-between bg-gray-700   sm:rounded-md bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-20 border border-gray-100">
+    <div className="  h-[4rem] sm:mx-4 md:mr-0 sm:mt-4 md:mb-4  flex flex-row md:flex-col md:w-[5rem] md:h-full  items-center justify-between bg-[#1d2741e6]   sm:rounded-lg bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-20 ">
       <div className="md:mt-4 md:ml-0 md:mb-14 ml-4 mr-0 items-center ">
-        <PiFilmReelFill className="w-[50px] h-[50px] fill-red-500 cursor-pointer" />
+        <PiFilmReelFill className="w-[50px] h-[50px] text-[#FC4747] cursor-pointer" />
       </div>
 
       <div className="  flex items-center flex-row md:flex-col  sm:gap-[3.5rem] gap-[2rem] cursor-pointer text-black ">
         <HiMiniSquares2X2
           className={`w-[2rem] h-[2rem] ${
-            activeMiniSquares ? "fill-red-500" : ""
+            activeMiniSquares ? "text-[#fff]" : "text-[#5A6A90]"
           }`}
           onClick={() => {
             handleDeActive();
             setActiveMiniSquares(true);
-            handleSearchContainerClose(state => !state)
-
+            handleSearchContainerClose((state) => !state);
           }}
         />
 
         <MdLocalMovies
           className={`w-[2rem] h-[2rem] ${
-            activeLocalMovies ? "fill-red-500" : ""
+            activeLocalMovies ? "text-[#fff]" : "text-[#5A6A90]"
           }`}
           onClick={() => {
             handleDeActive();
             setActiveLocalMovies(true);
-            handleSearchContainerClose(state => !state)
+            handleSearchContainerClose((state) => !state);
           }}
         />
         <PiTelevisionSimpleFill
           className={`w-[2rem] h-[2rem] ${
-            activeTelevision ? "fill-red-500" : ""
+            activeTelevision ? "text-[#fff]" : "text-[#5A6A90]"
           }`}
           onClick={() => {
             handleDeActive();
             setActiveTelevision(true);
-            handleSearchContainerClose(state => !state)
+            handleSearchContainerClose((state) => !state);
           }}
         />
         <FaBookmark
           className={`w-[1.5rem] h-[1.5rem] ${
-            activeBookmark ? "fill-red-500" : ""
+            activeBookmark ? "text-[#fff]" : "text-[#5A6A90]"
           }`}
           onClick={() => {
             handleDeActive();
             setActiveBookmark(true);
-            handleSearchContainerClose(state => !state)
+            handleSearchContainerClose((state) => !state);
           }}
         />
       </div>
@@ -78,7 +77,7 @@ export default function SideBar({
         <img
           src={Avatar}
           alt="avatar"
-          className="rounded-full w-[40px] h-[40px] border-[2px] border-spacing-1 border-red-500"
+          className="rounded-full w-[40px] h-[40px] border-[2px] border-spacing-1 border-white"
         />
       </div>
     </div>

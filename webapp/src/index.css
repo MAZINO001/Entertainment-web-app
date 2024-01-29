@@ -3,11 +3,15 @@
 @tailwind utilities;
 
 body{
-    background: ;
+    background: #10141E;
 }
 .title {
     text-transform: capitalize;
     font-size: 25px;
     letter-spacing: 1px;
 margin-bottom: 10px;
+}
+
+.typespan{
+    
 }
