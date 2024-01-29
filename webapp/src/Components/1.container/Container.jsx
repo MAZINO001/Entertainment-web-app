@@ -38,7 +38,8 @@ export default function Container({
       .then((response) => response.json())
       .then((response) => setData(response.results))
       .catch((err) => console.error(err));
-  }, [query]);
+  // }, [query]);
+  }, []);
   return (
     <div className=" sm:mx-4 sm:my-4 mt-2 md:w-[100%]">
       <SearchBar

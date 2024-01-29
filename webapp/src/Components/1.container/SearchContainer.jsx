@@ -15,19 +15,15 @@ export default function SearchContainer({ query, onClose, setQuery, Data }) {
           <FaXmark />
         </button>
       </div>
-      <div className="block ">
+      <div className="grid grid-cols-4 ">
         {Array.isArray(Data) ? (
-          Data.map((item) => (
-            <div key={item.id} className="">
-              {item.poster_path ? (
-                <img
-                  className="w-[250px] h-auto rounded-lg"
-                  src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
-                  alt="Poster"
-                />
-              ) : (
-                <p>No Poster Available</p>
-              )}
+          Data.filter((item) => item.backdrop_path         ).map((item) => (
+            <div key={item.id} className="mb-6">
+              <img
+                className="w-[13rem] h-auto rounded-lg"
+                src={`https://image.tmdb.org/t/p/original/${item.backdrop_path              }`}
+                alt="Poster"
+              />
               <p>
                 <span>{item.media_type} : </span>
                 <span>
@@ -36,7 +32,7 @@ export default function SearchContainer({ query, onClose, setQuery, Data }) {
                     : item.release_date}
                 </span>
               </p>
-              <h3>{item.title}</h3>
+              <h3>{item.media_type === "tv" ? item.name : item.title}</h3>
             </div>
           ))
         ) : (
