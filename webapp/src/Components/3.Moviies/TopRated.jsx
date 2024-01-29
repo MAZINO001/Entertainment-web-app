@@ -1,6 +1,10 @@
 
 export default function TopRated() {
   return (
-    <div>TopRated</div>
+    <div>
+      <h2 className="title">
+        Top Rated
+      </h2>
+    </div>
   )
 }

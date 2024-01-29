@@ -23,7 +23,7 @@ export default function SideBar({
   };
 
   return (
-    <div className="  h-[4rem] sm:mx-4 md:mr-0 sm:my-4  flex flex-row md:flex-col md:w-[5rem] md:h-full  items-center justify-between bg-gray-700   sm:rounded-md bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-20 border border-gray-100">
+    <div className="  h-[4rem] sm:mx-4 md:mr-0 sm:mt-4 md:mb-4  flex flex-row md:flex-col md:w-[5rem] md:h-full  items-center justify-between bg-gray-700   sm:rounded-md bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-20 border border-gray-100">
       <div className="md:mt-4 md:ml-0 md:mb-14 ml-4 mr-0 items-center ">
         <PiFilmReelFill className="w-[50px] h-[50px] fill-red-500 cursor-pointer" />
       </div>

@@ -5,7 +5,7 @@ export default function SearchBar({ setQuery, Query, onSearchClick }) {
     <div className="flex items-center justify-between bg-red-500">
       <CgSearch className="w-[2rem] h-[2rem] m-2" />
       <input
-        className="w-full bg-transparent border-none outline-none px-4 py-2 placeholder:text-gray-300"
+        className="w-[100%] bg-transparent border-none outline-none px-4 py-2 placeholder:text-gray-300"
         type="search"
         value={Query}
         placeholder="Search for Movies and tv-shows"

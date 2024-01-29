@@ -1,6 +1,8 @@
 
 export default function NowPlaying() {
   return (
-    <div>NowPlaying</div>
+    <div>
+       <h2 className="title">Now Playing</h2>
+    </div>
   )
 }

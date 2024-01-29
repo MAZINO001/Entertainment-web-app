@@ -2,3 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+.title {
+    text-transform: capitalize;
+    font-size: 25px;
+    letter-spacing: 1px;
+
+}

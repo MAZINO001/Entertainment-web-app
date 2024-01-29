@@ -1,6 +1,8 @@
 
 export default function Popular() {
   return (
-    <div>Popular</div>
+    <div>
+       <h2 className="title">Popular</h2>
+    </div>
   )
 }

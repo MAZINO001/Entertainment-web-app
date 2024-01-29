@@ -1,6 +1,8 @@
 
 export default function Trending() {
   return (
-    <div>Trending</div>
+    <div>
+      <h2 className='title'>Trending</h2>
+    </div>
   )
 }

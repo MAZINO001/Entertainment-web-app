@@ -26,7 +26,7 @@ export default function Container({
   };
 
   return (
-    <div className="bg-blue-500 sm:mx-4 sm:my-4">
+    <div className="bg-blue-500 sm:mx-4 sm:my-4 mt-2 md:w-[100%]">
       <SearchBar
         setQuery={setQuery}
         Query={query}
