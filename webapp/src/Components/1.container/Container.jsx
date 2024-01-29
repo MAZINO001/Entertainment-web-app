@@ -13,17 +13,20 @@ export default function Container({
   activeLocalMovies,
   activeTelevision,
   activeBookmark,
+  handleSearchContainerClose,
+  handleSearchClick,
+  isSearchContainerOpen,
 }) {
   const [query, setQuery] = useState("");
-  const [isSearchContainerOpen, setIsSearchContainerOpen] = useState(false);
+  // const [isSearchContainerOpen, setIsSearchContainerOpen] = useState(false);
 
-  const handleSearchClick = () => {
-    setIsSearchContainerOpen(true);
-  };
+  // const handleSearchClick = () => {
+  //   setIsSearchContainerOpen(true);
+  // };
 
-  const handleSearchContainerClose = () => {
-    setIsSearchContainerOpen(false);
-  };
+  // const handleSearchContainerClose = () => {
+  //   setIsSearchContainerOpen(false);
+  // };
 
   return (
     <div className="bg-blue-500 sm:mx-4 sm:my-4 mt-2 md:w-[100%]">

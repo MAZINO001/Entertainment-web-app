@@ -6,6 +6,15 @@ export default function Wrapper() {
   const [activeLocalMovies, setActiveLocalMovies] = useState(false);
   const [activeTelevision, setActiveTelevision] = useState(false);
   const [activeBookmark, setActiveBookmark] = useState(false);
+  const [isSearchContainerOpen, setIsSearchContainerOpen] = useState(false);
+
+  const handleSearchClick = () => {
+    setIsSearchContainerOpen(true);
+  };
+
+  const handleSearchContainerClose = () => {
+    setIsSearchContainerOpen(false);
+  };
   return (
     <div className="flex flex-col md:flex-row ">
       <SideBar
@@ -17,12 +26,16 @@ export default function Wrapper() {
         setActiveLocalMovies={setActiveLocalMovies}
         setActiveTelevision={setActiveTelevision}
         setActiveBookmark={setActiveBookmark}
+        handleSearchContainerClose={handleSearchContainerClose}
       />
       <Container
         activeMiniSquares={activeMiniSquares}
         activeLocalMovies={activeLocalMovies}
         activeTelevision={activeTelevision}
         activeBookmark={activeBookmark}
+        handleSearchClick={handleSearchClick}
+        handleSearchContainerClose={handleSearchContainerClose}
+        isSearchContainerOpen={isSearchContainerOpen}
       />
     </div>
   );

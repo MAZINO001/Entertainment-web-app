@@ -14,6 +14,7 @@ export default function SideBar({
   setActiveLocalMovies,
   setActiveTelevision,
   setActiveBookmark,
+  handleSearchContainerClose,
 }) {
   const handleDeActive = () => {
     setActiveMiniSquares(false);
@@ -36,6 +37,8 @@ export default function SideBar({
           onClick={() => {
             handleDeActive();
             setActiveMiniSquares(true);
+            handleSearchContainerClose(state => !state)
+
           }}
         />
 
@@ -46,6 +49,7 @@ export default function SideBar({
           onClick={() => {
             handleDeActive();
             setActiveLocalMovies(true);
+            handleSearchContainerClose(state => !state)
           }}
         />
         <PiTelevisionSimpleFill
@@ -55,6 +59,7 @@ export default function SideBar({
           onClick={() => {
             handleDeActive();
             setActiveTelevision(true);
+            handleSearchContainerClose(state => !state)
           }}
         />
         <FaBookmark
@@ -64,6 +69,7 @@ export default function SideBar({
           onClick={() => {
             handleDeActive();
             setActiveBookmark(true);
+            handleSearchContainerClose(state => !state)
           }}
         />
       </div>
