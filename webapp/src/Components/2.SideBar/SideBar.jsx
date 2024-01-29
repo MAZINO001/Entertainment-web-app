@@ -23,12 +23,12 @@ export default function SideBar({
   };
 
   return (
-    <div className=" lg:w-[5rem]  md:h-[5rem] lg:h-full mx-4 my-4  flex lg:flex-col md:flex-row items-center justify-between bg-gray-700   rounded-md bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-20 border border-gray-100">
-      <div className="lg:mt-4 lg:mb-14 items-center lg:ml-0 md:ml-4">
+    <div className=" w-[5rem]   h-full mx-4 my-4  flex flex-col  items-center justify-between bg-gray-700   rounded-md bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-20 border border-gray-100">
+      <div className="mt-4 mb-14 items-center ">
         <PiFilmReelFill className="w-[50px] h-[50px] fill-red-500 cursor-pointer" />
       </div>
 
-      <div className="  flex items-center lg:flex-col flex-row gap-[3.5rem] cursor-pointer text-black ">
+      <div className="  flex items-center flex-col  gap-[3.5rem] cursor-pointer text-black ">
         <HiMiniSquares2X2
           className={`w-[2rem] h-[2rem] ${
             activeMiniSquares ? "fill-red-500" : ""
@@ -68,7 +68,7 @@ export default function SideBar({
         />
       </div>
 
-      <div className=" lg:mt-14 lg:mb-4 items-center md:mr-4 lg:mr-0">
+      <div className=" mt-14 mb-4">
         <img
           src={Avatar}
           alt="avatar"

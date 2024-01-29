@@ -26,7 +26,7 @@ export default function Container({
   };
 
   return (
-    <div className="bg-blue-500 lg:w-full  ml-0 md:ml-4 lg:mr-4 md:mr-4 lg:ml-0 md:my-0 my-4 flex flex-col sm:mx-4 ">
+    <div className="bg-blue-500 my-4 mr-4 w-full">
       <SearchBar
         setQuery={setQuery}
         Query={query}
