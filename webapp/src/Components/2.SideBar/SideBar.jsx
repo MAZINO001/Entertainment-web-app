@@ -23,12 +23,12 @@ export default function SideBar({
   };
 
   return (
-    <div className=" w-[5rem]   h-full mx-4 my-4  flex flex-col  items-center justify-between bg-gray-700   rounded-md bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-20 border border-gray-100">
-      <div className="mt-4 mb-14 items-center ">
+    <div className="  h-[4rem] sm:mx-4 md:mr-0 sm:my-4  flex flex-row md:flex-col md:w-[5rem] md:h-full  items-center justify-between bg-gray-700   sm:rounded-md bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-20 border border-gray-100">
+      <div className="md:mt-4 md:ml-0 md:mb-14 ml-4 mr-0 items-center ">
         <PiFilmReelFill className="w-[50px] h-[50px] fill-red-500 cursor-pointer" />
       </div>
 
-      <div className="  flex items-center flex-col  gap-[3.5rem] cursor-pointer text-black ">
+      <div className="  flex items-center flex-row md:flex-col  sm:gap-[3.5rem] gap-[2rem] cursor-pointer text-black ">
         <HiMiniSquares2X2
           className={`w-[2rem] h-[2rem] ${
             activeMiniSquares ? "fill-red-500" : ""
@@ -58,7 +58,7 @@ export default function SideBar({
           }}
         />
         <FaBookmark
-          className={`w-[2rem] h-[2rem] ${
+          className={`w-[1.5rem] h-[1.5rem] ${
             activeBookmark ? "fill-red-500" : ""
           }`}
           onClick={() => {
@@ -68,7 +68,7 @@ export default function SideBar({
         />
       </div>
 
-      <div className=" mt-14 mb-4">
+      <div className=" md:mt-14 md:mb-4 ml-0 mr-4 md:mr-0">
         <img
           src={Avatar}
           alt="avatar"

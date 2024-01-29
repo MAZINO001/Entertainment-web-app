@@ -7,7 +7,7 @@ export default function Wrapper() {
   const [activeTelevision, setActiveTelevision] = useState(false);
   const [activeBookmark, setActiveBookmark] = useState(false);
   return (
-    <div className="flex flex-row ">
+    <div className="flex flex-col md:flex-row ">
       <SideBar
         activeMiniSquares={activeMiniSquares}
         activeLocalMovies={activeLocalMovies}
