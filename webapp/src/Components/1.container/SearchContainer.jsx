@@ -1,17 +1,35 @@
 /* eslint-disable react/prop-types */
-import { FaXmark } from "react-icons/fa6";
-export default function SearchContainer({ query, onClose, setQuery, Data ,AllData}) {
+import { FaTimes } from "react-icons/fa"; // Corrected import
+
+export default function SearchContainer({
+  query,
+  onClose,
+  setQuery,
+  Data,
+  AllData,
+  setPageNum,
+  PageNum,
+}) {
   const handleContainerClose = () => {
     onClose();
     setQuery("");
   };
 
+  const handleNextPage = () => {
+    setPageNum(PageNum + 1);
+  };
+  const handlePrevPage = () => {
+    setPageNum(PageNum - 1);
+  };
+
   return (
     <div className="flex flex-col">
       <div className="flex items-center justify-between">
-        <h2 className="title mt-2">Found {AllData.total_results} results for {`'${query}'`}</h2>
+        <h2 className="title mt-2">
+          Found {AllData.total_results} results for {`'${query}'`}
+        </h2>
         <button onClick={handleContainerClose} className="text-lg">
-          <FaXmark />
+          <FaTimes /> {/* Corrected icon component */}
         </button>
       </div>
       <div className="grid grid-cols-4 justufy-center">
@@ -20,7 +38,7 @@ export default function SearchContainer({ query, onClose, setQuery, Data ,AllDat
             <div key={item.id} className="mb-6">
               <img
                 className="w-[13rem] h-auto rounded-lg cursor-pointer"
-                src={`https://image.tmdb.org/t/p/original/${item.backdrop_path }`}
+                src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
                 alt="Poster"
               />
               <p>
@@ -38,6 +56,8 @@ export default function SearchContainer({ query, onClose, setQuery, Data ,AllDat
           <p>Data is not an array</p>
         )}
       </div>
+      <button onClick={handlePrevPage}>PrevPage</button>
+      <button onClick={handleNextPage}>NextPage</button>
     </div>
   );
 }

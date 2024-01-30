@@ -20,7 +20,7 @@ export default function Container({
   isSearchContainerOpen,
 }) {
   const [query, setQuery] = useState("");
-  const [PageNum, setQuery] = useState("");
+  const [PageNum, setPageNum] = useState(1);
   const [data, setData] = useState(null);
   const [AllData, setAllData] = useState(null);
   useEffect(() => {
@@ -34,7 +34,7 @@ export default function Container({
     };
 
     fetch(
-      `https://api.themoviedb.org/3/search/multi?query=${query}&page=1`,
+      `https://api.themoviedb.org/3/search/multi?query=${query}&page=${PageNum}`,
       options
     )
       .then((response) => response.json())
@@ -43,8 +43,8 @@ export default function Container({
         setAllData(responseData);
       })
       .catch((err) => console.error(err));
-  }, [query]);
- 
+  }, [query, PageNum]);
+
   return (
     <div className=" sm:mx-4 sm:my-4 mt-2 md:w-[100%]">
       <SearchBar
@@ -59,6 +59,8 @@ export default function Container({
           onClose={handleSearchContainerClose}
           Data={data}
           AllData={AllData}
+          setPageNum={setPageNum}
+          PageNum={PageNum}
         />
       ) : (
         <>
