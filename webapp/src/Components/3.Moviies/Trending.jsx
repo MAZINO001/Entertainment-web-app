@@ -22,20 +22,17 @@ export default function Trending() {
       .catch((err) => console.error(err));
   }, []);
   return (
-    <div className=" flex flex-col">
+    <div className=" flex flex-col ">
       <h2 className="title">Trending</h2>
-      <div className=" flex flex-row overflow-y-auto max-h-[300px] gap-x-4">
+      <div className=" flex flex-row overflow-hidden gap-x-4">
         {" "}
         {Array.isArray(Trending) ? (
           Trending.filter((item) => item.backdrop_path)
             .slice(0, 10)
             .map((item) => (
-              <div
-                key={item.id}
-                className="mb-3 bg-red-500 w-[500px] h-[200px]"
-              >
+              <div key={item.id} className="mb-3">
                 <img
-                  className=" rounded-lg cursor-pointer"
+                  className=" rounded-md cursor-pointer "
                   src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
                   alt="Poster"
                 />
