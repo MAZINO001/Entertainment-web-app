@@ -2,7 +2,7 @@
 import { PiFilmReelFill } from "react-icons/pi";
 import { HiMiniSquares2X2 } from "react-icons/hi2";
 import { MdLocalMovies } from "react-icons/md";
-import { PiTelevisionSimpleFill } from "react-icons/pi";
+import { PiTelevisionFill } from "react-icons/pi";
 import { FaBookmark } from "react-icons/fa";
 import Avatar from "../Assets/avatar-06.png";
 export default function SideBar({
@@ -51,7 +51,7 @@ export default function SideBar({
             handleSearchContainerClose((state) => !state);
           }}
         />
-        <PiTelevisionSimpleFill
+        <PiTelevisionFill
           className={`w-[2rem] h-[2rem] ${
             activeTelevision ? "text-[#fff]" : "text-[#5A6A90]"
           }`}

@@ -7,7 +7,6 @@ export default function SearchBar({ setQuery, Query, onSearchClick }) {
     onSearchClick();
   };
 
-
   return (
     <form
       onSubmit={handleSubmit}
@@ -24,7 +23,7 @@ export default function SearchBar({ setQuery, Query, onSearchClick }) {
 
       <button
         type="submit"
-        className="inline-block py-2 px-4 rounded-md bg-[#5A6A90] hover:placeholder-opacity-15  text-[#fff]  font-semibold "
+        className="inline-block py-2 px-4 mr-4 rounded-md bg-[#5A6A90] hover:placeholder-opacity-15  text-[#fff]  font-semibold "
       >
         Search
       </button>
