@@ -17,6 +17,7 @@ body {
     width: 4px;
     height: 4px;
     background: #5A6A90;
+    /* display: none; */
 }
 
 *::-webkit-scrollbar-thumb {
@@ -24,14 +25,8 @@ body {
     border-radius: 5px;
 }
 
-.imgShwdo {
-    position: relative;
+.imgShwd {
+
 }
 
-.imgShwdo::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(90deg, #fff, #000);
-    z-index: 1;
-}
+.TypeSpan {}
