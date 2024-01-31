@@ -5,7 +5,7 @@ import Trending from "../3.Moviies/Trending";
 import UpComming from "../3.Moviies/UpComming";
 
 export default function Home() {
-  return <div className=" overflow-y-auto py-4">
+  return <div className="">
     <Trending/>
     <Popular/>
     <NowPlaying/>

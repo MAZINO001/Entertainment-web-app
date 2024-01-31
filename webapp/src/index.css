@@ -2,16 +2,36 @@
 @tailwind components;
 @tailwind utilities;
 
-body{
+body {
     background: #10141E;
 }
+
 .title {
     text-transform: capitalize;
     font-size: 25px;
     letter-spacing: 1px;
-margin-bottom: 10px;
+    margin-bottom: 10px;
 }
 
-.typespan{
-    
+*::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+    background: #5A6A90;
+}
+
+*::-webkit-scrollbar-thumb {
+    background: #fff;
+    border-radius: 5px;
+}
+
+.imgShwdo {
+    position: relative;
+}
+
+.imgShwdo::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, #fff, #000);
+    z-index: 1;
 }

@@ -14,7 +14,7 @@ export default function Popular() {
     };
 
     fetch(
-      "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1",
+      // "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1",
       options
     )
       .then((response) => response.json())
@@ -24,7 +24,7 @@ export default function Popular() {
   return (
     <div className=" flex flex-col ">
       <h2 className="title">Popular</h2>
-      <div className="  grid grid-cols-[repeat(4,_1fr)] grid-rows-[repeat(2,_1fr)] gap-y-[20px] gap-x-4 ">
+      <div className="  grid grid-cols-4 grid-rows-2 gap-4 ">
         {" "}
         {Array.isArray(Popular) ? (
           Popular.filter((item) => item.backdrop_path)

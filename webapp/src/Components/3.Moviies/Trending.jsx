@@ -14,7 +14,7 @@ export default function Trending() {
     };
 
     fetch(
-      // "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1",
+      "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1",
       options
     )
       .then((response) => response.json())
@@ -31,21 +31,21 @@ export default function Trending() {
           Trending.filter((item) => item.backdrop_path)
             .slice(0, 10)
             .map((item) => (
-              <div key={item.id} className="mb-3">
+              <div key={item.id} className="mb-3 w-[407px]">
                 <img
-                  className=" rounded-md cursor-pointer "
+                  className=" rounded-md cursor-pointer imgShwdo"
                   src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
                   alt="Poster"
                 />
-                <p className="text-sm py-1 capitalize text-gray-300 flex items-center text-slim ">
+                <p className="text-sm py-1 capitalize text-gray-300 flex items-center text-slim relative bottom-[60px] left-[15px] ">
                   <span>{new Date(item.release_date).getFullYear()}</span>
 
                   <LuDot className="text-xl text-gray-300 " />
-                  <span className="flex items-center gap-x-1">
+                  <span className="flex items-center gap-x-1 ">
                     <MdLocalMovies /> Movie
                   </span>
                 </p>
-                <h2 className="text-lg font-semibold  max-w-[100%]">
+                <h2 className="text-lg font-semibold  max-w-[100%] relative bottom-[65px] left-[15px]">
                   {item.title}
                 </h2>
               </div>
