@@ -1,6 +1,7 @@
 import SideBar from "./2.SideBar/SideBar";
 import Container from "./1.container/Container";
 import { useState } from "react";
+import RootLayout from "../Layouts/RootLayout";
 export default function Wrapper() {
   const [activeMiniSquares, setActiveMiniSquares] = useState(true);
   const [activeLocalMovies, setActiveLocalMovies] = useState(false);

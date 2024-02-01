@@ -4,7 +4,7 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from "react-router-dom";
-import Wrapper from "./Components/wrapper";
+// import Wrapper from "./Components/wrapper";
 import Movies from "./Components/2.SideBar/Movies";
 import TvShows from "./Components/2.SideBar/TvShows";
 import Library from "./Components/2.SideBar/Library";
@@ -23,7 +23,7 @@ export default function App() {
   );
   return (
     <div className="text-white w-full h-full">
-      <Wrapper/>
+      {/* <Wrapper/> */}
       <RouterProvider router={router} />
     </div>
   );
