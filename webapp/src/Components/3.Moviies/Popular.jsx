@@ -23,7 +23,10 @@ export default function Popular() {
   }, []);
   return (
     <div className=" flex flex-col ">
+      <div className="flex justify-between items-center">
       <h2 className="title">Popular</h2>
+        <button className=" text-md text-[#fff] bg-[#FC4747] px-2 py-1  rounded-md ">see all</button>
+      </div>
       <div className="  grid grid-cols-4 grid-rows-2 gap-4  ">
         {" "}
         {Array.isArray(Popular) ? (

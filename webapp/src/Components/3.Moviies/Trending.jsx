@@ -14,7 +14,7 @@ export default function Trending() {
     };
 
     fetch(
-      // "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1",
+      "https://api.themoviedb.org/3/trending/movie/week?language=en-US",
       options
     )
       .then((response) => response.json())
@@ -23,7 +23,10 @@ export default function Trending() {
   }, []);
   return (
     <div className=" flex flex-col ">
-      <h2 className="title">Trending</h2>
+      <div className="flex justify-between items-center">
+        <h2 className="title">Trending</h2>
+        <button className=" text-md text-[#fff] bg-[#FC4747] px-2 py-1  rounded-md ">see all</button>
+      </div>
       {/* <div className=" flex flex-row overflow-hidden gap-x-4 "> */}
       <div className=" grid grid-cols-[repeat(10,_1fr)] grid-rows-[1fr] gap-x-4 overflow-x-auto">
         {" "}
