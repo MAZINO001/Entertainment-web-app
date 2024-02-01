@@ -1,5 +1,4 @@
 import { NavLink, Outlet } from "react-router-dom";
-import SearchBar from "../Components/1.container/SearchBar";
 
 export default function RootLayout() {
   return (

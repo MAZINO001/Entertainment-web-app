@@ -1,80 +1,4 @@
 /* eslint-disable no-unused-vars */
-// /* eslint-disable react-hooks/exhaustive-deps */
-// /* eslint-disable react/prop-types */
-// import { useEffect } from "react";
-
-// import { useState } from "react";
-// import Home from "./Home";
-// import Movies from "../2.SideBar/Movies";
-// import TvShows from "../2.SideBar/TvShows";
-// import Library from "../2.SideBar/Library";
-// import SearchBar from "./SearchBar";
-// import SearchContainer from "./SearchContainer";
-
-// export default function Container({
-//   activeMiniSquares,
-//   activeLocalMovies,
-//   activeTelevision,
-//   activeBookmark,
-//   handleSearchContainerClose,
-//   handleSearchClick,
-//   isSearchContainerOpen,
-// }) {
-//   const [query, setQuery] = useState("");
-//   const [PageNum, setPageNum] = useState(1);
-//   const [data, setData] = useState(null);
-//   const [AllData, setAllData] = useState(null);
-//   useEffect(() => {
-//     const options = {
-//       method: "GET",
-//       headers: {
-//         accept: "application/json",
-//         Authorization:
-//           "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyNzg5MjE1MDdlZjBjNjdlNTNhNjc3OTM2NGU0NjBhZSIsInN1YiI6IjY1YjY1ZWY2MmZhZjRkMDE3Y2RkYjAzNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.OcvYLoz0Ugh1SREfo1q2zt1xDPQ7U7O9e9tdPNbxaok",
-//       },
-//     };
-
-//     fetch(
-//       `https://api.themoviedb.org/3/search/multi?query=${query}&page=${PageNum}`,
-//       options
-//     )
-//       .then((response) => response.json())
-//       .then((responseData) => {
-//         setData(responseData.results);
-//         setAllData(responseData);
-//       })
-//       .catch((err) => console.error(err));
-//   }, [query, PageNum]);
-
-//   return (
-//     <div className=" sm:mx-4 sm:my-4 mt-2 md:w-full  overflow-hidden">
-//       <SearchBar
-//         setQuery={setQuery}
-//         Query={query}
-//         onSearchClick={handleSearchClick}
-//       />
-//       {isSearchContainerOpen ? (
-//         <SearchContainer
-//           query={query}
-//           setQuery={setQuery}
-//           onClose={handleSearchContainerClose}
-//           Data={data}
-//           AllData={AllData}
-//           setPageNum={setPageNum}
-//           PageNum={PageNum}
-//         />
-//       ) : (
-//         <>
-//           {activeMiniSquares && <Home />}
-//           {activeLocalMovies && <Movies />}
-//           {activeTelevision && <TvShows />}
-//           {activeBookmark && <Library />}
-//         </>
-//       )}
-//     </div>
-//   );
-// }
-
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { useEffect } from "react";
@@ -85,14 +9,17 @@ import Movies from "../2.SideBar/Movies";
 import TvShows from "../2.SideBar/TvShows";
 import Library from "../2.SideBar/Library";
 import SearchBar from "./SearchBar";
-import {
-  Route,
-  RouterProvider,
-  createBrowserRouter,
-  createRoutesFromElements,
-} from "react-router-dom";
-import RootLayout from "../../Layouts/RootLayout";
-export default function Container() {
+import SearchContainer from "./SearchContainer";
+
+export default function Container({
+  activeMiniSquares,
+  activeLocalMovies,
+  activeTelevision,
+  activeBookmark,
+  handleSearchContainerClose,
+  handleSearchClick,
+  isSearchContainerOpen,
+}) {
   const [query, setQuery] = useState("");
   const [PageNum, setPageNum] = useState(1);
   const [data, setData] = useState(null);
@@ -108,7 +35,7 @@ export default function Container() {
     };
 
     fetch(
-      `https://api.themoviedb.org/3/search/multi?query=${query}&page=${PageNum}`,
+      `https:api.themoviedb.org/3/search/multi?query=${query}&page=${PageNum}`,
       options
     )
       .then((response) => response.json())
@@ -118,20 +45,32 @@ export default function Container() {
       })
       .catch((err) => console.error(err));
   }, [query, PageNum]);
-  const router = createBrowserRouter(
-    createRoutesFromElements(
-      <Route path="/" element={<RootLayout />}>
-        <Route path="home" element={<Home />} />
-        <Route path="movies" element={<Movies />} />
-        <Route path="tvseries" element={<TvShows />} />
-        <Route path="library" element={<Library />} />
-      </Route>
-    )
-  );
+
   return (
     <div className=" sm:mx-4 sm:my-4 mt-2 md:w-full  overflow-hidden">
-      <SearchBar setQuery={setQuery} Query={query} />
-      <RouterProvider router={router} />
+      <SearchBar
+        setQuery={setQuery}
+        Query={query}
+        onSearchClick={handleSearchClick}
+      />
+      {isSearchContainerOpen ? (
+        <SearchContainer
+          query={query}
+          setQuery={setQuery}
+          onClose={handleSearchContainerClose}
+          Data={data}
+          AllData={AllData}
+          setPageNum={setPageNum}
+          PageNum={PageNum}
+        />
+      ) : (
+        <>
+          {activeMiniSquares && <Home />}
+          {activeLocalMovies && <Movies />}
+          {activeTelevision && <TvShows />}
+          {activeBookmark && <Library />}
+        </>
+      )}
     </div>
   );
 }
