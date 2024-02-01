@@ -19,7 +19,6 @@ export default function Container({
   handleSearchContainerClose,
   handleSearchClick,
   isSearchContainerOpen,
-  content,
 }) {
   const [query, setQuery] = useState("");
   const [PageNum, setPageNum] = useState(1);
@@ -47,42 +46,31 @@ export default function Container({
       .catch((err) => console.error(err));
   }, [query, PageNum]);
 
-  //   return (
-  //     <div className=" sm:mx-4 sm:my-4 mt-2 md:w-full   overflow-hidden ">
-  //       <SearchBar
-  //         setQuery={setQuery}
-  //         Query={query}
-  //         onSearchClick={handleSearchClick}
-  //       />
-  //       {isSearchContainerOpen ? (
-  //         <SearchContainer
-  //           query={query}
-  //           setQuery={setQuery}
-  //           onClose={handleSearchContainerClose}
-  //           Data={data}
-  //           AllData={AllData}
-  //           setPageNum={setPageNum}
-  //           PageNum={PageNum}
-  //         />
-  //       ) : (
-  //         <>
-  //           {activeMiniSquares && <Home />}
-  //           {activeLocalMovies && <Movies />}
-  //           {activeTelevision && <TvShows />}
-  //           {activeBookmark && <Library />}
-  //         </>
-  //       )}
-  //     </div>
-  //   );
-  // }
   return (
-    <div className=" sm:mx-4 sm:my-4 mt-2 md:w-full   overflow-hidden ">
+    <div className=" sm:mx-4 sm:my-4 mt-2 md:w-full  overflow-hidden">
       <SearchBar
         setQuery={setQuery}
         Query={query}
         onSearchClick={handleSearchClick}
       />
-      <div>{content}</div>
+      {isSearchContainerOpen ? (
+        <SearchContainer
+          query={query}
+          setQuery={setQuery}
+          onClose={handleSearchContainerClose}
+          Data={data}
+          AllData={AllData}
+          setPageNum={setPageNum}
+          PageNum={PageNum}
+        />
+      ) : (
+        <>
+          {activeMiniSquares && <Home />}
+          {activeLocalMovies && <Movies />}
+          {activeTelevision && <TvShows />}
+          {activeBookmark && <Library />}
+        </>
+      )}
     </div>
   );
 }
