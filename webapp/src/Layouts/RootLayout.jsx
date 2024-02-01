@@ -1,11 +1,11 @@
 import { NavLink, Outlet } from "react-router-dom";
+import SearchBar from "../Components/1.container/SearchBar";
 
 export default function RootLayout() {
   return (
     <div>
       <header>
-        <nav className=" flex gap-2 ">
-          <h1>Testing</h1>
+        <nav className=" flex flex-col gap-2 ">
           <NavLink to="/">Layout</NavLink>
           <NavLink to="home">home</NavLink>
           <NavLink to="movies">movies</NavLink>
