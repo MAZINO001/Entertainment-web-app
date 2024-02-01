@@ -9,11 +9,11 @@ import Movies from "./Components/2.SideBar/Movies";
 import TvShows from "./Components/2.SideBar/TvShows";
 import Library from "./Components/2.SideBar/Library";
 import Home from "./Components/1.container/Home";
-import RootLayout from "./Layouts/RootLayout";
+import SideBar from "./Components/2.SideBar/SideBar"
 export default function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
-       <Route path="/" element={< RootLayout/>}> 
+       <Route path="/" element={<SideBar/>}> 
         <Route path="home" element={<Home />} />
         <Route path="movies" element={<Movies />} />
         <Route path="tvseries" element={<TvShows />} />
