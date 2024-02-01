@@ -47,7 +47,7 @@ export default function Container({
   }, [query, PageNum]);
 
   return (
-    <div className=" sm:mx-4 sm:my-4 mt-2 md:w-full  overflow-hidden">
+    <div className=" sm:mx-4 sm:my-4 mt-2 md:w-full  overflow-hidden ">
       <SearchBar
         setQuery={setQuery}
         Query={query}

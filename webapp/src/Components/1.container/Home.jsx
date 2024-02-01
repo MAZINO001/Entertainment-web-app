@@ -5,11 +5,13 @@ import Trending from "../3.Moviies/Trending";
 import UpComming from "../3.Moviies/UpComming";
 
 export default function Home() {
-  return <div className="">
-    <Trending/>
-    <Popular/>
-    <NowPlaying/>
-    <UpComming/>
-    <TopRated/>
-  </div>;
+  return (
+    <div className="">
+      <Trending />
+      <Popular />
+      <NowPlaying />
+      <UpComming />
+      <TopRated />
+    </div>
+  );
 }
