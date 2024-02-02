@@ -12,7 +12,7 @@ import TvShows from "./Components/2.SideBar/TvShows";
 import Library from "./Components/2.SideBar/Library";
 import Home from "./Components/1.container/Home";
 import NotFound from "./NotFound";
-import SideBar from "./Components/2.SideBar/SideBar";
+import Wrapper from "./Components/Wrapper";
 export default function App() {
   const router = createBrowserRouter([
     {
@@ -34,11 +34,9 @@ export default function App() {
     },
   ]);
   return (
-    <div className="text-white w-full h-full flex">
-      <SideBar />
-      <div>
-        <RouterProvider router={router} />
-      </div>
+    <div className="text-white">
+      {/* <RouterProvider router={router} /> */}
+      <Wrapper />
     </div>
   );
 }

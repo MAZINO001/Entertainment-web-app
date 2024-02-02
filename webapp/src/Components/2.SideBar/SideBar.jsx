@@ -83,16 +83,3 @@ export default function SideBar({
     </div>
   );
 }
-
-// import { Link } from "react-router-dom";
-
-// export default function SideBar() {
-//   return (
-//     <div>
-//       <Link to="/"> Home</Link>
-//       <Link to="/movies"> movies</Link>
-//       <Link to="/tvshows"> tvshows</Link>
-//       <Link to="/library"> library</Link>
-//     </div>
-//   );
-// }

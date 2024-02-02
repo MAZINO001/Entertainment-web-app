@@ -14,7 +14,7 @@ export default function Trending() {
     };
 
     fetch(
-      "https://api.themoviedb.org/3/trending/movie/week?language=en-US",
+      // "https://api.themoviedb.org/3/trending/movie/week?language=en-US",
       options
     )
       .then((response) => response.json())
