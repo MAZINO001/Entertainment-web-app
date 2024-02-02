@@ -121,7 +121,7 @@ import { PiTelevisionFill } from "react-icons/pi";
 import { LuDot } from "react-icons/lu";
 import { useEffect, useState } from "react";
 export default function SearchContainer() {
-  const [query, setQuery] = useState("game");
+  const [query, setQuery] = useState("home");
   const [PageNum, setPageNum] = useState(1);
   const [Data, setData] = useState(null);
   const [Results, setResults] = useState(null);
@@ -149,12 +149,8 @@ export default function SearchContainer() {
       .catch((err) => console.error(err));
   }, [query, PageNum]);
 
-  console.log(Data);
-  console.log(Results);
-  console.log(Pages);
-
-  const TotalResults = 999;
-  const TotalPages = 999;
+  const TotalResults = Results;
+  const TotalPages = Pages;
   const [CurrentPage, setCurrentPage] = useState(1);
   const handleNextPage = () => {
     setPageNum(PageNum + 1);
