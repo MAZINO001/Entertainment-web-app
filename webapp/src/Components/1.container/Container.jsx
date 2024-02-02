@@ -4,18 +4,10 @@
 import { useEffect } from "react";
 
 import { useState } from "react";
-import Home from "./Home";
-import Movies from "../2.SideBar/Movies";
-import TvShows from "../2.SideBar/TvShows";
-import Library from "../2.SideBar/Library";
 import SearchBar from "./SearchBar";
 import SearchContainer from "./SearchContainer";
-
+import { Outlet } from "react-router-dom";
 export default function Container({
-  activeMiniSquares,
-  activeLocalMovies,
-  activeTelevision,
-  activeBookmark,
   handleSearchContainerClose,
   handleSearchClick,
   isSearchContainerOpen,
@@ -65,12 +57,22 @@ export default function Container({
         />
       ) : (
         <>
-          {activeMiniSquares && <Home />}
-          {activeLocalMovies && <Movies />}
-          {activeTelevision && <TvShows />}
-          {activeBookmark && <Library />}
+           <Outlet />
         </>
       )}
     </div>
   );
 }
+
+
+
+// import { Outlet } from "react-router-dom";
+// import SearchBar from "./SearchBar";
+// export default function Container() {
+//   return (
+//     <div>
+//        <SearchBar/>
+//       <Outlet />
+//     </div>
+//   );
+// }

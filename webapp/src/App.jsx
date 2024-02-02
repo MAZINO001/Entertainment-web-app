@@ -5,38 +5,47 @@
 //       <Wrapper />
 //     </div>
 //   );
-// }
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+// }import React from 'react';
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Home from "./Components/1.container/Home"; // Import your container components
 import Movies from "./Components/2.SideBar/Movies";
 import TvShows from "./Components/2.SideBar/TvShows";
 import Library from "./Components/2.SideBar/Library";
-import Home from "./Components/1.container/Home";
-import NotFound from "./NotFound";
-import Wrapper from "./Components/Wrapper";
-export default function App() {
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <Home />,
-      errorElement: <NotFound />,
-    },
-    {
-      path: "/movies",
-      element: <Movies />,
-    },
-    {
-      path: "/tvshows",
-      element: <TvShows />,
-    },
-    {
-      path: "/libraray",
-      element: <Library />,
-    },
-  ]);
+import Wrapper from "./Components/Wrapper"; // Import your layout component
+import NotFound from "./Components/1.container/NotFound";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Wrapper />,
+    errorElement: <NotFound />,
+    children: [
+      {
+        path: "home",
+        element: <Home />,
+      },
+      {
+        path: "movies",
+        element: <Movies />,
+      },
+      {
+        path: "tvshows",
+        element: <TvShows />,
+      },
+      {
+        path: "library",
+        element: <Library />,
+      },
+    ],
+  },
+]);
+
+function App() {
   return (
-    <div className="text-white">
-      {/* <RouterProvider router={router} /> */}
+    <RouterProvider router={router}>
       <Wrapper />
-    </div>
+    </RouterProvider>
   );
 }
+
+export default App;

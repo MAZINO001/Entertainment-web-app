@@ -4,6 +4,7 @@
 
 body {
     background: #10141E;
+    color: white;
 }
 
 .title {
@@ -25,8 +26,6 @@ body {
     border-radius: 5px;
 }
 
-.imgShwd {
-
-}
+.imgShwd {}
 
 .TypeSpan {}
