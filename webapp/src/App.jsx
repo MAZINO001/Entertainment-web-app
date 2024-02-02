@@ -14,6 +14,8 @@ import Library from "./Components/2.SideBar/Library";
 import Wrapper from "./Components/Wrapper"; // Import your layout component
 import NotFound from "./Components/1.container/NotFound";
 import SearchContainer from "./Components/1.container/SearchContainer";
+import MyProvider from "./Routers/SearchProvider";
+import SearchBar from "./Components/1.container/SearchBar";
 
 const router = createBrowserRouter([
   {
@@ -48,7 +50,12 @@ const router = createBrowserRouter([
 function App() {
   return (
     <RouterProvider router={router}>
-      <Wrapper />
+      <Wrapper>
+        <MyProvider>
+          <SearchBar />
+          <SearchContainer />
+        </MyProvider>
+      </Wrapper>
     </RouterProvider>
   );
 }

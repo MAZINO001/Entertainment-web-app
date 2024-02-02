@@ -1,10 +1,12 @@
 /* eslint-disable react/prop-types */
+import { useContext } from "react";
 import { CgSearch } from "react-icons/cg";
-
-export default function SearchBar({ setQuery, Query, onSearchClick }) {
+import MyContext from "../../Routers/MyContext";
+export default function SearchBar() {
+  const { Query, setQuery } = useContext(MyContext);
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSearchClick();
+    // onSearchClick();
   };
 
   return (
@@ -30,4 +32,3 @@ export default function SearchBar({ setQuery, Query, onSearchClick }) {
     </form>
   );
 }
-//you need to add this rto see the path https://image.tmdb.org/t/p/original/
