@@ -124,7 +124,8 @@ export default function SearchContainer() {
   const [query, setQuery] = useState("game");
   const [PageNum, setPageNum] = useState(1);
   const [Data, setData] = useState(null);
-  const [AllData, setAllData] = useState(null);
+  const [Results, setResults] = useState(null);
+  const [Pages, setPages] = useState(null);
   useEffect(() => {
     const options = {
       method: "GET",
@@ -142,13 +143,18 @@ export default function SearchContainer() {
       .then((response) => response.json())
       .then((responseData) => {
         setData(responseData.results);
-        setAllData(responseData);
+        setPages(responseData.total_pages);
+        setResults(responseData.total_results);
       })
       .catch((err) => console.error(err));
   }, [query, PageNum]);
 
-  // let TotalPages = AllData.total_pages;
-  let TotalPages = 999;
+  console.log(Data);
+  console.log(Results);
+  console.log(Pages);
+
+  const TotalResults = 999;
+  const TotalPages = 999;
   const [CurrentPage, setCurrentPage] = useState(1);
   const handleNextPage = () => {
     setPageNum(PageNum + 1);
@@ -164,8 +170,7 @@ export default function SearchContainer() {
     <div className="flex flex-col px-4">
       <div className="flex items-center justify-between">
         <h2 className="title mt-2 mb-4">
-          {/* Found {AllData.total_results} results for {`'${query}'`} */}
-          Found 999 results for {`'${query}'`}
+          Found {TotalResults} results for {`'${query}'`}
         </h2>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  gap-x-8  justify-items-center ">
