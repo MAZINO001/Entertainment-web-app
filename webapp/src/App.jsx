@@ -13,6 +13,7 @@ import TvShows from "./Components/2.SideBar/TvShows";
 import Library from "./Components/2.SideBar/Library";
 import Wrapper from "./Components/Wrapper"; // Import your layout component
 import NotFound from "./Components/1.container/NotFound";
+import SearchContainer from "./Components/1.container/SearchContainer";
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: "library",
         element: <Library />,
+      },
+      {
+        path: "searchcontainer",
+        element: <SearchContainer />,
       },
     ],
   },
