@@ -1,16 +1,11 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
 import { IoArrowForwardOutline } from "react-icons/io5";
 import { IoArrowBackOutline } from "react-icons/io5";
 import { MdLocalMovies } from "react-icons/md";
 import { PiTelevisionFill } from "react-icons/pi";
 import { LuDot } from "react-icons/lu";
 import { useEffect, useState } from "react";
-import { useContext } from "react";
-import MyContext from "../../Routers/SearchProvider";
 export default function SearchContainer() {
-  const { Query } = useContext(MyContext);
-
+  const [query, setQuery] = useState("game");
   const [PageNum, setPageNum] = useState(1);
   const [Data, setData] = useState(null);
   const [Results, setResults] = useState(null);
@@ -26,7 +21,7 @@ export default function SearchContainer() {
     };
 
     fetch(
-      `https:api.themoviedb.org/3/search/multi?query=${Query}&page=${PageNum}`,
+      `https:api.themoviedb.org/3/search/multi?query=${query}&page=${PageNum}`,
       options
     )
       .then((response) => response.json())
@@ -36,7 +31,9 @@ export default function SearchContainer() {
         setResults(responseData.total_results);
       })
       .catch((err) => console.error(err));
-  }, [Query, PageNum]);
+  }, [query, PageNum]);
+
+  console.log(Data);
 
   const TotalResults = Results;
   const TotalPages = Pages;
@@ -55,7 +52,7 @@ export default function SearchContainer() {
     <div className="flex flex-col px-4">
       <div className="flex items-center justify-between">
         <h2 className="title mt-2 mb-4">
-          Found {TotalResults} results for {`'${Query}'`}
+          Found {TotalResults} results for {`'${query}'`}
         </h2>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  gap-x-8  justify-items-center ">
@@ -95,7 +92,7 @@ export default function SearchContainer() {
         )}
       </div>
       <div className="flex justify-center gap-[1rem] mb-4">
-        {Query === "" ? (
+        {query === "" ? (
           ""
         ) : (
           <>

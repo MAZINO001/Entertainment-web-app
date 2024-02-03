@@ -1,12 +1,9 @@
 /* eslint-disable react/prop-types */
-import { useContext } from "react";
 import { CgSearch } from "react-icons/cg";
-import MyContext from "../../Routers/MyContext";
-export default function SearchBar() {
-  const { Query, setQuery } = useContext(MyContext);
+export default function SearchBar({ setQuery, Query, onSearchClick }) {
   const handleSubmit = (e) => {
     e.preventDefault();
-    // onSearchClick();
+    onSearchClick();
   };
 
   return (

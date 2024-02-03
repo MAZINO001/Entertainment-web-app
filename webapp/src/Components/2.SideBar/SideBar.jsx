@@ -102,7 +102,7 @@ export default function SideBar() {
       </div>
 
       <div className="  flex items-center flex-row md:flex-col  sm:gap-[3.5rem] gap-[2rem] cursor-pointer text-black ">
-        <NavLink to="/home">
+        <NavLink to="/">
           <HiMiniSquares2X2 className="w-[1.7rem] h-[1.7rem] text-[#5A6A90] " />
         </NavLink>
         <NavLink to="/movies">
