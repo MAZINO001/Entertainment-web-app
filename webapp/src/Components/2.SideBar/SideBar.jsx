@@ -96,7 +96,7 @@ export default function SideBar() {
   return (
     <div className="  h-full flex flex-col  px-2 rounded-md ml-4 my-4 items-center justify-between bg-[#1d2741e6] bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-20 ">
       <div className="md:mt-4 md:ml-0 md:mb-14 ml-4 mr-0 items-center ">
-        <NavLink to="/home">
+        <NavLink to="/">
           <PiFilmReelFill className="w-[50px] h-[50px] text-[#FC4747] cursor-pointer" />
         </NavLink>
       </div>

@@ -1,4 +1,16 @@
-// SearchContext.js
-import { createContext } from "react";
-import SearchProvider from "./SearchProvider";
-export const SearchContext = createContext(SearchProvider);
+/* eslint-disable react/prop-types */
+import  { createContext, useState } from 'react';
+
+const SearchContext = createContext();
+
+export const SearchProvider = ({ children }) => {
+  const [query, setQuery] = useState('');
+
+  return (
+    <SearchContext.Provider value={{ query, setQuery }}>
+      {children}
+    </SearchContext.Provider>
+  );
+};
+
+export default SearchContext;

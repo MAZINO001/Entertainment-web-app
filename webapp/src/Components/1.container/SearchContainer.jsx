@@ -1,18 +1,43 @@
-/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
 import { IoArrowForwardOutline } from "react-icons/io5";
 import { IoArrowBackOutline } from "react-icons/io5";
 import { MdLocalMovies } from "react-icons/md";
 import { PiTelevisionFill } from "react-icons/pi";
 import { LuDot } from "react-icons/lu";
-import { useState } from "react";
-export default function SearchContainer({
-  Results,
-  PageNum,
-  setPageNum,
-  Pages,
-  Data,
-  Query,
-}) {
+import { useContext, useEffect, useState } from "react";
+import SearchContext from "../../context/SearchContext";
+export default function SearchContainer() {
+  const { Query } = useContext(SearchContext);
+  const [PageNum, setPageNum] = useState(1);
+  const [Data, setData] = useState(null);
+  const [Results, setResults] = useState(null);
+  const [Pages, setPages] = useState(null);
+  console.log(Query)
+  useEffect(() => {
+    const options = {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyNzg5MjE1MDdlZjBjNjdlNTNhNjc3OTM2NGU0NjBhZSIsInN1YiI6IjY1YjY1ZWY2MmZhZjRkMDE3Y2RkYjAzNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.OcvYLoz0Ugh1SREfo1q2zt1xDPQ7U7O9e9tdPNbxaok",
+      },
+    };
+
+    fetch(
+      `https:api.themoviedb.org/3/search/multi?query=${query}&page=${PageNum}`,
+      options
+    )
+      .then((response) => response.json())
+      .then((responseData) => {
+        setData(responseData.results);
+        setPages(responseData.total_pages);
+        setResults(responseData.total_results);
+      })
+      .catch((err) => console.error(err));
+  }, [query, PageNum]);
+
+  console.log(Data);
+
   const TotalResults = Results;
   const TotalPages = Pages;
   const [CurrentPage, setCurrentPage] = useState(1);
@@ -20,7 +45,8 @@ export default function SearchContainer({
     setPageNum(PageNum + 1);
     setCurrentPage(CurrentPage + 1);
   };
-    const handlePrevPage = () => {
+
+  const handlePrevPage = () => {
     setPageNum(PageNum - 1);
     setCurrentPage(CurrentPage - 1);
   };
@@ -29,7 +55,7 @@ export default function SearchContainer({
     <div className="flex flex-col px-4">
       <div className="flex items-center justify-between">
         <h2 className="title mt-2 mb-4">
-          Found {TotalResults} results for {`'${Query}'`}
+          Found {TotalResults} results for {`'${query}'`}
         </h2>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  gap-x-8  justify-items-center ">
@@ -69,7 +95,7 @@ export default function SearchContainer({
         )}
       </div>
       <div className="flex justify-center gap-[1rem] mb-4">
-        {Query === "" ? (
+        {query === "" ? (
           ""
         ) : (
           <>
