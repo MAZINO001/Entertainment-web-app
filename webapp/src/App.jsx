@@ -6,7 +6,6 @@ import Library from "./Components/2.SideBar/Library";
 import Wrapper from "./Components/Wrapper"; // Import your layout component
 import NotFound from "./Components/1.container/NotFound";
 import SearchContainer from "./Components/1.container/SearchContainer";
-import { SearchProvider } from "./context/SearchProvider";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -40,9 +39,7 @@ const router = createBrowserRouter([
 function App() {
   return (
     <RouterProvider router={router}>
-      <SearchProvider>
-        <Wrapper />
-      </SearchProvider>
+      <Wrapper />
     </RouterProvider>
   );
 }

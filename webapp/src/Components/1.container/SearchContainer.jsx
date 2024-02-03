@@ -5,7 +5,7 @@ import { PiTelevisionFill } from "react-icons/pi";
 import { LuDot } from "react-icons/lu";
 import { useEffect, useState } from "react";
 import { useContext } from "react";
-import SearchContext from "../../context/SearchProvider";
+import { SearchContext } from "../../context/SearchHook";
 export default function SearchContainer() {
   const { Query } = useContext(SearchContext);
   const [PageNum, setPageNum] = useState(1);

@@ -1,10 +1,9 @@
 /* eslint-disable react/prop-types */
 import { useContext } from "react";
 import { CgSearch } from "react-icons/cg";
-import { SearchProvider } from "../../context/SearchProvider"; 
-
+import { SearchContext } from "../../context/SearchHook";
 export default function SearchBar() {
-  const { Query, setQuery } = useContext(SearchProvider);
+  const { Query, setQuery } = useContext(SearchContext);
   const handleSubmit = (e) => {
     e.preventDefault();
     // onSearchClick();

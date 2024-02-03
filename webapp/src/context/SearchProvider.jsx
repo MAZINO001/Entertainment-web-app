@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
-import { createContext, useState } from "react";
-const SearchContext = createContext();
+import { useState } from "react";
+import { SearchContext } from "./SearchHook";
 
 export default function SearchProvider({ children }) {
-  const [Query, setQuery] = useState("");
+  const [Query, setQuery] = useState("game");
 
   return (
     <SearchContext.Provider value={{ Query, setQuery }}>
