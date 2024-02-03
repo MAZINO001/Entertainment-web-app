@@ -4,8 +4,10 @@ import { MdLocalMovies } from "react-icons/md";
 import { PiTelevisionFill } from "react-icons/pi";
 import { LuDot } from "react-icons/lu";
 import { useEffect, useState } from "react";
+import { useContext } from "react";
+import SearchContext from "../../context/SearchProvider";
 export default function SearchContainer() {
-  const [query, setQuery] = useState("game");
+  const { Query } = useContext(SearchContext);
   const [PageNum, setPageNum] = useState(1);
   const [Data, setData] = useState(null);
   const [Results, setResults] = useState(null);
@@ -21,7 +23,7 @@ export default function SearchContainer() {
     };
 
     fetch(
-      `https:api.themoviedb.org/3/search/multi?query=${query}&page=${PageNum}`,
+      `https:api.themoviedb.org/3/search/multi?query=${Query}&page=${PageNum}`,
       options
     )
       .then((response) => response.json())
@@ -31,7 +33,7 @@ export default function SearchContainer() {
         setResults(responseData.total_results);
       })
       .catch((err) => console.error(err));
-  }, [query, PageNum]);
+  }, [Query, PageNum]);
 
   console.log(Data);
 
@@ -52,7 +54,7 @@ export default function SearchContainer() {
     <div className="flex flex-col px-4">
       <div className="flex items-center justify-between">
         <h2 className="title mt-2 mb-4">
-          Found {TotalResults} results for {`'${query}'`}
+          Found {TotalResults} results for {`'${Query}'`}
         </h2>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  gap-x-8  justify-items-center ">
@@ -92,7 +94,7 @@ export default function SearchContainer() {
         )}
       </div>
       <div className="flex justify-center gap-[1rem] mb-4">
-        {query === "" ? (
+        {Query === "" ? (
           ""
         ) : (
           <>
