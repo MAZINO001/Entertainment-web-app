@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { MdLocalMovies } from "react-icons/md";
 import { LuDot } from "react-icons/lu";
 import { PiTelevisionFill } from "react-icons/pi";
 export default function TopRated() {

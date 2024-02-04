@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { MdLocalMovies } from "react-icons/md";
+import { PiTelevisionFill } from "react-icons/pi";
 import { LuDot } from "react-icons/lu";
-export default function NowPlaying() {
-  const [NowPlaying, setNowPlaying] = useState("");
+export default function AiringToday() {
+  const [AiringToday, setAiringToday] = useState("");
   useEffect(() => {
     const options = {
       method: "GET",
@@ -18,7 +18,7 @@ export default function NowPlaying() {
       options
     )
       .then((response) => response.json())
-      .then((response) => setNowPlaying(response.results))
+      .then((response) => setAiringToday(response.results))
       .catch((err) => console.error(err));
   }, []);
   return (
@@ -32,8 +32,8 @@ export default function NowPlaying() {
       </div>
       <div className=" grid grid-cols-4 grid-rows-2 gap-4  ">
         {" "}
-        {Array.isArray(NowPlaying) ? (
-          NowPlaying.filter((item) => item.backdrop_path)
+        {Array.isArray(AiringToday) ? (
+          AiringToday.filter((item) => item.backdrop_path)
             .slice(0, 8)
             .map((item) => (
               <div key={item.id} className="">
@@ -43,15 +43,15 @@ export default function NowPlaying() {
                   alt="Poster"
                 />
                 <p className="text-sm py-1 capitalize text-gray-300 flex items-center text-slim ">
-                  <span>{new Date(item.release_date).getFullYear()}</span>
+                  <span>{new Date(item.first_air_date).getFullYear()}</span>
 
                   <LuDot className="text-xl text-gray-300 " />
                   <span className="flex items-center gap-x-1">
-                    <MdLocalMovies /> Movie
+                    <PiTelevisionFill /> Tv Series
                   </span>
                 </p>
                 <h2 className="text-lg font-semibold  max-w-[100%]">
-                  {item.title}
+                  {item.name}
                 </h2>
               </div>
             ))
