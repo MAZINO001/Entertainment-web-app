@@ -62,7 +62,7 @@ import NotFound from "./Components/1.container/NotFound";
 import SearchContainer from "./Components/1.container/SearchContainer";
 import { SearchProvider } from "./context/SearchContext";
 import SearchBar from "./Components/1.container/SearchBar";
-import {Query}
+import { QueryClient, QueryClientProvider } from "react-query";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -95,14 +95,16 @@ const router = createBrowserRouter([
 ]);
 function App() {
   return (
-    <RouterProvider router={router}>
-      <Wrapper>
-        <SearchProvider>
-          <SearchBar />
-          <SearchContainer />
-        </SearchProvider>
-      </Wrapper>
-    </RouterProvider>
+    <QueryClientProvider client={QueryClient}>
+      <RouterProvider router={router}>
+        <Wrapper>
+          <SearchProvider>
+            <SearchBar />
+            <SearchContainer />
+          </SearchProvider>
+        </Wrapper>
+      </RouterProvider>
+    </QueryClientProvider>
   );
 }
 
