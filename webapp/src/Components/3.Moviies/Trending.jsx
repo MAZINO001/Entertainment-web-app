@@ -30,20 +30,21 @@ export default function Trending() {
           see all
         </button>
       </div>
-      {/* <div className=" flex flex-row overflow-hidden gap-x-4 "> */}
       <div className=" grid grid-cols-[repeat(10,_1fr)] grid-rows-[1fr] gap-x-4 overflow-x-auto">
         {" "}
         {Array.isArray(Trending) ? (
           Trending.filter((item) => item.backdrop_path)
             .slice(0, 10)
             .map((item) => (
-              <div key={item.id} className="mb-3 w-[407px] relative">
-                <img
-                  className=" rounded-md cursor-pointer"
-                  src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
-                  alt="Poster"
-                />
-                <p className="text-sm py-1 capitalize text-gray-300 flex items-center text-slim absolute bottom-[50px] left-[10px] ">
+              <div key={item.id} className="w-[407px] relative ">
+                <div className="imgShwd rounded-md">
+                  <img
+                    className=" rounded-md cursor-pointer "
+                    src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
+                    alt="Poster"
+                  />
+                </div>
+                <p className="text-sm py-1 capitalize text-gray-300 flex items-center text-slim absolute bottom-[50px] left-[10px]">
                   <span>{new Date(item.release_date).getFullYear()}</span>
 
                   <LuDot className="text-xl text-gray-300 " />
