@@ -41,11 +41,12 @@ const router = createBrowserRouter([
 function App() {
   return (
     <RouterProvider router={router}>
-      <SearchProvider>
-        <Wrapper />
-        <SearchBar />
-        <SearchContainer />
-      </SearchProvider>
+      <Wrapper>
+        <SearchProvider>
+          <SearchBar />
+          <SearchContainer />
+        </SearchProvider>
+      </Wrapper>
     </RouterProvider>
   );
 }

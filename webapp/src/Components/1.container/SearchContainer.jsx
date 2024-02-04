@@ -7,12 +7,21 @@ import { LuDot } from "react-icons/lu";
 import { useContext, useEffect, useState } from "react";
 import SearchContext from "../../context/SearchContext";
 export default function SearchContainer() {
-  const { Query } = useContext(SearchContext);
+  const { query } = useContext(SearchContext);
+  
+  useEffect(() => {
+    if (query) {
+      console.log(query);
+    } else {
+      console.error("query is undefined in SearchContainer");
+    }
+  }, [query]);
+
   const [PageNum, setPageNum] = useState(1);
   const [Data, setData] = useState(null);
   const [Results, setResults] = useState(null);
   const [Pages, setPages] = useState(null);
-  console.log(Query)
+  console.log(query);
   useEffect(() => {
     const options = {
       method: "GET",
