@@ -28,4 +28,13 @@ body {
 
 .imgShwd {}
 
-.TypeSpan {}
+.typespan {
+    padding: 2px 7px;
+    font-weight: 400;
+    font-size: 14px;
+    letter-spacing: 1px;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    position: absolute;
+    left: 120px;
+}

@@ -6,7 +6,7 @@ import UpComming from "../3.Moviies/UpComming";
 
 export default function Home() {
   return (
-    <div className="bg-red-500">
+    <div className="">
       <Trending />
       <Popular />
       <NowPlaying />

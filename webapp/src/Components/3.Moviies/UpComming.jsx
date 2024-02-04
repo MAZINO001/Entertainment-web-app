@@ -14,7 +14,7 @@ export default function UpComming() {
     };
 
     fetch(
-      // "https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1",
+      "https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1",
       options
     )
       .then((response) => response.json())
@@ -23,8 +23,9 @@ export default function UpComming() {
   }, []);
   return (
     <div className=" flex flex-col">
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between items-center relative">
       <h2 className="title">UpComming</h2>
+      <span className="typespan ml-[40px]">Movies</span>
         <button className=" text-md text-[#fff] bg-[#FC4747] px-2 py-1  rounded-md ">see all</button>
       </div>
       <div className="  grid grid-cols-4 grid-rows-2 gap-4  ">

@@ -14,7 +14,7 @@ export default function NowPlaying() {
     };
 
     fetch(
-      // "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1",
+      "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1",
       options
     )
       .then((response) => response.json())
@@ -23,8 +23,9 @@ export default function NowPlaying() {
   }, []);
   return (
     <div className=" flex flex-col ">
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between items-center relative">
         <h2 className="title">NowPlaying</h2>
+        <span className="typespan ml-[35px]">Movies</span>
         <button className=" text-md text-[#fff] bg-[#FC4747] px-2 py-1  rounded-md ">
           see all
         </button>

@@ -7,8 +7,9 @@ import { LuDot } from "react-icons/lu";
 import { useContext, useEffect, useState } from "react";
 import SearchContext from "../../context/SearchContext";
 export default function SearchContainer() {
-  const { query } = useContext(SearchContext);
-  
+  // const { query } = useContext(SearchContext);
+  const query = "game";
+
   useEffect(() => {
     if (query) {
       console.log(query);
