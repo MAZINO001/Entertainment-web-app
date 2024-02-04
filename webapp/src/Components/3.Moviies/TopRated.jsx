@@ -22,7 +22,7 @@ export default function TopRated() {
       .catch((err) => console.error(err));
   }, []);
   return (
-    <div className=" flex flex-col ">
+    <div className=" flex flex-col my-4">
       <div className="flex justify-between items-center relative ">
         <h2 className="title">TopRated</h2>
         <span className="typespan ml-[7px]">Movies</span>
@@ -30,13 +30,13 @@ export default function TopRated() {
           see all
         </button>
       </div>
-      <div className="  grid grid-cols-4 grid-rows-2 gap-4  ">
+      <div className="  grid grid-cols-4 grid-rows-2 gap-4 ">
         {" "}
         {Array.isArray(TopRated) ? (
           TopRated.filter((item) => item.backdrop_path)
-            .slice(0, 6)
+            .slice(0, 8)
             .map((item) => (
-              <div key={item.id} className="mb-3">
+              <div key={item.id} className="">
                 <img
                   className=" rounded-md cursor-pointer "
                   src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}

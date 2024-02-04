@@ -22,7 +22,7 @@ export default function UpComming() {
       .catch((err) => console.error(err));
   }, []);
   return (
-    <div className=" flex flex-col">
+    <div className=" flex flex-col my-4">
       <div className="flex justify-between items-center relative">
       <h2 className="title">UpComming</h2>
       <span className="typespan ml-[40px]">Movies</span>
@@ -32,9 +32,9 @@ export default function UpComming() {
         {" "}
         {Array.isArray(UpComming) ? (
           UpComming.filter((item) => item.backdrop_path)
-            .slice(0, 6)
+            .slice(0, 8)
             .map((item) => (
-              <div key={item.id} className="mb-3">
+              <div key={item.id} className="">
                 <img
                   className=" rounded-md cursor-pointer "
                   src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
