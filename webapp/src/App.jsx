@@ -63,6 +63,7 @@ import SearchContainer from "./Components/1.container/SearchContainer";
 import { SearchProvider } from "./context/SearchContext";
 import SearchBar from "./Components/1.container/SearchBar";
 import { QueryClient, QueryClientProvider } from "react-query";
+import OnAir from "./Components/4.TvShows/OnAir";
 const queryClient = new QueryClient();
 const router = createBrowserRouter([
   {
@@ -103,6 +104,7 @@ function App() {
             <SearchBar />
             <SearchContainer />
           </SearchProvider>
+            <OnAir />
         </Wrapper>
       </RouterProvider>
     </QueryClientProvider>
