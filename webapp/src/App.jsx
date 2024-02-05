@@ -63,6 +63,7 @@ import SearchContainer from "./Components/1.container/SearchContainer";
 import { SearchProvider } from "./context/SearchContext";
 import SearchBar from "./Components/1.container/SearchBar";
 import { QueryClient, QueryClientProvider } from "react-query";
+const queryClient = new QueryClient();
 const router = createBrowserRouter([
   {
     path: "/",
@@ -95,7 +96,7 @@ const router = createBrowserRouter([
 ]);
 function App() {
   return (
-    <QueryClientProvider client={QueryClient}>
+    <QueryClientProvider client={queryClient}>
       <RouterProvider router={router}>
         <Wrapper>
           <SearchProvider>
