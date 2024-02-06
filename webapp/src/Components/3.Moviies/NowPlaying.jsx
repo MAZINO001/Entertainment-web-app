@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+   import { useEffect, useState } from "react";
 import { MdLocalMovies } from "react-icons/md";
 import { LuDot } from "react-icons/lu";
 export default function NowPlaying() {
