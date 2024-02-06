@@ -1,26 +1,25 @@
-import { useEffect, useState } from "react";
+import { fetchTMDbData } from "../../api/fetchDataTv";
 import { PiTelevisionFill } from "react-icons/pi";
 import { LuDot } from "react-icons/lu";
+import { useQuery } from "@tanstack/react-query";
+import Loader from "../../Loaders/Loader";
 export default function AiringToday() {
-  const [AiringToday, setAiringToday] = useState("");
-  useEffect(() => {
-    const options = {
-      method: "GET",
-      headers: {
-        accept: "application/json",
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyNzg5MjE1MDdlZjBjNjdlNTNhNjc3OTM2NGU0NjBhZSIsInN1YiI6IjY1YjY1ZWY2MmZhZjRkMDE3Y2RkYjAzNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.OcvYLoz0Ugh1SREfo1q2zt1xDPQ7U7O9e9tdPNbxaok",
-      },
-    };
+  const {
+    data: AiringToday,
+    isLoading,
+    error,
+  } = useQuery({
+    queryKey: ["AiringToday"],
+    queryFn: () => fetchTMDbData("airingToday"),
+  });
 
-    fetch(
-      "https://api.themoviedb.org/3/tv/airing_today?language=en-US&page=1",
-      options
-    )
-      .then((response) => response.json())
-      .then((response) => setAiringToday(response.results))
-      .catch((err) => console.error(err));
-  }, []);
+  if (isLoading) {
+    return <Loader />;
+  }
+
+  if (error) {
+    return <h2>{error.message}</h2>;
+  }
   return (
     <div className=" flex flex-col my-4">
       <div className="flex justify-between items-center relative">
@@ -32,32 +31,28 @@ export default function AiringToday() {
       </div>
       <div className=" grid grid-cols-4 grid-rows-2 gap-4  ">
         {" "}
-        {Array.isArray(AiringToday) ? (
-          AiringToday.filter((item) => item.backdrop_path)
-            .slice(0, 8)
-            .map((item) => (
-              <div key={item.id} className="">
-                <img
-                  className=" rounded-md cursor-pointer "
-                  src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
-                  alt="Poster"
-                />
-                <p className="text-sm py-1 capitalize text-gray-300 flex items-center text-slim ">
-                  <span>{new Date(item.first_air_date).getFullYear()}</span>
+        {AiringToday.filter((item) => item.backdrop_path)
+          .slice(0, 8)
+          .map((item) => (
+            <div key={item.id} className="">
+              <img
+                className=" rounded-md cursor-pointer "
+                src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
+                alt="Poster"
+              />
+              <p className="text-sm py-1 capitalize text-gray-300 flex items-center text-slim ">
+                <span>{new Date(item.first_air_date).getFullYear()}</span>
 
-                  <LuDot className="text-xl text-gray-300 " />
-                  <span className="flex items-center gap-x-1">
-                    <PiTelevisionFill /> Tv Series
-                  </span>
-                </p>
-                <h2 className="text-lg font-semibold  max-w-[100%]">
-                  {item.name}
-                </h2>
-              </div>
-            ))
-        ) : (
-          <p>Data is not an array</p>
-        )}
+                <LuDot className="text-xl text-gray-300 " />
+                <span className="flex items-center gap-x-1">
+                  <PiTelevisionFill /> Tv Series
+                </span>
+              </p>
+              <h2 className="text-lg font-semibold  max-w-[100%]">
+                {item.name}
+              </h2>
+            </div>
+          ))}
       </div>
     </div>
   );
