@@ -24,5 +24,6 @@ export const fetchOnAir = async () => {
       console.error(error);
       throw new Error("Failed to fetch data");
     }
+
   };
   

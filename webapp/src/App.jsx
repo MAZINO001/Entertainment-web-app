@@ -51,7 +51,6 @@
 //   );
 // }
 
-// export default App;
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./Components/1.container/Home"; // Import your container components
 import Movies from "./Components/2.SideBar/Movies";
@@ -62,8 +61,9 @@ import NotFound from "./Components/1.container/NotFound";
 import SearchContainer from "./Components/1.container/SearchContainer";
 import { SearchProvider } from "./context/SearchContext";
 import SearchBar from "./Components/1.container/SearchBar";
-import { QueryClient, QueryClientProvider } from "react-query";
 import OnAir from "./Components/4.TvShows/OnAir";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 const queryClient = new QueryClient();
 const router = createBrowserRouter([
   {
@@ -104,9 +104,10 @@ function App() {
             <SearchBar />
             <SearchContainer />
           </SearchProvider>
-            <OnAir />
+          <OnAir />
         </Wrapper>
       </RouterProvider>
+      <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );
 }

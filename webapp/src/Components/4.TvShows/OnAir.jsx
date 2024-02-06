@@ -65,15 +65,21 @@
 // }
 /* eslint-disable react/prop-types */
 // import { useEffect, useState } from "react";
+
+const fetchOnAir = () => {
+  return fetch(
+    "https://api.themoviedb.org/3/tv/on_the_air?language=en-US&page=1"
+  );
+};
+
 import { PiTelevisionFill } from "react-icons/pi";
 import { useQuery } from "react-query";
 import { LuDot } from "react-icons/lu";
 export default function OnAir() {
   const { data: OnAirData, isLoading } = useQuery({
-    queryFn: () => fetchOnAir(), 
-    queryKey: ["onAirData"], 
+    queryFn: () => fetchOnAir(),
+    queryKey: ["onAirData"],
   });
-  
 
   if (isLoading) {
     return <div>Loading . . .</div>;
