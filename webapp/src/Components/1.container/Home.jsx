@@ -12,19 +12,17 @@ import UpCommingTv from "../4.TvShows/OnAir";
 export default function Home() {
   return (
     <div className="">
-      <TrendingMovies />
-      <PopularMovies />
-      <NowPlayingMovies />
-      <UpCommingMovies />
-      <TopRatedMovies />
-      <div className="my-4">
-        <hr />
-      </div>
-      <TrendingTv />
-      <PopularTv />
-      <NowPlayingTv />
-      <UpCommingTv />
-      <TopRatedTv />
+      {/* <TrendingMovies /> */}
+      {/* <PopularMovies /> */}
+      {/* <NowPlayingMovies /> */}
+      {/* <UpCommingMovies /> */}
+      {/* <TopRatedMovies /> */}
+      <hr className="my-4" />
+      {/* <TrendingTv /> */}
+      {/* <PopularTv /> */}
+      {/* <NowPlayingTv /> */}
+      {/* <UpCommingTv /> */}
+      {/* <TopRatedTv /> */}
     </div>
   );
 }
