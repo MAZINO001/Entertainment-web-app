@@ -21,7 +21,7 @@ export default function NowPlaying() {
   }
 
   return (
-    <div className=" flex flex-col my-4">
+    <div className=" flex flex-col my-4 ">
       <div className="flex justify-between items-center relative">
         <h2 className="title">NowPlaying</h2>
         <span className="typespan ml-[35px]">Movies</span>

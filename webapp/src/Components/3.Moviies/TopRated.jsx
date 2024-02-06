@@ -1,26 +1,24 @@
-import { useEffect, useState } from "react";
+import { fetchTMDbDataMovies } from "../../api/FetchDataMovie";
 import { MdLocalMovies } from "react-icons/md";
 import { LuDot } from "react-icons/lu";
+import { useQuery } from "@tanstack/react-query";
+import Loader from "../../Loaders/Loader";
 export default function TopRated() {
-  const [TopRated, setTopRated] = useState("");
-  useEffect(() => {
-    const options = {
-      method: "GET",
-      headers: {
-        accept: "application/json",
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyNzg5MjE1MDdlZjBjNjdlNTNhNjc3OTM2NGU0NjBhZSIsInN1YiI6IjY1YjY1ZWY2MmZhZjRkMDE3Y2RkYjAzNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.OcvYLoz0Ugh1SREfo1q2zt1xDPQ7U7O9e9tdPNbxaok",
-      },
-    };
+  const {
+    data: TopRated,
+    isLoading,
+    error,
+  } = useQuery({
+    queryKey: ["TopRated"],
+    queryFn: () => fetchTMDbDataMovies("topRated"),
+  });
 
-    fetch(
-      "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1",
-      options
-    )
-      .then((response) => response.json())
-      .then((response) => setTopRated(response.results))
-      .catch((err) => console.error(err));
-  }, []);
+  if (isLoading) {
+    return <Loader />;
+  }
+  if (error) {
+    return <h2>{error.message}</h2>;
+  }
   return (
     <div className=" flex flex-col my-4">
       <div className="flex justify-between items-center relative ">
@@ -32,7 +30,7 @@ export default function TopRated() {
       </div>
       <div className="  grid grid-cols-4 grid-rows-2 gap-4 ">
         {" "}
-        {Array.isArray(TopRated) ? (
+        {
           TopRated.filter((item) => item.backdrop_path)
             .slice(0, 8)
             .map((item) => (
@@ -55,9 +53,7 @@ export default function TopRated() {
                 </h2>
               </div>
             ))
-        ) : (
-          <p>Data is not an array</p>
-        )}
+      }
       </div>
     </div>
   );

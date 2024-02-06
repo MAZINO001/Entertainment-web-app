@@ -1,8 +1,8 @@
-// import NowPlayingMovies from "../3.Moviies/NowPlaying";
-// import PopularMovies from "../3.Moviies/Popular";
-// import TopRatedMovies from "../3.Moviies/TopRated";
-// import TrendingMovies from "../3.Moviies/Trending";
-// import UpCommingMovies from "../3.Moviies/UpComming";
+import NowPlayingMovies from "../3.Moviies/NowPlaying";
+import PopularMovies from "../3.Moviies/Popular";
+import TopRatedMovies from "../3.Moviies/TopRated";
+import TrendingMovies from "../3.Moviies/Trending";
+import UpCommingMovies from "../3.Moviies/UpComming";
 import NowPlayingTv from "../4.TvShows/AiringToday";
 import PopularTv from "../4.TvShows/Popular";
 import TopRatedTv from "../4.TvShows/TopRated";
@@ -12,12 +12,14 @@ import UpCommingTv from "../4.TvShows/OnAir";
 export default function Home() {
   return (
     <div className="">
-      {/* <TrendingMovies />
+      <TrendingMovies />
       <PopularMovies />
       <NowPlayingMovies />
       <UpCommingMovies />
-      <TopRatedMovies /> */}
-
+      <TopRatedMovies />
+      <div className="my-4">
+        <hr />
+      </div>
       <TrendingTv />
       <PopularTv />
       <NowPlayingTv />
