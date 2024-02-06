@@ -1,26 +1,24 @@
-import { useEffect, useState } from "react";
+import { fetchTMDbDataMovies } from "../../api/FetchDataMovie";
 import { MdLocalMovies } from "react-icons/md";
 import { LuDot } from "react-icons/lu";
-export default function Trending() {
-  const [Trending, setTrending] = useState("");
-  useEffect(() => {
-    const options = {
-      method: "GET",
-      headers: {
-        accept: "application/json",
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyNzg5MjE1MDdlZjBjNjdlNTNhNjc3OTM2NGU0NjBhZSIsInN1YiI6IjY1YjY1ZWY2MmZhZjRkMDE3Y2RkYjAzNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.OcvYLoz0Ugh1SREfo1q2zt1xDPQ7U7O9e9tdPNbxaok",
-      },
-    };
+import { useQuery } from "@tanstack/react-query";
+import Loader from "../../Loaders/Loader";
+export default function UpComming() {
+  const {
+    data: UpComming,
+    isLoading,
+    error,
+  } = useQuery({
+    queryKey: ["UpComming"],
+    queryFn: () => fetchTMDbDataMovies("upComming"),
+  });
 
-    fetch(
-      "https://api.themoviedb.org/3/trending/movie/week?language=en-US",
-      options
-    )
-      .then((response) => response.json())
-      .then((response) => setTrending(response.results))
-      .catch((err) => console.error(err));
-  }, []);
+  if (isLoading) {
+    return <Loader />;
+  }
+  if (error) {
+    return <h2>{error.message}</h2>;
+  }
   return (
     <div className=" flex flex-col ">
       <div className="flex justify-between items-center relative">

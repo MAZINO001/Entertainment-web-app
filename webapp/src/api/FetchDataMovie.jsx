@@ -9,11 +9,11 @@ export const fetchTMDbDataMovies = async (type) => {
     };
   
     const urlMap = {
-      onTheAir: "https://api.themoviedb.org/3/tv/on_the_air?language=en-US&page=1",
-      airingToday: "https://api.themoviedb.org/3/tv/airing_today?language=en-US&page=1",
-      popular: "https://api.themoviedb.org/3/tv/popular?language=en-US&page=1",
-      topRated: "https://api.themoviedb.org/3/tv/top_rated?language=en-US&page=1",
-      trending: "https://api.themoviedb.org/3/trending/tv/week?language=en-US",
+      nowPlaying: "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1",
+      popular: "",
+      upComming: "",
+      topRated: "",
+      trending: "",
     };
   
     if (!urlMap[type]) {
