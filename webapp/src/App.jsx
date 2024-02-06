@@ -8,7 +8,7 @@ import NotFound from "./Components/1.container/NotFound";
 import SearchContainer from "./Components/1.container/SearchContainer";
 import { SearchProvider } from "./context/SearchContext";
 import SearchBar from "./Components/1.container/SearchBar";
-import OnAir from "./Components/4.TvShows/OnAir";
+import OnAir from "./Components/4.TvShows-home/OnAir";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 const queryClient = new QueryClient();
