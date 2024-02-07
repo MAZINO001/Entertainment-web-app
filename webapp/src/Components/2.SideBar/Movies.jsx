@@ -65,7 +65,12 @@ export default function Movies() {
   return (
     <div className="grid grid-cols-6 gap-4">
       {buttons.map((button) => (
-        <div className="bg-red-500 px-2 py-12 text-center rounded-md cursor-pointer text-xl font-semibold capitalize tracking-wider" key={button}>{button}</div>
+        <div
+          className="bg-red-500 w-[154px] h-[154px] flex items-center justify-center rounded-md cursor-pointer  text-xl font-semibold capitalize tracking-wider"
+          key={button}
+        >
+          {button}
+        </div>
       ))}
     </div>
   );
