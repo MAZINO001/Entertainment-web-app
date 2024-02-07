@@ -1,4 +1,6 @@
-// export const fetchMoviesTypeData = async (type) => {
+/* eslint-disable no-unused-vars */
+// export const fetchMoviesTypeData = async (gnereId) => {
+//   console.log(gnereId);
 //   const options = {
 //     method: "GET",
 //     headers: {
@@ -8,21 +10,12 @@
 //     },
 //   };
 
-
-//   const urlMap = {
-//     nowPlaying:"https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1",
-//     popular: "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1",
-//     upComming:"https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1",
-//     topRated:"https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=",
-//     trending: "https://api.themoviedb.org/3/trending/movie/day?language=en-US",
+//   const Url = {
+//     movie: `https://api.themoviedb.org/3/discover/movie?with_genres=${gnereId}`,
 //   };
 
-//   if (!urlMap[type]) {
-//     throw new Error(`Invalid data type: ${type}`);
-//   }
-
 //   try {
-//     const response = await fetch(urlMap[type], options);
+//     const response = await fetch(Url.movie, options);
 
 //     if (!response.ok) {
 //       throw new Error("Failed to fetch data");
@@ -36,10 +29,7 @@
 //   }
 // };
 
-import { useState } from "react";
-import MoviesOverlay from "../Components/2.SideBar/MoviesOverlay";
 export const fetchMoviesTypeData = async (gnereId) => {
-    const [Data, setData] = useState("")
   console.log(gnereId);
   const options = {
     method: "GET",
@@ -62,14 +52,9 @@ export const fetchMoviesTypeData = async (gnereId) => {
     }
 
     const data = await response.json();
-    return setData(data.results);
+    return data.results;
   } catch (error) {
     console.error(error);
     throw new Error("Failed to fetch data");
   }
-  return (
-    <div>
-      <MoviesOverlay  Data={Data}/>
-    </div>
-  );
 };
