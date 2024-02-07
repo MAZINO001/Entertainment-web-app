@@ -8,6 +8,7 @@
 //     },
 //   };
 
+
 //   const urlMap = {
 //     nowPlaying:"https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1",
 //     popular: "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1",
@@ -35,7 +36,11 @@
 //   }
 // };
 
+import { useState } from "react";
+import MoviesOverlay from "../Components/2.SideBar/MoviesOverlay";
 export const fetchMoviesTypeData = async (gnereId) => {
+    const [Data, setData] = useState("")
+  console.log(gnereId);
   const options = {
     method: "GET",
     headers: {
@@ -46,24 +51,25 @@ export const fetchMoviesTypeData = async (gnereId) => {
   };
 
   const Url = {
-    movie:`https://api.themoviedb.org/3/discover/movie?with_genres=${gnereId}`,
+    movie: `https://api.themoviedb.org/3/discover/movie?with_genres=${gnereId}`,
   };
 
-  if (!Url[gnereId]) {
-    throw new Error(`Invalid data gnereId: ${gnereId}`);
-  }
-
   try {
-    const response = await fetch(Url[gnereId], options);
+    const response = await fetch(Url.movie, options);
 
     if (!response.ok) {
       throw new Error("Failed to fetch data");
     }
 
     const data = await response.json();
-    return data.results;
+    return setData(data.results);
   } catch (error) {
     console.error(error);
     throw new Error("Failed to fetch data");
   }
+  return (
+    <div>
+      <MoviesOverlay  Data={Data}/>
+    </div>
+  );
 };
