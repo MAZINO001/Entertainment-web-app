@@ -1,13 +1,12 @@
-import { fetchMoviesTypeData } from "../../api/MoviesTypeData";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 export default function TvShows() {
   const [gnereId, setgnereId] = useState(18);
-
-  useEffect(() => {
-    fetchMoviesTypeData(gnereId);
-  }, [gnereId]);
-
   console.log(gnereId);
+
+  const handleGenreClick = (genre) => {
+    setgnereId(genre.id);
+  };
+
   const genres = [
     {
       id: 28,
@@ -93,7 +92,7 @@ export default function TvShows() {
         <button
           key={genre.id}
           className="bg-blue-500 w-[154px] mx-4 my-4 h-[154px] flex items-center justify-center rounded-md cursor-pointer text-xl font-semibold capitalize tracking-wider"
-          onClick={() => setgnereId(genre.id)}
+          onClick={() => handleGenreClick(genre)}
         >
           {genre.name}
         </button>
@@ -101,6 +100,3 @@ export default function TvShows() {
     </div>
   );
 }
-
-
-

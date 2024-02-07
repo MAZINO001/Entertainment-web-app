@@ -19,8 +19,7 @@ export default function MoviesOverlay() {
     return <p>Error fetching movies: {error.message}</p>;
   }
   console.log(movies);
-    console.log(fetchMoviesTypeData);
-
+  console.log(fetchMoviesTypeData);
   return (
     <div>
       {movies.map((movie) => (
