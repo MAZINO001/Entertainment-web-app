@@ -19,14 +19,15 @@ export default function MoviesOverlay() {
     return <p>Error fetching movies: {error.message}</p>;
   }
   console.log(movies);
-  console.log(fetchMoviesTypeData);
+    console.log(fetchMoviesTypeData);
 
   return (
     <div>
       {movies.map((movie) => (
         <div key={movie.id}>
-          <h2>{movie.id}</h2>
           <h2>{movie.title}</h2>
+          <img src={movie.poster_path} alt={movie.title} />
+          <p>{movie.release_date}</p>
         </div>
       ))}
     </div>
