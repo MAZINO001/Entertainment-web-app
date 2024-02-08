@@ -2,11 +2,8 @@
 import { useState } from "react";
 import { CgSearch } from "react-icons/cg";
 import { NavLink } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 export default function SearchBar() {
   const { query, setQuery } = useState("");
-  const navigate = useNavigate();
-
   const handleChange = (event) => {
     setQuery(event.target.value);
   };
@@ -14,9 +11,6 @@ export default function SearchBar() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setActive(true);
-    if (query.trim()) {
-      navigate("/search", { search: `q=${query}` });
-    }
   };
   console.log(query);
   return (

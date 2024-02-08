@@ -5,11 +5,9 @@ import { MdLocalMovies } from "react-icons/md";
 import { PiTelevisionFill } from "react-icons/pi";
 import { LuDot } from "react-icons/lu";
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
 export default function SearchContainer() {
-  const location = useLocation();
-  const query = new URLSearchParams(location.search).get("q");
-
+  
+const query = "game"
   const [PageNum, setPageNum] = useState(1);
   const [Data, setData] = useState(null);
   const [Results, setResults] = useState(null);
