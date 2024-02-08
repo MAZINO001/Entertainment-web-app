@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
-import fetchMoviesTypeData from "../../api/MoviesTypeData";
+import { fetchMoviesTypeData } from "../../api/MoviesTypeData";
 import { useQuery } from "@tanstack/react-query";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 export default function TvShows() {
   const [gnereId, setgnereId] = useState(18);
   console.log(gnereId);
@@ -9,9 +9,12 @@ export default function TvShows() {
   const handleGenreClick = (genre) => {
     setgnereId(genre.id);
   };
+  useEffect(() => {
+    fetchMoviesTypeData(gnereId);
+  }, [gnereId]);
 
   const { data } = useQuery({
-    queryKey: "movies",
+    queryKey: ["movies"],
     queryFn: () => fetchMoviesTypeData(gnereId),
   });
 
