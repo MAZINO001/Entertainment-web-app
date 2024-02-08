@@ -4,19 +4,11 @@ import { IoArrowBackOutline } from "react-icons/io5";
 import { MdLocalMovies } from "react-icons/md";
 import { PiTelevisionFill } from "react-icons/pi";
 import { LuDot } from "react-icons/lu";
-import { useContext, useEffect, useState } from "react";
-import SearchContext from "../../context/SearchContext";
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 export default function SearchContainer() {
-  // const { query } = useContext(SearchContext);
-  const query = "game";
-
-  useEffect(() => {
-    if (query) {
-      console.log(query);
-    } else {
-      console.error("query is undefined in SearchContainer");
-    }
-  }, [query]);
+  const location = useLocation();
+  const query = new URLSearchParams(location.search).get("q");
 
   const [PageNum, setPageNum] = useState(1);
   const [Data, setData] = useState(null);

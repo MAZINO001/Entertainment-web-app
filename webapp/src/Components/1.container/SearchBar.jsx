@@ -1,15 +1,11 @@
 /* eslint-disable react/prop-types */
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { CgSearch } from "react-icons/cg";
 import { NavLink } from "react-router-dom";
-import SearchContext from "../../context/SearchContext";
-
+import { useNavigate } from "react-router-dom";
 export default function SearchBar() {
-  // const { query, setQuery } = useContext(SearchContext) ;
-  const { query, setQuery } = useContext(SearchContext) || {
-    query: "",
-    // setQuery: () => {},
-  };
+  const { query, setQuery } = useState("");
+  const navigate = useNavigate();
 
   const handleChange = (event) => {
     setQuery(event.target.value);
@@ -18,6 +14,9 @@ export default function SearchBar() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setActive(true);
+    if (query.trim()) {
+      navigate("/search", { search: `q=${query}` });
+    }
   };
   console.log(query);
   return (
@@ -51,13 +50,6 @@ export default function SearchBar() {
           Search
         </button>
       )}
-
-      {/* <button
-        type="submit"
-        className="inline-block py-2 px-4 mr-4 rounded-md bg-[#5A6A90] hover:placeholder-opacity-15  text-[#fff]  font-semibold "
-      >
-        Search
-      </button> */}
     </form>
   );
 }
