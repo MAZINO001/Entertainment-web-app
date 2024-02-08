@@ -2,7 +2,7 @@
 import { fetchMoviesTypeData } from "../../api/MoviesTypeData";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
-import MoviesOverlat from "./MoviesOverlat";
+import { Link } from "react-router-dom";
 export default function TvShows() {
   const [gnereId, setgnereId] = useState(18);
   console.log(gnereId);
@@ -106,17 +106,14 @@ export default function TvShows() {
   return (
     <div className="grid grid-cols-4">
       {genres.map((genre) => (
-        <button
-          key={genre.id}
-          className="bg-blue-500 w-[154px] mx-4 my-4 h-[154px] flex items-center justify-center rounded-md cursor-pointer text-xl font-semibold capitalize tracking-wider"
-          onClick={() => handleGenreClick(genre)}
-        >
-          {genre.name}
-        </button>
+        <Link to="resultscontainer" key={genre.name}>
+          <button className="bg-blue-500 w-[154px] mx-4 my-4 h-[154px] flex items-center justify-center rounded-md cursor-pointer text-xl font-semibold capitalize tracking-wider"
+          onClick={()=>handleGenreClick(genre)}
+          >
+            {genre.name}
+          </button>
+        </Link>
       ))}
-      {isLoading && <p>Loading...</p>}
-      {isError && <p>Error fetching data</p>}
-        {moviesData && <MoviesOverlat data={moviesData} />}
     </div>
   );
 }
