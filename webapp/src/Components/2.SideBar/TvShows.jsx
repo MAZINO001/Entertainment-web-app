@@ -2,6 +2,7 @@
 import { fetchMoviesTypeData } from "../../api/MoviesTypeData";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
+import MoviesOverlat from "./MoviesOverlat";
 export default function TvShows() {
   const [gnereId, setgnereId] = useState(18);
   console.log(gnereId);
@@ -9,6 +10,7 @@ export default function TvShows() {
   const handleGenreClick = (genre) => {
     setgnereId(genre.id);
   };
+
   useEffect(() => {
     fetchMoviesTypeData(gnereId);
   }, [gnereId]);
@@ -18,7 +20,7 @@ export default function TvShows() {
     isLoading,
     isError,
   } = useQuery({
-    queryKey: ["movies"],
+    queryKey: ["movies", gnereId],
     queryFn: () => fetchMoviesTypeData(gnereId),
   });
 
@@ -114,16 +116,7 @@ export default function TvShows() {
       ))}
       {isLoading && <p>Loading...</p>}
       {isError && <p>Error fetching data</p>}
-      {moviesData && (
-        <div>
-          {moviesData.results.map((movie) => (
-            <div key={movie.id}>
-              <h3>{movie.title}</h3>
-              <p>{movie.overview}</p>
-            </div>
-          ))}
-        </div>
-      )}
+        {moviesData && <MoviesOverlat data={moviesData} />}
     </div>
   );
 }

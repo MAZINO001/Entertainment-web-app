@@ -21,8 +21,8 @@ export const fetchMoviesTypeData = async (gnereId) => {
     }
 
     const data = await response.json();
-    return console.log(data.results);
-    // return data.results;
+    // return console.log(data.results);
+    return data.results ;
   } catch (error) {
     console.error(error);
     throw new Error("Failed to fetch data");
