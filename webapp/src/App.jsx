@@ -9,6 +9,7 @@ import SearchContainer from "./Components/1.container/SearchContainer";
 import OnAir from "./Components/4.TvShows-home/OnAir";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import ResultContainer from "./Components/2.SideBar/ResultContainer";
 const queryClient = new QueryClient();
 const router = createBrowserRouter([
   {
@@ -24,10 +25,22 @@ const router = createBrowserRouter([
       {
         path: "movies",
         element: <Movies />,
+        children: [
+          {
+            path: "Resultcontainer",
+            element: <ResultContainer />,
+          },
+        ],
       },
       {
         path: "tvshows",
         element: <TvShows />,
+        children: [
+          {
+            path: "Resultcontainer",
+            element: <ResultContainer />,
+          },
+        ],
       },
       {
         path: "library",
