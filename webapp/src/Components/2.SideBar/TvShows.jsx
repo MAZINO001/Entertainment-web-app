@@ -13,7 +13,11 @@ export default function TvShows() {
     fetchMoviesTypeData(gnereId);
   }, [gnereId]);
 
-  const { data } = useQuery({
+  const {
+    data: moviesData,
+    isLoading,
+    isError,
+  } = useQuery({
     queryKey: ["movies"],
     queryFn: () => fetchMoviesTypeData(gnereId),
   });
@@ -108,6 +112,18 @@ export default function TvShows() {
           {genre.name}
         </button>
       ))}
+      {isLoading && <p>Loading...</p>}
+      {isError && <p>Error fetching data</p>}
+      {moviesData && (
+        <div>
+          {moviesData.results.map((movie) => (
+            <div key={movie.id}>
+              <h3>{movie.title}</h3>
+              <p>{movie.overview}</p>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
