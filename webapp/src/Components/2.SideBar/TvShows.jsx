@@ -2,16 +2,18 @@
 import { fetchTvShowsTypeData } from "../../api/fetchTypeData";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ResultsContainer from "../2.SideBar/ResultContainer";
 import Loader from "../../Loaders/Loader";
 export default function TvShows() {
   const [gnereId, setgnereId] = useState(18);
   const [Active, setActive] = useState(true);
-  console.log(gnereId);
+  const navigate = useNavigate();
 
   const handleGenreClick = (genre) => {
     setgnereId(genre.id);
+    setActive(false);
+    navigate("/resultscontainer");
   };
 
   useEffect(() => {
@@ -27,12 +29,6 @@ export default function TvShows() {
     queryKey: ["movies", gnereId],
     queryFn: () => fetchTvShowsTypeData(gnereId),
   });
-  // if (isLoading) {
-  //   return <Loader />;
-  // }
-  // if (isError) {
-  //   return <p>{error.message}</p>;
-  // }
   const genres = [
     {
       id: 10759,
@@ -100,20 +96,25 @@ export default function TvShows() {
     },
   ];
 
-  return Active ? (
-    <div className="grid grid-cols-4">
-      {genres.map((genre) => (
-        <Link to="resultscontainer" key={genre.name}>
-          <button
-            className="bg-blue-500 w-[154px] mx-4 my-4 h-[154px] flex items-center justify-center rounded-md cursor-pointer text-xl font-semibold capitalize tracking-wider"
-            onClick={() => handleGenreClick(genre)}
-          >
-            {genre.name}
-          </button>
-        </Link>
-      ))}
-    </div>
-  ) : (
-    <ResultsContainer />
+  return (
+    <>
+      {Active ? (
+        <div className="grid grid-cols-4">
+          {genres.map((genre) => (
+            <button
+              key={genre.name}
+              className="bg-blue-500 w-[154px] mx-4 my-4 h-[154px] flex items-center justify-center rounded-md cursor-pointer text-xl font-semibold capitalize tracking-wider"
+              onClick={() => handleGenreClick(genre)}
+            >
+              {genre.name}
+            </button>
+          ))}
+        </div>
+      ) : (
+        <ResultsContainer data={moviesData} />
+      )}
+      {isLoading && <Loader />}
+      {isError && <p>{error.message}</p>}
+    </>
   );
 }

@@ -21,8 +21,8 @@ export const fetchMoviesTypeData = async (gnereId) => {
     }
 
     const data = await response.json();
-    return console.log(data.results);
-    // return data.results ;
+    // return console.log(data.results);
+    return data.results ;
   } catch (error) {
     console.error(error);
     throw new Error("Failed to fetch data");
@@ -42,7 +42,7 @@ export const fetchTvShowsTypeData = async (gnereId) => {
   };
 
   const Url = {
-    movie: `https://api.themoviedb.org/3/discover/movie?with_genres=${gnereId}`,
+    movie: `https://api.themoviedb.org/3/discover/tv?with_genres=${gnereId}`,
   };
 
   try {
@@ -53,8 +53,8 @@ export const fetchTvShowsTypeData = async (gnereId) => {
     }
 
     const data = await response.json();
-    return console.log(data.results);
-    // return data.results ;
+    // return console.log(data.results);
+    return data.results ;
   } catch (error) {
     console.error(error);
     throw new Error("Failed to fetch data");
