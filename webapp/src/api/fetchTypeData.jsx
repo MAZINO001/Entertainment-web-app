@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-export const fetchMoviesTypeData = async (gnereId) => {
+export const fetchMoviesTypeData = async (gnereId, PageNum) => {
   const options = {
     method: "GET",
     headers: {
@@ -10,7 +10,7 @@ export const fetchMoviesTypeData = async (gnereId) => {
   };
 
   const Url = {
-    movie: `https://api.themoviedb.org/3/discover/movie?with_genres=${gnereId}`,
+    movie: `https://api.themoviedb.org/3/discover/movie?with_genres=${gnereId}&language=en-US&page=${PageNum}`,
   };
 
   try {
@@ -21,14 +21,13 @@ export const fetchMoviesTypeData = async (gnereId) => {
     }
 
     const data = await response.json();
-    // return console.log(data.results);
-    return data.results ;
+    // const data = await response.json();
+    return data.results;
   } catch (error) {
     console.error(error);
     throw new Error("Failed to fetch data");
   }
 };
-
 
 /* eslint-disable no-unused-vars */
 export const fetchTvShowsTypeData = async (gnereId) => {
@@ -54,7 +53,7 @@ export const fetchTvShowsTypeData = async (gnereId) => {
 
     const data = await response.json();
     // return console.log(data.results);
-    return data.results ;
+    return data.results;
   } catch (error) {
     console.error(error);
     throw new Error("Failed to fetch data");
