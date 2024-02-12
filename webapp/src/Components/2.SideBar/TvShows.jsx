@@ -105,11 +105,11 @@ export default function TvShows() {
   return (
     <>
       {Active ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5  items-center justify-center">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 mt-4 sm:mt-0">
           {genres.map((genre) => (
             <button
               key={genre.name}
-              className="bg-blue-500  h-[154px] flex items-center justify-center rounded-md cursor-pointer text-xl font-semibold capitalize tracking-wider"
+              className="bg-blue-500 h-[150px] mx-10  sm:mx-0 rounded-md cursor-pointer text-3xl sm:text-2xl font-semibold capitalize tracking-wider"
               onClick={() => handleGenreClick(genre)}
             >
               {genre.name}
