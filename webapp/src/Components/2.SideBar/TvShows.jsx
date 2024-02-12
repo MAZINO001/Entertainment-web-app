@@ -105,7 +105,7 @@ export default function TvShows() {
   return (
     <>
       {Active ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 mt-4 sm:mt-0">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 pt-4  md:pt-0">
           {genres.map((genre) => (
             <button
               key={genre.name}

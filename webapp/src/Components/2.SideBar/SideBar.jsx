@@ -8,7 +8,7 @@ import { FaBookmark } from "react-icons/fa";
 import Avatar from "../Assets/avatar-06.png";
 export default function SideBar() {
   return (
-    <div className="  h-full flex flex-row md:flex-col  rounded-md  items-center justify-between bg-[#1d2741e6] bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-20 md:px-2 md:py-0 py-4 m-0 sm:m-4 md:mr-0 sm:mb-0">
+    <div className="  h-full flex flex-row md:flex-col  rounded-md  items-center justify-between bg-[#1d2741e6] bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-20 md:px-2 md:py-0 py-4 m-0 sm:m-4  md:mr-0 sm:mb-0 ">
       <div className="md:mt-4 md:ml-0 md:mb-14 ml-4 mr-0 items-center ">
         <NavLink to="/">
           <PiFilmReelFill className="w-[50px] h-[50px] text-[#FC4747] cursor-pointer" />
