@@ -116,11 +116,11 @@ export default function Movies() {
   return (
     <>
       {Active ? (
-        <div className="grid grid-cols-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5  items-center justify-center">
           {genres.map((genre) => (
             <button
               key={genre.name}
-              className="bg-blue-500 w-[154px] mx-4 my-4 h-[154px] flex items-center justify-center rounded-md cursor-pointer text-xl font-semibold capitalize tracking-wider"
+              className="bg-blue-500 h-[154px] flex items-center justify-center rounded-md cursor-pointer text-xl font-semibold capitalize tracking-wider"
               onClick={() => handleGenreClick(genre)}
             >
               {genre.name}

@@ -2,23 +2,29 @@
 import { fetchTvShowsTypeData } from "../../api/fetchTypeData";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import ResultsContainer from "../2.SideBar/ResultContainer";
-import Loader from "../../Loaders/Loader";
+import ResultContainer from "../2.SideBar/ResultContainer";
 export default function TvShows() {
   const [gnereId, setgnereId] = useState(18);
+  const [PageNum, setPageNum] = useState(1);
   const [Active, setActive] = useState(true);
-  const navigate = useNavigate();
+  console.log(gnereId);
 
   const handleGenreClick = (genre) => {
     setgnereId(genre.id);
     setActive(false);
-    navigate("/resultscontainer");
   };
 
   useEffect(() => {
-    fetchTvShowsTypeData(gnereId);
-  }, [gnereId]);
+    fetchTvShowsTypeData(gnereId, PageNum);
+  }, [gnereId, PageNum]);
+
+  const handleNextPage = () => {
+    setPageNum(PageNum + 1);
+  };
+
+  const handlePrevPage = () => {
+    setPageNum(PageNum - 1);
+  };
 
   const {
     data: moviesData,
@@ -26,8 +32,8 @@ export default function TvShows() {
     isError,
     error,
   } = useQuery({
-    queryKey: ["movies", gnereId],
-    queryFn: () => fetchTvShowsTypeData(gnereId),
+    queryKey: ["movies", gnereId, PageNum],
+    queryFn: () => fetchTvShowsTypeData(gnereId, PageNum),
   });
   const genres = [
     {
@@ -111,10 +117,17 @@ export default function TvShows() {
           ))}
         </div>
       ) : (
-        <ResultsContainer data={moviesData} />
+        <div>
+          {moviesData && (
+            <ResultContainer
+              Loading={isLoading}
+              data={moviesData}
+              handlePrevPage={handlePrevPage}
+              handleNextPage={handleNextPage}
+            />
+          )}
+        </div>
       )}
-      {isLoading && <Loader />}
-      {isError && <p>{error.message}</p>}
     </>
   );
 }

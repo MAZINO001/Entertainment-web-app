@@ -30,7 +30,7 @@ export const fetchMoviesTypeData = async (gnereId, PageNum) => {
 };
 
 /* eslint-disable no-unused-vars */
-export const fetchTvShowsTypeData = async (gnereId) => {
+export const fetchTvShowsTypeData = async (gnereId, PageNum) => {
   const options = {
     method: "GET",
     headers: {
@@ -41,7 +41,7 @@ export const fetchTvShowsTypeData = async (gnereId) => {
   };
 
   const Url = {
-    movie: `https://api.themoviedb.org/3/discover/tv?with_genres=${gnereId}`,
+    movie: `https://api.themoviedb.org/3/discover/tv?with_genres=${gnereId}&language=en-US&page=${PageNum}`,
   };
 
   try {

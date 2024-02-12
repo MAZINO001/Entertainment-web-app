@@ -55,9 +55,9 @@ body {
 }
 
 .centered-div {
-    position: relative;
-    bottom: 0; /* Align to bottom */
-    margin: 0 auto; /* Horizontal centering */
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
     /* Other styles */
-  }
-  
+}
