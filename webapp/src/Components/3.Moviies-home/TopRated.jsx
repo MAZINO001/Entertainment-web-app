@@ -38,7 +38,7 @@ export default function TopRated() {
                 src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
                 alt="Poster"
               />
-              <p className=" text-lg md:text-md py-1 capitalize text-gray-300 flex items-center text-slim ">
+              <p className=" text-md py-1 capitalize text-gray-300 flex items-center text-slim ">
                 <span>{new Date(item.release_date).getFullYear()}</span>
 
                 <LuDot className="text-xl text-gray-300 " />
@@ -46,7 +46,7 @@ export default function TopRated() {
                   <MdLocalMovies /> Movie
                 </span>
               </p>
-              <h2 className="text-xl md:text-2xl font-semibold max-w-[100%]">
+              <h2 className="text-xl  font-semibold max-w-[100%]">
                 {item.title}
               </h2>
             </div>

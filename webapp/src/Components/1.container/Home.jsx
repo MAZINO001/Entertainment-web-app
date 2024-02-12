@@ -13,10 +13,10 @@ export default function Home() {
   return (
     <div className="mx-4 sm:mx-0">
       {/* <TrendingMovies /> */}
-      <PopularMovies />
-      <NowPlayingMovies   />
-      <UpCommingMovies />
-      <TopRatedMovies />
+      {/* <PopularMovies /> */}
+      {/* <NowPlayingMovies   /> */}
+      {/* <UpCommingMovies /> */}
+      {/* <TopRatedMovies /> */}
       <hr className="my-4" />
       {/* <TrendingTv /> */}
 
