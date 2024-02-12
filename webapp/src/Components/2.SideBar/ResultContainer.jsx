@@ -6,7 +6,7 @@ export default function ResultContainer({
   handleNextPage,
 }) {
   return (
-    <div className="grid grid-cols-4 gap-4 bg-">
+    <div className="grid grid-cols-4 gap-4 relative ">
       {Loading ? (
         <p>Loading...</p>
       ) : data?.length > 0 ? (
@@ -22,14 +22,13 @@ export default function ResultContainer({
       ) : (
         <p>No data found.</p>
       )}
-      <div className="flex justify-center items-center gap-3  ">
+      <div className="flex justify-center items-center gap-3  bg-red-500 centered-div">
         <button onClick={handlePrevPage} className="bg-red-500 px-4 capitalize">
           next
         </button>
         <button
           onClick={handleNextPage}
           className="bg-blue-500 px-4 capitalize"
-          
         >
           Page
         </button>

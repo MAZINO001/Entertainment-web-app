@@ -53,3 +53,11 @@ body {
     position: absolute;
     left: 120px;
 }
+
+.centered-div {
+    position: relative;
+    bottom: 0; /* Align to bottom */
+    margin: 0 auto; /* Horizontal centering */
+    /* Other styles */
+  }
+  
