@@ -31,7 +31,7 @@ export default function TopRated() {
           see all
         </button>
       </div>
-      <div className="  grid grid-cols-4 grid-rows-2 gap-4 ">
+      <div className="   grid grid-cols-1 sm:grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-4 pt-4  md:pt-0 ">
         {" "}
         {TopRated.filter((item) => item.backdrop_path)
           .slice(0, 8)
@@ -42,7 +42,7 @@ export default function TopRated() {
                 src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
                 alt="Poster"
               />
-              <p className="text-sm py-1 capitalize text-gray-300 flex items-center text-slim ">
+              <p className="text-md py-1 capitalize text-gray-300 flex items-center text-slim ">
                 <span>{new Date(item.first_air_date).getFullYear()}</span>
 
                 <LuDot className="text-xl text-gray-300 " />
@@ -50,7 +50,7 @@ export default function TopRated() {
                   <PiTelevisionFill /> Tv Series
                 </span>
               </p>
-              <h2 className="text-lg font-semibold  max-w-[100%]">
+              <h2 className="text-xl font-semibold  max-w-[100%]">
                 {item.name}
               </h2>
             </div>

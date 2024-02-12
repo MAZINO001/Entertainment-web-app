@@ -24,7 +24,7 @@ export default function Trending() {
       <div className="flex justify-between items-center relative">
         <h2 className="title">Trending</h2>
         <span className="typespan">Movies</span>
-        <button className=" text-md text-[#fff] bg-[#FC4747] px-2 py-1  rounded-md ">
+        <button className=" text-md text-[#FC4747]  px-2 py-1  rounded-md ">
           see all
         </button>
       </div>
