@@ -22,38 +22,35 @@ export default function TopRated() {
   return (
     <div className=" flex flex-col my-4">
       <div className="flex justify-between items-center relative ">
-        <h2 className="title">TopRated</h2>
-        <span className="typespan ml-[7px]">Movies</span>
-        <button className=" text-md text-[#fff] bg-[#FC4747] px-2 py-1  rounded-md ">
+        <h2 className="title">Top Rated</h2>
+        <span className="typespan ml-[15px]">Movies</span>
+        <button className=" text-xl sm:text-lg text-[#FC4747] px-2 py-1  rounded-md ">
           see all
         </button>
       </div>
-      <div className="  grid grid-cols-4 grid-rows-2 gap-4 ">
-        {" "}
-        {
-          TopRated.filter((item) => item.backdrop_path)
-            .slice(0, 8)
-            .map((item) => (
-              <div key={item.id} className="">
-                <img
-                  className=" rounded-md cursor-pointer "
-                  src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
-                  alt="Poster"
-                />
-                <p className="text-sm py-1 capitalize text-gray-300 flex items-center text-slim ">
-                  <span>{new Date(item.release_date).getFullYear()}</span>
+      <div className="  grid grid-cols-1 sm:grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-4 pt-4  md:pt-0 ">
+        {TopRated.filter((item) => item.backdrop_path)
+          .slice(0, 8)
+          .map((item) => (
+            <div key={item.id} className="">
+              <img
+                className=" rounded-md cursor-pointer "
+                src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
+                alt="Poster"
+              />
+              <p className=" text-lg md:text-md py-1 capitalize text-gray-300 flex items-center text-slim ">
+                <span>{new Date(item.release_date).getFullYear()}</span>
 
-                  <LuDot className="text-xl text-gray-300 " />
-                  <span className="flex items-center gap-x-1">
-                    <MdLocalMovies /> Movie
-                  </span>
-                </p>
-                <h2 className="text-lg font-semibold  max-w-[100%]">
-                  {item.title}
-                </h2>
-              </div>
-            ))
-      }
+                <LuDot className="text-xl text-gray-300 " />
+                <span className="flex items-center gap-x-1">
+                  <MdLocalMovies /> Movie
+                </span>
+              </p>
+              <h2 className="text-xl md:text-2xl font-semibold max-w-[100%]">
+                {item.title}
+              </h2>
+            </div>
+          ))}
       </div>
     </div>
   );

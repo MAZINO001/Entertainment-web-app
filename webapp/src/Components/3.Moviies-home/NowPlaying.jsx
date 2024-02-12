@@ -21,16 +21,15 @@ export default function NowPlaying() {
   }
 
   return (
-    <div className=" flex flex-col my-4 ">
-      <div className="flex justify-between items-center relative">
-        <h2 className="title">NowPlaying</h2>
-        <span className="typespan ml-[35px]">Movies</span>
-        <button className=" text-md text-[#fff] bg-[#FC4747] px-2 py-1  rounded-md ">
+    <div className=" flex flex-col my-4">
+      <div className="flex justify-between items-center relative ">
+        <h2 className="title">Now Playing</h2>
+        <span className="typespan ml-[45px]">Movies</span>
+        <button className=" text-xl sm:text-lg text-[#FC4747] px-2 py-1  rounded-md ">
           see all
         </button>
       </div>
-      <div className=" grid grid-cols-4 grid-rows-2 gap-4  ">
-        {" "}
+      <div className="  grid grid-cols-1 sm:grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-4 pt-4  md:pt-0 ">
         {NowPlaying.filter((item) => item.backdrop_path)
           .slice(0, 8)
           .map((item) => (
@@ -40,7 +39,7 @@ export default function NowPlaying() {
                 src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
                 alt="Poster"
               />
-              <p className="text-sm py-1 capitalize text-gray-300 flex items-center text-slim ">
+              <p className=" text-lg md:text-md py-1 capitalize text-gray-300 flex items-center text-slim ">
                 <span>{new Date(item.release_date).getFullYear()}</span>
 
                 <LuDot className="text-xl text-gray-300 " />
@@ -48,7 +47,7 @@ export default function NowPlaying() {
                   <MdLocalMovies /> Movie
                 </span>
               </p>
-              <h2 className="text-lg font-semibold  max-w-[100%]">
+              <h2 className="text-xl md:text-2xl font-semibold max-w-[100%]">
                 {item.title}
               </h2>
             </div>

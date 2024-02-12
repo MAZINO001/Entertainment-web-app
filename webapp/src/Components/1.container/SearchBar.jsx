@@ -16,7 +16,7 @@ export default function SearchBar() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex items-center justify-between  my-4 md:mt-0"
+      className="flex items-center justify-between  my-4 md:mt-0 mx-4 sm:mx-0 md:mx-0 "
     >
       <CgSearch className="w-[2rem] h-[2rem] m-2 ml-0" />
       <input
