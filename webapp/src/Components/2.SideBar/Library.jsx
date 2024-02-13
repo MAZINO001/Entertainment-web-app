@@ -5,16 +5,16 @@ import { LuDot } from "react-icons/lu";
 import { MdLocalMovies } from "react-icons/md";
 import { fetchMoviesLibrary } from "../../api/LibraryData";
 export default function Library() {
-const {data} = useQuery({
-  queryKey: "movies",
-  queryFn  : fetchMoviesLibrary()
-})  
-console.log(data)
+  const { data: Bookmarked } = useQuery({
+    queryKey: "movies",
+    queryFn: fetchMoviesLibrary(),
+  });
+  console.log(Bookmarked);
   return (
     <div>
       <div className="title">
         <h2>Bookmarks for Movies</h2>
-        {data.map((item) => {
+        {Bookmarked.map((item) => {
           <div key={item.id}>
             <img
               className=" rounded-md cursor-pointer   "

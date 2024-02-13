@@ -7,6 +7,7 @@ import { LuDot } from "react-icons/lu";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../../Loaders/Loader";
 import { useState } from "react";
+import { fetchMoviesLibrary } from "../../api/LibraryData";
 export default function Popular() {
   const [bookmarkedMovies, setBookmarkedMovies] = useState([]);
   const [ActiveBm, setActiveBm] = useState(false);
@@ -19,7 +20,13 @@ export default function Popular() {
     queryKey: ["Popular"],
     queryFn: () => fetchTMDbDataMovies("popular"),
   });
-
+  const {
+    data: Bookmarked,
+  } = useQuery({
+    queryKey: ["Bookmarked"],
+    queryFn: () => fetchMoviesLibrary(bookmarkedMovies), 
+    enabled: !!bookmarkedMovies.length,
+  });
   if (isLoading) {
     return <Loader />;
   }
