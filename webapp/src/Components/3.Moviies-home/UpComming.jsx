@@ -3,6 +3,7 @@ import { MdLocalMovies } from "react-icons/md";
 import { LuDot } from "react-icons/lu";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../../Loaders/Loader";
+import { BsBookmarkPlusFill } from "react-icons/bs";
 export default function UpComming() {
   const {
     data: UpComming,
@@ -32,12 +33,14 @@ export default function UpComming() {
         {UpComming.filter((item) => item.backdrop_path)
           .slice(0, 8)
           .map((item) => (
-            <div key={item.id} className="">
-              <img
-                className=" rounded-md cursor-pointer "
-                src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
-                alt="Poster"
-              />
+            <div key={item.id} className="relative">
+            <BsBookmarkPlusFill className="absolute  top-0 right-[-3px] cursor-pointer text-2xl" />
+
+            <img
+              className=" rounded-md cursor-pointer   "
+              src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
+              alt="Poster"
+            />
               <p className=" text-md py-1 capitalize text-gray-300 flex items-center text-slim ">
                 <span>{new Date(item.release_date).getFullYear()}</span>
 

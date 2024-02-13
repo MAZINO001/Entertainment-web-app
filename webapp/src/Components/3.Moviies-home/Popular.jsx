@@ -1,9 +1,16 @@
+/* eslint-disable no-unused-vars */
 import { fetchTMDbDataMovies } from "../../api/FetchDataMovie";
 import { MdLocalMovies } from "react-icons/md";
+import { BsBookmarkPlusFill } from "react-icons/bs";
+import { BsBookmarkCheckFill } from "react-icons/bs";
 import { LuDot } from "react-icons/lu";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../../Loaders/Loader";
+import { useState } from "react";
 export default function Popular() {
+  const [bookmarkedMovies, setBookmarkedMovies] = useState([]);
+  const [ActiveBm, setActiveBm] = useState(false);
+  console.log(bookmarkedMovies);
   const {
     data: Popular,
     isLoading,
@@ -32,9 +39,31 @@ export default function Popular() {
         {Popular.filter((item) => item.backdrop_path)
           .slice(0, 8)
           .map((item) => (
-            <div key={item.id} className="">
+            <div key={item.id} className="relative">
+              {bookmarkedMovies.includes(item.id) ? (
+                <BsBookmarkCheckFill
+                  className="absolute top-0 right-[-3px] cursor-pointer text-2xl text-[#FC4747]"
+                  onClick={() => {
+                    setActiveBm((state) => !state);
+                    const movieId = item.id;
+                    setBookmarkedMovies(
+                      bookmarkedMovies.filter((id) => id !== movieId)
+                    );
+                  }}
+                />
+              ) : (
+                <BsBookmarkPlusFill
+                  className="absolute top-0 right-[-3px] cursor-pointer text-2xl "
+                  onClick={() => {
+                    setActiveBm((state) => !state);
+                    const movieId = item.id;
+                    setBookmarkedMovies([...bookmarkedMovies, movieId]);
+                  }}
+                />
+              )}
+
               <img
-                className=" rounded-md cursor-pointer "
+                className=" rounded-md cursor-pointer   "
                 src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
                 alt="Poster"
               />

@@ -3,6 +3,7 @@ import { MdLocalMovies } from "react-icons/md";
 import { LuDot } from "react-icons/lu";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../../Loaders/Loader";
+import { BsBookmarkPlusFill } from "react-icons/bs";
 export default function NowPlaying() {
   const {
     data: NowPlaying,
@@ -33,9 +34,11 @@ export default function NowPlaying() {
         {NowPlaying.filter((item) => item.backdrop_path)
           .slice(0, 8)
           .map((item) => (
-            <div key={item.id} className="">
+            <div key={item.id} className="relative">
+              <BsBookmarkPlusFill className="absolute  top-0 right-[-3px] cursor-pointer text-2xl" />
+
               <img
-                className=" rounded-md cursor-pointer "
+                className=" rounded-md cursor-pointer   "
                 src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
                 alt="Poster"
               />
