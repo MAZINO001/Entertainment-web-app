@@ -6,7 +6,7 @@ import { MdLocalMovies } from "react-icons/md";
 import { fetchMoviesLibrary } from "../../api/LibraryData";
 export default function Library() {
   const { data: Bookmarked } = useQuery({
-    queryKey: "movies",
+    queryKey: ["Bookmarked"],
     queryFn: fetchMoviesLibrary(),
   });
   console.log(Bookmarked);
@@ -14,24 +14,27 @@ export default function Library() {
     <div>
       <div className="title">
         <h2>Bookmarks for Movies</h2>
-        {Bookmarked.map((item) => {
-          <div key={item.id}>
-            <img
-              className=" rounded-md cursor-pointer   "
-              src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
-              alt="Poster"
-            />
-            <p className=" text-md py-1 capitalize text-gray-300 flex items-center text-slim ">
-              <span>{new Date(item.release_date).getFullYear()}</span>
+        {Bookmarked &&
+          Bookmarked.map((item) => {
+            <div key={item.id}>
+              <img
+                className=" rounded-md cursor-pointer "
+                src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
+                alt="Poster"
+              />
+              <p className=" text-md py-1 capitalize text-gray-300 flex items-center text-slim ">
+                <span>{new Date(item.release_date).getFullYear()}</span>
 
-              <LuDot className="text-xl text-gray-300 " />
-              <span className="flex items-center gap-x-1">
-                <MdLocalMovies /> Movie
-              </span>
-            </p>
-            <h2 className="text-xl font-semibold max-w-[100%]">{item.title}</h2>
-          </div>;
-        })}
+                <LuDot className="text-xl text-gray-300 " />
+                <span className="flex items-center gap-x-1">
+                  <MdLocalMovies /> Movie
+                </span>
+              </p>
+              <h2 className="text-xl font-semibold max-w-[100%]">
+                {item.title}
+              </h2>
+            </div>;
+          })}
       </div>
       <div className="title">
         <h2>Bookmarks for TvShows</h2>
