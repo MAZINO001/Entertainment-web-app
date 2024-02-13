@@ -12,7 +12,6 @@ export default function SearchContainer() {
   const [Data, setData] = useState(null);
   const [Results, setResults] = useState(null);
   const [Pages, setPages] = useState(null);
-  console.log(query);
   useEffect(() => {
     let timerId;
 
@@ -22,7 +21,8 @@ export default function SearchContainer() {
         method: "GET",
         headers: {
           accept: "application/json",
-          Authorization: "Bearer your_token_here",
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyNzg5MjE1MDdlZjBjNjdlNTNhNjc3OTM2NGU0NjBhZSIsInN1YiI6IjY1YjY1ZWY2MmZhZjRkMDE3Y2RkYjAzNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.OcvYLoz0Ugh1SREfo1q2zt1xDPQ7U7O9e9tdPNbxaok",
         },
       };
 
@@ -42,6 +42,7 @@ export default function SearchContainer() {
     timerId = setTimeout(fetchData, 2000);
     return () => clearTimeout(timerId);
   }, [query, PageNum]);
+
   const TotalResults = Results;
   const TotalPages = Pages;
   const [CurrentPage, setCurrentPage] = useState(1);
@@ -63,7 +64,6 @@ export default function SearchContainer() {
         </h2>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  gap-x-8  justify-items-center ">
-        {/* <div className="grid grid-cols-4 justufy-center"> */}
         {Array.isArray(Data) ? (
           Data.filter((item) => item.backdrop_path).map((item) => (
             <div key={item.id} className="mb-3 ">
