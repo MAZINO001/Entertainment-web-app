@@ -4,8 +4,44 @@ import { IoArrowBackOutline } from "react-icons/io5";
 import { MdLocalMovies } from "react-icons/md";
 import { PiTelevisionFill } from "react-icons/pi";
 import { LuDot } from "react-icons/lu";
-import { useEffect, useState } from "react";
-export default function SearchContainer(Results, Pages ,PageNum,setPageNum, query ,Data) {
+import { useContext, useEffect, useState } from "react";
+import { useSearch } from "../Context/SearchContext";
+export default function SearchContainer() {
+  const { query } = useSearch();
+  const [PageNum, setPageNum] = useState(1);
+  const [Data, setData] = useState(null);
+  const [Results, setResults] = useState(null);
+  const [Pages, setPages] = useState(null);
+  console.log(query);
+  useEffect(() => {
+    let timerId;
+
+    // Define a function to perform the API call after the delay
+    const fetchData = () => {
+      const options = {
+        method: "GET",
+        headers: {
+          accept: "application/json",
+          Authorization: "Bearer your_token_here",
+        },
+      };
+
+      fetch(
+        `https://api.themoviedb.org/3/search/multi?query=${query}&page=${PageNum}`,
+        options
+      )
+        .then((response) => response.json())
+        .then((responseData) => {
+          setData(responseData.results);
+          setPages(responseData.total_pages);
+          setResults(responseData.total_results);
+        })
+        .catch((err) => console.error(err));
+    };
+    clearTimeout(timerId);
+    timerId = setTimeout(fetchData, 2000);
+    return () => clearTimeout(timerId);
+  }, [query, PageNum]);
   const TotalResults = Results;
   const TotalPages = Pages;
   const [CurrentPage, setCurrentPage] = useState(1);

@@ -10,6 +10,8 @@ import OnAir from "./Components/4.TvShows-home/OnAir";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import ResultContainer from "./Components/2.SideBar/ResultContainer";
+import SearchBar from "./Components/1.container/SearchBar";
+import { SearchProvider } from "./Components/Context/SearchContext";
 const queryClient = new QueryClient();
 const router = createBrowserRouter([
   {
@@ -59,14 +61,18 @@ const router = createBrowserRouter([
 ]);
 function App() {
   return (
-    <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router}>
-        <Wrapper>
-          <OnAir />
-        </Wrapper>
-      </RouterProvider>
-      <ReactQueryDevtools initialIsOpen={false} />
-    </QueryClientProvider>
+    <SearchProvider>
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router}>
+          <Wrapper>
+            <OnAir />
+          </Wrapper>
+          <SearchBar />
+          <SearchContainer />
+        </RouterProvider>
+        <ReactQueryDevtools initialIsOpen={false} />
+      </QueryClientProvider>
+    </SearchProvider>
   );
 }
 
