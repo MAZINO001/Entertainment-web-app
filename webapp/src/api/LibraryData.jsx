@@ -29,9 +29,7 @@
 // };
 
 export const fetchMoviesLibrary = async (bookmarkedMovies) => {
-  const movieIdsArray = Array.from(bookmarkedMovies); // Assuming bookmarkedMovies is iterable
-  console.log(typeof movieIdsArray);
-
+//   console.log(typeof bookmarkedMovies);
   const options = {
     method: "GET",
     headers: {
@@ -43,7 +41,7 @@ export const fetchMoviesLibrary = async (bookmarkedMovies) => {
 
   const results = []; // Array to store fetched movie data
 
-  for (const movieId of movieIdsArray) {
+  for (const movieId of bookmarkedMovies) {
     const url = `https://api.themoviedb.org/3/account/${movieId}/favorite/movies?language=en-US&page=1&sort_by=created_at.asc`;
 
     try {
@@ -60,6 +58,6 @@ export const fetchMoviesLibrary = async (bookmarkedMovies) => {
     }
   }
 
-  console.log(results);
+  //   console.log(results);
   return results;
 };
