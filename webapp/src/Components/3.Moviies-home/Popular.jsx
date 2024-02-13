@@ -11,7 +11,7 @@ import { fetchMoviesLibrary } from "../../api/LibraryData";
 export default function Popular() {
   const [bookmarkedMovies, setBookmarkedMovies] = useState([]);
   const [ActiveBm, setActiveBm] = useState(false);
-  console.log(bookmarkedMovies);
+  
   const {
     data: Popular,
     isLoading,
@@ -20,11 +20,9 @@ export default function Popular() {
     queryKey: ["Popular"],
     queryFn: () => fetchTMDbDataMovies("popular"),
   });
-  const {
-    data: Bookmarked,
-  } = useQuery({
+  const { data: Bookmarked } = useQuery({
     queryKey: ["Bookmarked"],
-    queryFn: () => fetchMoviesLibrary(bookmarkedMovies), 
+    queryFn: () => fetchMoviesLibrary(),
     enabled: !!bookmarkedMovies.length,
   });
   if (isLoading) {
