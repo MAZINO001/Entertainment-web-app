@@ -81,8 +81,8 @@ export const fetchMoviesLibrary = async (bookmarkedMovies) => {
   const results = [];
 
   for (let index = 0; index < bookmarkedMovies.length; index++) {
-    // const url = `https://api.themoviedb.org/3/find/${bookmarkedMovies[index]}?language=en-US&page=1`;
-    const url = `https://api.themoviedb.org/3/find/1212073?external_source=imdb_id?language=en-US&page=1`;
+    // const url = `https://api.themoviedb.org/3/find/${bookmarkedMovies[index]}?external_source=imdb_id`;
+    const url = `https://api.themoviedb.org/3/find/tt10676048?external_source=imdb_id`;
 
     try {
       const response = await fetch(url, {
