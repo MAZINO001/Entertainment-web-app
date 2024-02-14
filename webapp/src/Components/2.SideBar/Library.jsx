@@ -1,5 +1,4 @@
 // import { BsBookmarkXFill } from "react-icons/bs";
-
 import { useQuery } from "@tanstack/react-query";
 import { LuDot } from "react-icons/lu";
 import { MdLocalMovies } from "react-icons/md";
