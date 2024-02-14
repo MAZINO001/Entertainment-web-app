@@ -11,7 +11,8 @@ import { fetchMoviesLibrary } from "../../api/LibraryData";
 export default function Popular() {
   const [bookmarkedMovies, setBookmarkedMovies] = useState([]);
   const [ActiveBm, setActiveBm] = useState(false);
-  console.log(Array.isArray(bookmarkedMovies));
+  // console.log(Array.isArray(bookmarkedMovies));
+  // console.log(bookmarkedMovies);
   const {
     data: Popular,
     isLoading,
