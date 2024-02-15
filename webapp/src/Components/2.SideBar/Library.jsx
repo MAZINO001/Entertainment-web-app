@@ -4,17 +4,17 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchMoviesLibrary } from "../../api/LibraryData";
 
 export default function Library() {
-  const { data: Bookmarked } = useQuery({
+  const { data } = useQuery({
     queryKey: ["Bookmarked"],
     queryFn: () => fetchMoviesLibrary([]),
   });
-  console.log(Bookmarked);
+  console.log(data);
   return (
     <div>
       <div className="title">
         <h2>Bookmarks for Movies</h2>
-        {Bookmarked &&
-          Bookmarked.map((item) => (
+        {data &&
+          data.map((item) => (
             <div key={item.id}>
               <img
                 className="rounded-md cursor-pointer"
