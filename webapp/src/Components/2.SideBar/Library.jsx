@@ -5,9 +5,8 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchMoviesLibrary } from "../../api/LibraryData";
 
 export default function Library() {
-  const bookmarkedMovies = JSON.stringify(
-    localStorage.getItem("bookmarkedMovies")
-  );
+  const bookmarkedMovies = JSON.parse(localStorage.getItem("bookmarkedMovies"));
+
   const { data } = useQuery({
     queryKey: ["Bookmarked"],
     queryFn: () => fetchMoviesLibrary(bookmarkedMovies),
@@ -16,27 +15,30 @@ export default function Library() {
     <div>
       <div className="title">
         <h2>Bookmarks for Movies</h2>
-        {data &&
-          data.map((item) => (
-            <div key={item.id}>
-              <img
-                className="rounded-md cursor-pointer"
-                src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
-                alt="Poster"
-              />
-              <p className="text-md py-1 capitalize text-gray-300 flex items-center text-slim">
-                <span>{new Date(item.release_date).getFullYear()}</span>
-                <LuDot className="text-xl text-gray-300" />
-                <span className="flex items-center gap-x-1">
-                  <MdLocalMovies /> Movie
-                </span>
-              </p>
-              <h2 className="text-xl font-semibold max-w-[100%]">
-                {item.title}
-              </h2>
-            </div>
-          ))}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-4 pt-4  md:pt-0 ">
+          {data &&
+            data.map((item) => (
+              <div key={item.id}>
+                <img
+                  className="rounded-md cursor-pointer"
+                  src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
+                  alt="Poster"
+                />
+                <p className="text-sm py-1 capitalize text-gray-300 flex items-center text-slim">
+                  <span>{new Date(item.release_date).getFullYear()}</span>
+                  <LuDot className="text-xl text-gray-300" />
+                  <span className="flex items-center gap-x-1">
+                    <MdLocalMovies /> Movie
+                  </span>
+                </p>
+                <h2 className="text-xl font-semibold max-w-[100%]">
+                  {item.title}
+                </h2>
+              </div>
+            ))}
+        </div>
       </div>
+
       <div className="title">
         <h2>Bookmarks for TvShows</h2>
       </div>
