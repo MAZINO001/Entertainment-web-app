@@ -1,10 +1,16 @@
+/* eslint-disable no-unused-vars */
 import { fetchTMDbDataMovies } from "../../api/FetchDataMovie";
 import { MdLocalMovies } from "react-icons/md";
 import { LuDot } from "react-icons/lu";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../../Loaders/Loader";
-import { BsBookmarkPlusFill } from "react-icons/bs";
+import { BsBookmarkCheckFill, BsBookmarkPlusFill } from "react-icons/bs";
+import { useEffect, useState } from "react";
 export default function NowPlaying() {
+  const [bookmarkedMovies, setBookmarkedMovies] = useState(
+    JSON.parse(localStorage.getItem("bookmarkedMovies")) || []
+  );
+  const [ActiveBm, setActiveBm] = useState(false);
   const {
     data: NowPlaying,
     isLoading,
@@ -13,6 +19,10 @@ export default function NowPlaying() {
     queryKey: ["NowPlaying"],
     queryFn: () => fetchTMDbDataMovies("nowPlaying"),
   });
+  useEffect(() => {
+    localStorage.setItem("bookmarkedMovies", JSON.stringify(bookmarkedMovies));
+  }, [bookmarkedMovies]);
+
 
   if (isLoading) {
     return <Loader />;
@@ -35,8 +45,27 @@ export default function NowPlaying() {
           .slice(0, 8)
           .map((item) => (
             <div key={item.id} className="relative">
-              <BsBookmarkPlusFill className="absolute  top-0 right-[-3px] cursor-pointer text-2xl" />
-
+{bookmarkedMovies.includes(item.id) ? (
+                <BsBookmarkCheckFill
+                  className="absolute top-0 right-[-3px] cursor-pointer text-2xl text-[#FC4747]"
+                  onClick={() => {
+                    setActiveBm((state) => !state);
+                    const movieId = item.id;
+                    setBookmarkedMovies(
+                      bookmarkedMovies.filter((id) => id !== movieId)
+                    );
+                  }}
+                />
+              ) : (
+                <BsBookmarkPlusFill
+                  className="absolute top-0 right-[-3px] cursor-pointer text-2xl "
+                  onClick={() => {
+                    setActiveBm((state) => !state);
+                    const movieId = item.id;
+                    setBookmarkedMovies([...bookmarkedMovies, movieId]);
+                  }}
+                />
+              )}
               <img
                 className=" rounded-md cursor-pointer   "
                 src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
