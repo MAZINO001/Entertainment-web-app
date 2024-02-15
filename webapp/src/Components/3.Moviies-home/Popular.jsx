@@ -1,5 +1,4 @@
-/* eslint-disable no-unused-vars */
-import React, { useEffect, useState } from "react";
+import {  useState } from "react";
 import { fetchTMDbDataMovies } from "../../api/FetchDataMovie";
 import { MdLocalMovies } from "react-icons/md";
 import { BsBookmarkPlusFill } from "react-icons/bs";
@@ -7,11 +6,10 @@ import { BsBookmarkCheckFill } from "react-icons/bs";
 import { LuDot } from "react-icons/lu";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../../Loaders/Loader";
+import useLocalStorage from "../../CustomeHooks/useLocalStorage";
 
 export default function Popular() {
-  const [bookmarkedMovies, setBookmarkedMovies] = useState(
-    JSON.parse(localStorage.getItem("bookmarkedMovies")) || []
-  );
+  const [bookmarkedMovies, setBookmarkedMovies] = useLocalStorage("bookmarkedMovies", []);
   const [ActiveBm, setActiveBm] = useState(false);
   const {
     data: Popular,
@@ -21,10 +19,6 @@ export default function Popular() {
     queryKey: ["Popular"],
     queryFn: () => fetchTMDbDataMovies("popular"),
   });
-
-  useEffect(() => {
-    localStorage.setItem("bookmarkedMovies", JSON.stringify(bookmarkedMovies));
-  }, [bookmarkedMovies]);
 
   if (isLoading) {
     return <Loader />;

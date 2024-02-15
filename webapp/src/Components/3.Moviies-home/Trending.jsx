@@ -46,26 +46,26 @@ export default function Trending() {
             <div key={item.id} className="w-[407px] relative ">
               <div className="imgShwd rounded-md">
                 {bookmarkedMovies.includes(item.id) ? (
-                <BsBookmarkCheckFill
-                  className="absolute top-0 right-[-3px] cursor-pointer text-2xl text-[#FC4747]"
-                  onClick={() => {
-                    setActiveBm((state) => !state);
-                    const movieId = item.id;
-                    setBookmarkedMovies(
-                      bookmarkedMovies.filter((id) => id !== movieId)
-                    );
-                  }}
-                />
-              ) : (
-                <BsBookmarkPlusFill
-                  className="absolute top-0 right-[-3px] cursor-pointer text-2xl "
-                  onClick={() => {
-                    setActiveBm((state) => !state);
-                    const movieId = item.id;
-                    setBookmarkedMovies([...bookmarkedMovies, movieId]);
-                  }}
-                />
-              )}
+                  <BsBookmarkCheckFill
+                    className="absolute top-0 right-[-3px] cursor-pointer text-2xl text-[#FC4747]"
+                    onClick={() => {
+                      setActiveBm((state) => !state);
+                      const movieId = item.id;
+                      setBookmarkedMovies(
+                        bookmarkedMovies.filter((id) => id !== movieId)
+                      );
+                    }}
+                  />
+                ) : (
+                  <BsBookmarkPlusFill
+                    className="absolute top-0 right-[-3px] cursor-pointer text-2xl "
+                    onClick={() => {
+                      setActiveBm((state) => !state);
+                      const movieId = item.id;
+                      setBookmarkedMovies([...bookmarkedMovies, movieId]);
+                    }}
+                  />
+                )}
                 <img
                   className=" rounded-md cursor-pointer   "
                   src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}

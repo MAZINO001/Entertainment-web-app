@@ -6,9 +6,11 @@ import { useQuery } from "@tanstack/react-query";
 import Loader from "../../Loaders/Loader";
 import { BsBookmarkCheckFill, BsBookmarkPlusFill } from "react-icons/bs";
 import { useEffect, useState } from "react";
+import useLocalStorage from "../../CustomeHooks/useLocalStorage";
 export default function NowPlaying() {
-  const [bookmarkedMovies, setBookmarkedMovies] = useState(
-    JSON.parse(localStorage.getItem("bookmarkedMovies")) || []
+  const [bookmarkedMovies, setBookmarkedMovies] = useLocalStorage(
+    "bookmarkedMovies",
+    []
   );
   const [ActiveBm, setActiveBm] = useState(false);
   const {
@@ -19,11 +21,6 @@ export default function NowPlaying() {
     queryKey: ["NowPlaying"],
     queryFn: () => fetchTMDbDataMovies("nowPlaying"),
   });
-  useEffect(() => {
-    localStorage.setItem("bookmarkedMovies", JSON.stringify(bookmarkedMovies));
-  }, [bookmarkedMovies]);
-
-
   if (isLoading) {
     return <Loader />;
   }
@@ -45,7 +42,7 @@ export default function NowPlaying() {
           .slice(0, 8)
           .map((item) => (
             <div key={item.id} className="relative">
-{bookmarkedMovies.includes(item.id) ? (
+              {bookmarkedMovies.includes(item.id) ? (
                 <BsBookmarkCheckFill
                   className="absolute top-0 right-[-3px] cursor-pointer text-2xl text-[#FC4747]"
                   onClick={() => {
@@ -66,6 +63,7 @@ export default function NowPlaying() {
                   }}
                 />
               )}
+
               <img
                 className=" rounded-md cursor-pointer   "
                 src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
