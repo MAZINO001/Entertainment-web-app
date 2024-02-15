@@ -5,6 +5,7 @@
 //   }
 //   const results = [];
 
+
 //   for (let index = 0; index < bookmarkedMovies.length; index++) {
 //     const url = `https://api.themoviedb.org/3/movie/${bookmarkedMovies[index]}`;
 
@@ -36,14 +37,11 @@
 //   }
 // };
 
-
 export const fetchMoviesLibrary = async (bookmarkedMovies) => {
   console.log(bookmarkedMovies);
   if (!Array.isArray(bookmarkedMovies)) {
     throw new Error("bookmarkedMovies must be an array");
   }
-
-  // Use map to create an array of promises for each movie fetch
   const movieDataPromises = bookmarkedMovies.map(async (movieId) => {
     const url = `https://api.themoviedb.org/3/movie/${movieId}`;
     try {
@@ -64,22 +62,13 @@ export const fetchMoviesLibrary = async (bookmarkedMovies) => {
 
       return await response.json();
     } catch (error) {
-      console.error(
-        `Error fetching data for movie ${movieId}:`,
-        error
-      );
-      return null; // Or handle errors differently based on your requirements
+      console.error(`Error fetching data for movie ${movieId}:`, error);
+      return null;
     }
   });
-
-  // Wait for all promises to resolve and collect the data
   const movieData = await Promise.all(movieDataPromises);
-
-  // Filter out null values returned for errors (if applicable)
   const filteredData = movieData.filter((data) => data !== null);
 
-  // Combine the filtered data into a single array
-  const results = [].concat(...filteredData); // Equivalent to results.push(...filteredData);
-
+  const results = [].concat(...filteredData);
   return results;
 };

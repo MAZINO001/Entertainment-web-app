@@ -1,14 +1,17 @@
+/* eslint-disable react/prop-types */
 import { LuDot } from "react-icons/lu";
 import { MdLocalMovies } from "react-icons/md";
 import { useQuery } from "@tanstack/react-query";
 import { fetchMoviesLibrary } from "../../api/LibraryData";
 
 export default function Library() {
+  const Ids = localStorage.getItem("bookmarkedMovies");
+  console.log(Ids);
   const { data } = useQuery({
     queryKey: ["Bookmarked"],
-    queryFn: () => fetchMoviesLibrary([]),
+    queryFn: () => fetchMoviesLibrary(),
   });
-  console.log(data);
+
   return (
     <div>
       <div className="title">
