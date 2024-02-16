@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import NowPlayingMovies from "../3.Moviies-home/NowPlaying";
 import PopularMovies from "../3.Moviies-home/Popular";
 import TopRatedMovies from "../3.Moviies-home/TopRated";
