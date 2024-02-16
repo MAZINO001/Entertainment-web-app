@@ -6,10 +6,9 @@ import { useQuery } from "@tanstack/react-query";
 import Loader from "../../Loaders/Loader";
 import { BsBookmarkCheckFill, BsBookmarkPlusFill } from "react-icons/bs";
 import { useEffect, useState } from "react";
+import useLocalStorage from "../../CustomeHooks/useLocalStorage";
 export default function Trending() {
-  const [bookmarkedMovies, setBookmarkedMovies] = useState(
-    JSON.parse(localStorage.getItem("bookmarkedMovies")) || []
-  );
+  const [bookmarkedMovies, setBookmarkedMovies] = useLocalStorage("bookmarkedMoviesTrending", []);
   const [ActiveBm, setActiveBm] = useState(false);
   const {
     data: Trending,
@@ -19,9 +18,7 @@ export default function Trending() {
     queryKey: ["Trending"],
     queryFn: () => fetchTMDbDataMovies("trending"),
   });
-  useEffect(() => {
-    localStorage.setItem("bookmarkedMovies", JSON.stringify(bookmarkedMovies));
-  }, [bookmarkedMovies]);
+ 
 
   if (isLoading) {
     return <Loader />;
@@ -44,10 +41,10 @@ export default function Trending() {
           .slice(0, 10)
           .map((item) => (
             <div key={item.id} className="w-[407px] relative ">
-              <div className="imgShwd rounded-md">
+              <div className="imgShwd rounded-md bg-green-500">
                 {bookmarkedMovies.includes(item.id) ? (
                   <BsBookmarkCheckFill
-                    className="absolute top-0 right-[-3px] cursor-pointer text-2xl text-[#FC4747]"
+                    className="absolute top-0 right-[-3px] cursor-pointer text-2xl text-[#FC4747] z-50"
                     onClick={() => {
                       setActiveBm((state) => !state);
                       const movieId = item.id;
@@ -58,21 +55,21 @@ export default function Trending() {
                   />
                 ) : (
                   <BsBookmarkPlusFill
-                    className="absolute top-0 right-[-3px] cursor-pointer text-2xl "
+                    className="absolute top-0 right-[-3px] cursor-pointer text-2xl z-50"
                     onClick={() => {
                       setActiveBm((state) => !state);
                       const movieId = item.id;
                       setBookmarkedMovies([...bookmarkedMovies, movieId]);
                     }}
                   />
-                )}
+                  )}
                 <img
                   className=" rounded-md cursor-pointer   "
                   src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
                   alt="Poster"
                 />
               </div>
-              <p className="text-sm py-1 capitalize text-gray-300 flex items-center text-slim absolute bottom-[50px] left-[10px]">
+              <p className="text-sm py-1 capitalize text-gray-300 flex items-center text-slim absolute bottom-[80px] left-[10px]">
                 <span>{new Date(item.release_date).getFullYear()}</span>
 
                 <LuDot className="text-xl text-gray-300 " />

@@ -6,10 +6,9 @@ import { useQuery } from "@tanstack/react-query";
 import Loader from "../../Loaders/Loader";
 import { BsBookmarkCheckFill, BsBookmarkPlusFill } from "react-icons/bs";
 import { useEffect, useState } from "react";
+import useLocalStorage from "../../CustomeHooks/useLocalStorage";
 export default function UpComming() {
-  const [bookmarkedMovies, setBookmarkedMovies] = useState(
-    JSON.parse(localStorage.getItem("bookmarkedMovies")) || []
-  );
+  const [bookmarkedMovies, setBookmarkedMovies] = useLocalStorage("bookmarkedMoviesUpComming", []);
   const [ActiveBm, setActiveBm] = useState(false);
   const {
     data: UpComming,
@@ -19,9 +18,7 @@ export default function UpComming() {
     queryKey: ["UpComming"],
     queryFn: () => fetchTMDbDataMovies("upComming"),
   });
-  useEffect(() => {
-    localStorage.setItem("bookmarkedMovies", JSON.stringify(bookmarkedMovies));
-  }, [bookmarkedMovies]);
+
 
 
   if (isLoading) {

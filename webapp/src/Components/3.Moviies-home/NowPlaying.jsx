@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 import useLocalStorage from "../../CustomeHooks/useLocalStorage";
 export default function NowPlaying() {
   const [bookmarkedMovies, setBookmarkedMovies] = useLocalStorage(
-    "bookmarkedMovies",
+    "bookmarkedMoviesNowPlaying",
     []
   );
   const [ActiveBm, setActiveBm] = useState(false);

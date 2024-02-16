@@ -6,9 +6,11 @@ import { useQuery } from "@tanstack/react-query";
 import Loader from "../../Loaders/Loader";
 import { BsBookmarkCheckFill, BsBookmarkPlusFill } from "react-icons/bs";
 import { useEffect, useState } from "react";
+import useLocalStorage from "../../CustomeHooks/useLocalStorage";
 export default function TopRated() {
-  const [bookmarkedMovies, setBookmarkedMovies] = useState(
-    JSON.parse(localStorage.getItem("bookmarkedMovies")) || []
+  const [bookmarkedMovies, setBookmarkedMovies] = useLocalStorage(
+    "bookmarkedMoviesTopRated",
+    []
   );
   const [ActiveBm, setActiveBm] = useState(false);
   const {
@@ -19,9 +21,6 @@ export default function TopRated() {
     queryKey: ["TopRated"],
     queryFn: () => fetchTMDbDataMovies("topRated"),
   });
-  useEffect(() => {
-    localStorage.setItem("bookmarkedMovies", JSON.stringify(bookmarkedMovies));
-  }, [bookmarkedMovies]);
 
   if (isLoading) {
     return <Loader />;
@@ -43,7 +42,7 @@ export default function TopRated() {
           .slice(0, 8)
           .map((item) => (
             <div key={item.id} className="relative">
-            {bookmarkedMovies.includes(item.id) ? (
+              {bookmarkedMovies.includes(item.id) ? (
                 <BsBookmarkCheckFill
                   className="absolute top-0 right-[-3px] cursor-pointer text-2xl text-[#FC4747]"
                   onClick={() => {
@@ -65,11 +64,11 @@ export default function TopRated() {
                 />
               )}
 
-            <img
-              className=" rounded-md cursor-pointer   "
-              src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
-              alt="Poster"
-            />
+              <img
+                className=" rounded-md cursor-pointer   "
+                src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
+                alt="Poster"
+              />
               <p className=" text-md py-1 capitalize text-gray-300 flex items-center text-slim ">
                 <span>{new Date(item.release_date).getFullYear()}</span>
 

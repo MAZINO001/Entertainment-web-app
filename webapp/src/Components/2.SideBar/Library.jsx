@@ -5,7 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchMoviesLibrary } from "../../api/LibraryData";
 
 export default function Library() {
-  const bookmarkedMovies = JSON.parse(localStorage.getItem("bookmarkedMovies"));
+  const bookmarkedMovies = JSON.parse(localStorage.getItem("bookmarkedMoviesPopular"));
 
   const { data } = useQuery({
     queryKey: ["Bookmarked"],

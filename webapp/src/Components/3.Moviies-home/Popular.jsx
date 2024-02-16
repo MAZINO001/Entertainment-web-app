@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import {  useState } from "react";
 import { fetchTMDbDataMovies } from "../../api/FetchDataMovie";
 import { MdLocalMovies } from "react-icons/md";
@@ -9,7 +10,8 @@ import Loader from "../../Loaders/Loader";
 import useLocalStorage from "../../CustomeHooks/useLocalStorage";
 
 export default function Popular() {
-  const [bookmarkedMovies, setBookmarkedMovies] = useLocalStorage("bookmarkedMovies", []);
+  const [bookmarkedMovies, setBookmarkedMovies] = useLocalStorage("bookmarkedMoviesPopular", []);
+
   const [ActiveBm, setActiveBm] = useState(false);
   const {
     data: Popular,
