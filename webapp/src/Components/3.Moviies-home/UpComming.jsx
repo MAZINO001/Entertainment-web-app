@@ -8,7 +8,7 @@ import { BsBookmarkCheckFill, BsBookmarkPlusFill } from "react-icons/bs";
 import { useEffect, useState } from "react";
 import useLocalStorage from "../../CustomeHooks/useLocalStorage";
 export default function UpComming() {
-  const [bookmarkedMovies, setBookmarkedMovies] = useLocalStorage("bookmarkedMoviesUpComming", []);
+  const [bookmarkedMovies, setBookmarkedMovies] = useLocalStorage("bookmarkedMovies", []);
   const [ActiveBm, setActiveBm] = useState(false);
   const {
     data: UpComming,

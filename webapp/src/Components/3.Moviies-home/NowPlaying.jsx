@@ -8,10 +8,7 @@ import { BsBookmarkCheckFill, BsBookmarkPlusFill } from "react-icons/bs";
 import { useEffect, useState } from "react";
 import useLocalStorage from "../../CustomeHooks/useLocalStorage";
 export default function NowPlaying() {
-  const [bookmarkedMovies, setBookmarkedMovies] = useLocalStorage(
-    "bookmarkedMoviesNowPlaying",
-    []
-  );
+  const [bookmarkedMovies, setBookmarkedMovies] = useLocalStorage("bookmarkedMovies", []);
   const [ActiveBm, setActiveBm] = useState(false);
   const {
     data: NowPlaying,

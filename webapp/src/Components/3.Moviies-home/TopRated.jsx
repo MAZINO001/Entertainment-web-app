@@ -8,10 +8,7 @@ import { BsBookmarkCheckFill, BsBookmarkPlusFill } from "react-icons/bs";
 import { useEffect, useState } from "react";
 import useLocalStorage from "../../CustomeHooks/useLocalStorage";
 export default function TopRated() {
-  const [bookmarkedMovies, setBookmarkedMovies] = useLocalStorage(
-    "bookmarkedMoviesTopRated",
-    []
-  );
+  const [bookmarkedMovies, setBookmarkedMovies] = useLocalStorage("bookmarkedMovies", []);
   const [ActiveBm, setActiveBm] = useState(false);
   const {
     data: TopRated,
