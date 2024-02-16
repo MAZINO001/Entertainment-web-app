@@ -11,7 +11,6 @@ import useLocalStorage from "../../CustomeHooks/useLocalStorage";
 
 export default function Popular() {
   const [bookmarkedMovies, setBookmarkedMovies] = useLocalStorage("bookmarkedMovies", []);
-  
 
   const [ActiveBm, setActiveBm] = useState(false);
   const {

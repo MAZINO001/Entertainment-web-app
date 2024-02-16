@@ -10,8 +10,8 @@ export default function Library() {
       "bookmarkedMovies"
     )
   );
-  console.log(bookmarkedMovies)
-
+  console.log(bookmarkedMovies);
+ 
   const { data } = useQuery({
     queryKey: ["Bookmarked"],
     queryFn: () => fetchMoviesLibrary(bookmarkedMovies),
