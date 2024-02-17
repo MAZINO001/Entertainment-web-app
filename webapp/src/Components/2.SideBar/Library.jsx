@@ -58,9 +58,8 @@ import { fetchMoviesLibrary } from "../../api/LibraryData";
 import { BsBookmarkXFill } from "react-icons/bs";
 
 export default function Library() {
-  // const bookmarkedMovies = JSON.parse(localStorage.getItem("bookmarkedMovies"));
-  // console.log(bookmarkedMovies);
-  const bookmarkedMovies = []
+  const bookmarkedMovies = JSON.parse(localStorage.getItem("bookmarkedMovies"));
+  console.log(bookmarkedMovies);
   const { data } = useQuery({
     queryKey: ["Bookmarked"],
     queryFn: () => fetchMoviesLibrary(bookmarkedMovies),
