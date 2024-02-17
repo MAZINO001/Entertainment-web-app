@@ -55,7 +55,7 @@ import { LuDot } from "react-icons/lu";
 import { MdLocalMovies } from "react-icons/md";
 import { useQuery } from "@tanstack/react-query";
 import { fetchMoviesLibrary } from "../../api/LibraryData";
-import { BsBookmarkPlusFill } from "react-icons/bs";
+import { BsBookmarkXFill } from "react-icons/bs";
 
 export default function Library() {
   const bookmarkedMovies = JSON.parse(localStorage.getItem("bookmarkedMovies"));
@@ -73,8 +73,8 @@ export default function Library() {
           {data &&
             data.map((item) => (
               <div key={item.id} className="relative">
-                <BsBookmarkPlusFill
-                  className="absolute top-0 right-[-3px] cursor-pointer text-2xl "
+                <BsBookmarkXFill
+                  className="absolute top-0 right-[-3px] cursor-pointer text-2xl text-[#FC4747]"
                   onClick={() => {}}
                 />
                 <img
