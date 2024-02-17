@@ -1,11 +1,9 @@
 export const fetchMoviesLibrary = async (bookmarkedMovies) => {
-  console.log(bookmarkedMovies);
   if (!Array.isArray(bookmarkedMovies)) {
     throw new Error("bookmarkedMovies must be an array");
   }
   const movieDataPromises = bookmarkedMovies.map(async (movieId) => {
     const url = `https://api.themoviedb.org/3/movie/${movieId}`;
-    console.log(movieId);
     try {
       const response = await fetch(url, {
         method: "GET",
@@ -30,8 +28,7 @@ export const fetchMoviesLibrary = async (bookmarkedMovies) => {
   });
   const movieData = await Promise.all(movieDataPromises);
   const filteredData = movieData.filter((data) => data !== null);
-  console.log(movieData);
-  console.log(filteredData);
+
   const results = [].concat(...filteredData);
   return results;
 };
