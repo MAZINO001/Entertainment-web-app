@@ -1,5 +1,6 @@
+import { NavLink } from "react-router-dom";
 /* eslint-disable no-unused-vars */
-import {  useState } from "react";
+import { useState } from "react";
 import { fetchTMDbDataMovies } from "../../api/FetchDataMovie";
 import { MdLocalMovies } from "react-icons/md";
 import { BsBookmarkPlusFill } from "react-icons/bs";
@@ -10,7 +11,10 @@ import Loader from "../../Loaders/Loader";
 import useLocalStorage from "../../CustomeHooks/useLocalStorage";
 
 export default function Popular() {
-  const [bookmarkedMovies, setBookmarkedMovies] = useLocalStorage("bookmarkedMovies", []);
+  const [bookmarkedMovies, setBookmarkedMovies] = useLocalStorage(
+    "bookmarkedMovies",
+    []
+  );
 
   const [ActiveBm, setActiveBm] = useState(false);
   const {
@@ -34,11 +38,12 @@ export default function Popular() {
       <div className="flex justify-between items-center relative ">
         <h2 className="title">Popular</h2>
         <span className="typespan ml-[-15px]">Movies</span>
-
-        <button className=" text-xl sm:text-lg text-[#FC4747] px-2 py-1  rounded-md ">
-          see all
-        </button>
-        
+          {/* <button className=" text-xl sm:text-lg text-[#FC4747] px-2 py-1  rounded-md ">
+            see all
+          </button> */}
+        <NavLink to="" className=" text-xl sm:text-lg text-[#FC4747] px-2 py-1  rounded-md ">
+            see all
+        </NavLink>
       </div>
       <div className="  grid grid-cols-1 sm:grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-4 pt-4  md:pt-0 ">
         {Popular.filter((item) => item.backdrop_path)
@@ -89,4 +94,3 @@ export default function Popular() {
     </div>
   );
 }
-
