@@ -38,11 +38,14 @@ export default function Popular() {
       <div className="flex justify-between items-center relative ">
         <h2 className="title">Popular</h2>
         <span className="typespan ml-[-15px]">Movies</span>
-          {/* <button className=" text-xl sm:text-lg text-[#FC4747] px-2 py-1  rounded-md ">
+        {/* <button className=" text-xl sm:text-lg text-[#FC4747] px-2 py-1  rounded-md ">
             see all
           </button> */}
-        <NavLink to="" className=" text-xl sm:text-lg text-[#FC4747] px-2 py-1  rounded-md ">
-            see all
+        <NavLink
+          to="seeallcontainer"
+          className=" text-xl sm:text-lg text-[#FC4747] px-2 py-1  rounded-md "
+        >
+          see all
         </NavLink>
       </div>
       <div className="  grid grid-cols-1 sm:grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-4 pt-4  md:pt-0 ">
