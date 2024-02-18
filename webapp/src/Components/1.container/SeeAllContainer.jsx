@@ -1,4 +1,3 @@
-import { NavLink } from "react-router-dom";
 /* eslint-disable no-unused-vars */
 import { useState } from "react";
 import { fetchTMDbDataMovies } from "../../api/FetchDataMovie";
