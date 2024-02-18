@@ -43,8 +43,7 @@ export default function Popular() {
           </button> */}
         <NavLink
           to="seeallcontainer"
-          className=" text-xl sm:text-lg text-[#FC4747] px-2 py-1  rounded-md "
-        >
+          className=" text-xl sm:text-lg text-[#FC4747] px-2 py-1  rounded-md ">
           see all
         </NavLink>
       </div>
