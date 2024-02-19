@@ -15,7 +15,7 @@ export default function Home() {
     <div className="mx-4 sm:mx-0">
       {/* <TrendingMovies /> */}
       <PopularMovies />
-      {/* <NowPlayingMovies /> */}
+      <NowPlayingMovies />
       {/* <UpCommingMovies /> */}
       {/* <TopRatedMovies /> */}
       <hr className="my-4" />
