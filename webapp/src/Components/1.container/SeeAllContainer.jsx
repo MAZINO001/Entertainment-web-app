@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable react/prop-types */
 // /* eslint-disable no-unused-vars */
 // import { useState } from "react";
@@ -104,10 +105,8 @@ export default function seeallcontainer() {
 
   return (
     <div className=" flex flex-col my-4">
-      <div className="flex justify-between items-center relative ">
-        <span>
-          See all conatainer 
-        </span>
+      <div className="flex justify-between items-center relative title">
+          See all  
       </div>
       <div className="  grid grid-cols-1 sm:grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-4 pt-4  md:pt-0 ">
         {passedData
