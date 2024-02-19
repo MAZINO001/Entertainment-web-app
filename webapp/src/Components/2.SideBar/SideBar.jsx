@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 // /* eslint-disable react/prop-types */
 // import { NavLink, useNavigate } from "react-router-dom";
 // import { PiFilmReelFill } from "react-icons/pi";
@@ -52,7 +53,7 @@
 //   );
 // }
 /* eslint-disable react/prop-types */
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { PiFilmReelFill } from "react-icons/pi";
 import { HiMiniSquares2X2 } from "react-icons/hi2";
 import { MdLocalMovies } from "react-icons/md";
@@ -61,13 +62,7 @@ import { FaBookmark } from "react-icons/fa";
 import Avatar from "../Assets/avatar-06.png";
 import { useEffect, useState } from "react";
 export default function SideBar() {
-  const navigate = useNavigate();
-  const [isMoviesRoute, setIsMoviesRoute] = useState(false);
-
-  useEffect(() => {
-    const pathname = window.location.pathname;
-    setIsMoviesRoute(pathname === "/movies");
-  }, [navigate]);
+  const { pathname } = useLocation();
 
   return (
     <div className="  h-full flex flex-row md:flex-col  rounded-md  items-center justify-between bg-[#1d2741e6] bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-20 md:px-2 md:py-0 py-4 m-0 sm:m-4  md:mr-0 sm:mb-0 sticky md:top-[16px] top-[0px] z-40">
@@ -79,16 +74,32 @@ export default function SideBar() {
 
       <div className="  flex items-center flex-row md:flex-col  sm:gap-[3.5rem] gap-[2rem] cursor-pointer text-black ">
         <NavLink to="/">
-          <HiMiniSquares2X2 className="w-[1.7rem] h-[1.7rem] text-[#5A6A90] " />
+          <HiMiniSquares2X2
+            className={`w-[1.7rem] h-[1.7rem] ${
+              pathname === "/" ? "text-[#FC4747]" : "text-[#5A6A90]"
+            }`}
+          />
         </NavLink>
         <NavLink to="/movies">
-          <MdLocalMovies className="w-[1.7rem] h-[1.7rem] text-[#5A6A90]" />
+          <MdLocalMovies
+            className={`w-[1.7rem] h-[1.7rem] ${
+              pathname === "/movies" ? "text-[#FC4747]" : "text-[#5A6A90]"
+            }`}
+          />
         </NavLink>
         <NavLink to="/tvshows">
-          <PiTelevisionFill className="w-[1.7rem] h-[1.7rem] text-[#5A6A90]" />
+          <PiTelevisionFill
+            className={`w-[1.7rem] h-[1.7rem] ${
+              pathname === "/tvshows" ? "text-[#FC4747]" : "text-[#5A6A90]"
+            }`}
+          />
         </NavLink>
         <NavLink to="/library">
-          <FaBookmark className="w-[1.7rem] h-[1.7rem] text-[#5A6A90]" />
+          <FaBookmark
+            className={`w-[1.7rem] h-[1.7rem] ${
+              pathname === "/library" ? "text-[#FC4747]" : "text-[#5A6A90]"
+            }`}
+          />
         </NavLink>
       </div>
 
