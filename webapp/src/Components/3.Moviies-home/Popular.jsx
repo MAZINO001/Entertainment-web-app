@@ -43,7 +43,9 @@ export default function Popular() {
           </button> */}
         <NavLink
           to="seeallcontainer"
-          className=" text-xl sm:text-lg text-[#FC4747] px-2 py-1  rounded-md ">
+          state={{ data: Popular }}
+          className="text-xl sm:text-lg text-[#FC4747] px-2 py-1 rounded-md"
+        >
           see all
         </NavLink>
       </div>

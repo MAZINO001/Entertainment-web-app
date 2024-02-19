@@ -7,6 +7,7 @@ import Loader from "../../Loaders/Loader";
 import { BsBookmarkCheckFill, BsBookmarkPlusFill } from "react-icons/bs";
 import { useEffect, useState } from "react";
 import useLocalStorage from "../../CustomeHooks/useLocalStorage";
+import { NavLink } from "react-router-dom";
 export default function Trending() {
   const [bookmarkedMovies, setBookmarkedMovies] = useLocalStorage("bookmarkedMovies", []);
   const [ActiveBm, setActiveBm] = useState(false);
@@ -31,9 +32,13 @@ export default function Trending() {
       <div className="flex justify-between items-center relative">
         <h2 className="title">Trending</h2>
         <span className="typespan">Movies</span>
-        <button className=" text-md text-[#FC4747]  px-2 py-1  rounded-md ">
+        <NavLink
+          to="seeallcontainer"
+          state={{ data: Trending }}
+          className="text-xl sm:text-lg text-[#FC4747] px-2 py-1 rounded-md"
+        >
           see all
-        </button>
+        </NavLink>
       </div>
       <div className=" grid grid-cols-[repeat(10,_1fr)] grid-rows-[1fr] gap-x-4 overflow-x-auto">
         {" "}

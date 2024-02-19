@@ -36,7 +36,8 @@ export default function NowPlaying() {
         <span className="typespan ml-[45px]">Movies</span>
         <NavLink
           to="seeallcontainer"
-          className=" text-xl sm:text-lg text-[#FC4747] px-2 py-1  rounded-md "
+          state={{ data: NowPlaying }}
+          className="text-xl sm:text-lg text-[#FC4747] px-2 py-1 rounded-md"
         >
           see all
         </NavLink>
