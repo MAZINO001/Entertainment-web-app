@@ -1,4 +1,7 @@
 export const fetchImageData = async (Id) => {
+  if (Id === "") {
+    return;
+  }
   const options = {
     method: "GET",
     headers: {
@@ -8,7 +11,7 @@ export const fetchImageData = async (Id) => {
     },
   };
 
-//   const url = `https://api.themoviedb.org/3/movie/${Id}`;
+  const url = `https://api.themoviedb.org/3/movie/${Id}`;
 
   if (!url) {
     throw new Error(`Invalid data Id: ${Id}`);
@@ -22,8 +25,8 @@ export const fetchImageData = async (Id) => {
     }
 
     const data = await response.json();
-    console.log(data.results);
-    //   return data.results;
+    console.log(data);
+    //   return data;
   } catch (error) {
     console.error(error);
     throw new Error("Failed to fetch data");

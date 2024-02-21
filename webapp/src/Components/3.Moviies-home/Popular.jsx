@@ -114,7 +114,7 @@ export default function Popular() {
     []
   );
   const [ActiveBm, setActiveBm] = useState(false);
-  const [Id, setId] = useState(null);
+  const [Id, setId] = useState();
 
   const { data: imagData } = useQuery({
     queryKey: ["ImageId"],
