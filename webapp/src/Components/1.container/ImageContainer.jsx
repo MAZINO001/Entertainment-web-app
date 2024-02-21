@@ -46,18 +46,14 @@ export default function ImageContainer() {
         .filter((item) => item.backdrop_path)
         .map((item) => (
           <div key={item.id}>
-            <div>
-              <img
-                className="rounded-md cursor-pointer"
-                src={`https://image.tmdb.org/t/p/original/${item.poster_path}`}
-                alt="Poster"
-              />
-            </div>
-            <div>
-              <h2>{item.title}</h2>
-              <span>{item.tagline}</span>
-              <h2>{item.vote_average}</h2>  
-            </div>
+            <img
+              className="rounded-md cursor-pointer w-[250px] h-[250px] "
+              src={`https://image.tmdb.org/t/p/original/${item.poster_path}`}
+              alt="Poster"
+            />
+            <h2>{item.title}</h2>
+            <span>{item.tagline}</span>
+            <h2>{item.vote_average}</h2>
           </div>
         ))}
     </div>
