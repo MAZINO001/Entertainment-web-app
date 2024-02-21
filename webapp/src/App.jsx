@@ -13,6 +13,7 @@ import ResultContainer from "./Components/2.SideBar/ResultContainer";
 import SearchBar from "./Components/1.container/SearchBar";
 import { SearchProvider } from "./Components/Context/SearchContext";
 import SeeAllContainer from "./Components/1.container/SeeAllContainer";
+import ImageContainer from "./Components/1.container/ImageContainer";
 
 const queryClient = new QueryClient();
 const router = createBrowserRouter([
@@ -61,6 +62,10 @@ const router = createBrowserRouter([
       {
         path: "seeallcontainer",
         element: <SeeAllContainer />,
+      },
+      {
+        path: "imagecontainer",
+        element: <ImageContainer />,
       },
     ],
   },

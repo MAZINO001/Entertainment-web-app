@@ -120,7 +120,6 @@ export default function Popular() {
     queryKey: ["ImageId"],
     queryFn: () => fetchImageData(Id),
   });
-
   const {
     data: Popular,
     isLoading,
@@ -177,15 +176,21 @@ export default function Popular() {
                 />
               )}
 
-              <img
-                className=" rounded-md cursor-pointer   "
-                src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
-                alt="Poster"
-                onClick={() => {
-                  console.log(`Fetching movie details for ID: ${item.id}`);
-                  setId(item.id);
-                }}
-              />
+              <NavLink
+                to={`/imagecontainer`}
+                state={{ data: imagData }}
+                className="rounded-md cursor-pointer"
+              >
+                <img
+                  className=" rounded-md cursor-pointer   "
+                  src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
+                  alt="Poster"
+                  onClick={() => {
+                    console.log(`Fetching movie details for ID: ${item.id}`);
+                    setId(item.id);
+                  }}
+                />
+              </NavLink>
               <p className=" text-md py-1 capitalize text-gray-300 flex items-center text-slim ">
                 <span>{new Date(item.release_date).getFullYear()}</span>
 
