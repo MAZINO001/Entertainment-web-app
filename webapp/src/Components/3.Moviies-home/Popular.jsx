@@ -113,6 +113,7 @@ export default function Popular() {
     "bookmarkedMovies",
     []
   );
+
   const [ActiveBm, setActiveBm] = useState(false);
   const [Id, setId] = useState();
 
