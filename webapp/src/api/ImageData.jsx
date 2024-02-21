@@ -3,7 +3,7 @@
 //     return;
 //   }
 export const fetchImageData = async () => {
-    const Id  = 933131
+  const Id = 933131;
   const options = {
     method: "GET",
     headers: {
@@ -28,7 +28,7 @@ export const fetchImageData = async () => {
 
     const data = await response.json();
     // console.log(data);
-      return data;
+    return data;
   } catch (error) {
     console.error(error);
     throw new Error("Failed to fetch data");
