@@ -119,8 +119,11 @@ export default function Popular() {
   const [Id, setId] = useState("");
   const HandleId = (itemId) => {
     setId(itemId);
-    fetchImageData(itemId);
   };
+
+  useEffect(() => {
+    fetchImageData(Id);
+  }, [Id]);
 
   const { data: imageData } = useQuery({
     queryKey: ["ImageId", Id],
