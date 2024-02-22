@@ -22,7 +22,7 @@ export default function ImageContainer() {
           <h2 className="text-3xl">{passedData.vote_average} </h2>
         </div>
         {/* info */}
-        <div className="flex justify-  text-lg font-bold tracking-wide mb-4">
+        <div className="flex justify-around  text-lg font-bold tracking-wide mb-4">
           <div className="flex flex-col text-center">
             <h2>Length</h2>
             <h2 className="text-gray-400">{passedData.runtime} mn</h2>
