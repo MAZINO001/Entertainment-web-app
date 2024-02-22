@@ -13,7 +13,7 @@ export default function ImageContainer() {
 
   return (
     <div className=" flex md:flex-row flex-col gap-x-8 m-4 sm:m-0">
-      <div className="">
+      <div className="w-[35%]">
         <img
           className="rounded-md cursor-pointer flex items-center justify-center mb-4 "
           src={`https://image.tmdb.org/t/p/original/${passedData.poster_path}`}
