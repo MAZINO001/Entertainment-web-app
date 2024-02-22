@@ -2,14 +2,15 @@ import { IoIosLink } from "react-icons/io";
 import { PiYoutubeLogoThin } from "react-icons/pi";
 import { FaImdb } from "react-icons/fa6";
 import { useLocation } from "react-router-dom";
+import Loader from "../../Loaders/Loader";
 export default function ImageContainer() {
   const location = useLocation();
   const passedData = location.state?.data;
 
-  if (!passedData || !passedData.poster_path) {
-    return <div>Loading...</div>;
-  }
-  
+  // if (!passedData || !passedData.poster_path) {
+  //   return <Loader />;
+  // }
+
   return (
     <div className="flex gap-x-8 ">
       <div className="w-[30%]">
@@ -88,7 +89,6 @@ export default function ImageContainer() {
               target="_blank"
               rel="noopener noreferrer"
               className="flex gap-2 items-center justify-center"
-
             >
               Trailer <PiYoutubeLogoThin className="text-lg" />
             </a>
@@ -99,7 +99,6 @@ export default function ImageContainer() {
               target="_blank"
               rel="noopener noreferrer"
               className="flex gap-2 items-center justify-center"
-
             >
               Website <FaImdb className="text-lg" />
             </a>

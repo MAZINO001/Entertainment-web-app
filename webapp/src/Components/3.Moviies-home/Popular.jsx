@@ -95,6 +95,7 @@
 //     </div>
 //   );
 // }
+
 import { NavLink } from "react-router-dom";
 /* eslint-disable no-unused-vars */
 import { useEffect, useState } from "react";
@@ -115,11 +116,17 @@ export default function Popular() {
   );
 
   const [ActiveBm, setActiveBm] = useState(false);
+  // const [Id, setId] = useState("");
   const [Id, setId] = useState(609681);
+  const HandleId = (itemId) => {
+    setId(prevId => itemId);
+  };
+  
   console.log(Id);
   const { data: imagData } = useQuery({
-    queryKey: ["ImageId"],
+    queryKey: ["ImageId", Id], 
     queryFn: () => fetchImageData(Id),
+    enabled: !!Id,
   });
 
   const {
@@ -184,12 +191,9 @@ export default function Popular() {
                 className="rounded-md cursor-pointer"
               >
                 <img
-                  className=" rounded-md cursor-pointer   "
                   src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
                   alt="Poster"
-                  onClick={() => {
-                    setId(item.id);
-                  }}
+                  onClick={() => HandleId(item.id)}
                 />
               </NavLink>
               <p className=" text-md py-1 capitalize text-gray-300 flex items-center text-slim ">
