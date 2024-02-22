@@ -5,6 +5,11 @@ import { useLocation } from "react-router-dom";
 export default function ImageContainer() {
   const location = useLocation();
   const passedData = location.state?.data;
+
+  if (!passedData || !passedData.poster_path) {
+    return <div>Loading...</div>;
+  }
+  
   return (
     <div className="flex gap-x-8 ">
       <div className="w-[30%]">
@@ -104,3 +109,9 @@ export default function ImageContainer() {
     </div>
   );
 }
+
+// export default function ImageContainer() {
+//   return (
+//     <div>ImageContainer</div>
+//   )
+// }

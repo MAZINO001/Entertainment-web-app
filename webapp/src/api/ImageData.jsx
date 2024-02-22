@@ -1,9 +1,8 @@
-// export const fetchImageData = async (Id) => {
-//   if (Id === "") {
-//     return;
-//   }
-export const fetchImageData = async () => {
-  const Id = 609681;
+export const fetchImageData = async (Id) => {
+  if (Id === "") {
+    return;
+  }
+  console.log(Id);
   const options = {
     method: "GET",
     headers: {

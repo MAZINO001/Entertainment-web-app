@@ -97,7 +97,7 @@
 // }
 import { NavLink } from "react-router-dom";
 /* eslint-disable no-unused-vars */
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { fetchTMDbDataMovies } from "../../api/FetchDataMovie";
 import { MdLocalMovies } from "react-icons/md";
 import { BsBookmarkPlusFill } from "react-icons/bs";
@@ -115,12 +115,13 @@ export default function Popular() {
   );
 
   const [ActiveBm, setActiveBm] = useState(false);
-  const [Id, setId] = useState();
-
+  const [Id, setId] = useState(609681);
+  console.log(Id);
   const { data: imagData } = useQuery({
     queryKey: ["ImageId"],
     queryFn: () => fetchImageData(Id),
   });
+
   const {
     data: Popular,
     isLoading,
@@ -187,7 +188,6 @@ export default function Popular() {
                   src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
                   alt="Poster"
                   onClick={() => {
-                    console.log(`Fetching movie details for ID: ${item.id}`);
                     setId(item.id);
                   }}
                 />
