@@ -2,14 +2,15 @@ import { IoIosLink } from "react-icons/io";
 import { PiYoutubeLogoThin } from "react-icons/pi";
 import { FaImdb } from "react-icons/fa6";
 import { useLocation } from "react-router-dom";
-import Loader from "../../Loaders/Loader";
+// import Loader from "../../Loaders/Loader";
 export default function ImageContainer() {
   const location = useLocation();
   const passedData = location.state?.data;
 
-  // if (!passedData || !passedData.poster_path) {
-  //   return <Loader />;
-  // }
+  if (!passedData) {
+    // return <Loader />;
+    console.log("data is not passed ");
+  }
 
   return (
     <div className="flex gap-x-8 ">
@@ -108,9 +109,3 @@ export default function ImageContainer() {
     </div>
   );
 }
-
-// export default function ImageContainer() {
-//   return (
-//     <div>ImageContainer</div>
-//   )
-// }

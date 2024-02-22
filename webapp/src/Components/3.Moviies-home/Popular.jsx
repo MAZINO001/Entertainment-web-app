@@ -116,18 +116,18 @@ export default function Popular() {
   );
 
   const [ActiveBm, setActiveBm] = useState(false);
-  // const [Id, setId] = useState("");
-  const [Id, setId] = useState(609681);
+  const [Id, setId] = useState("");
   const HandleId = (itemId) => {
-    setId(prevId => itemId);
+    setId(itemId);
+    fetchImageData(itemId);
   };
-  
-  console.log(Id);
-  const { data: imagData } = useQuery({
-    queryKey: ["ImageId", Id], 
+
+  const { data: imageData } = useQuery({
+    queryKey: ["ImageId", Id],
     queryFn: () => fetchImageData(Id),
-    enabled: !!Id,
   });
+
+  console.log(imageData);
 
   const {
     data: Popular,
@@ -187,7 +187,7 @@ export default function Popular() {
 
               <NavLink
                 to={`/imagecontainer`}
-                state={{ data: imagData }}
+                state={{ data: imageData }}
                 className="rounded-md cursor-pointer"
               >
                 <img
