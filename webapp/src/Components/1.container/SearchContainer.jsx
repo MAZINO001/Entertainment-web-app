@@ -159,7 +159,7 @@ export default function SearchContainer() {
       };
 
       fetch(
-        `https://api.themoviedb.org/3/search/multi?id=${id}&page=${PageNum}`,
+        `https://api.themoviedb.org/3/search/multi?query=${id}&page=${PageNum}`,
         options
       )
         .then((response) => response.json())
