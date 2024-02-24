@@ -120,8 +120,8 @@
 //   );
 // }
 
-import { NavLink } from "react-router-dom";
 /* eslint-disable no-unused-vars */
+import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { fetchTMDbDataMovies } from "../../api/FetchDataMovie";
 import { MdLocalMovies } from "react-icons/md";
@@ -131,6 +131,7 @@ import { LuDot } from "react-icons/lu";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../../Loaders/Loader";
 import useLocalStorage from "../../CustomeHooks/useLocalStorage";
+import { fetchImageData } from "../../api/ImageData";
 export default function Popular() {
   const [bookmarkedMovies, setBookmarkedMovies] = useLocalStorage(
     "bookmarkedMovies",
@@ -138,17 +139,11 @@ export default function Popular() {
   );
 
   const [ActiveBm, setActiveBm] = useState(false);
+  const [Id, setId] = useState(609681);
+  // const [Id, setId] = useState("");
   const HandleId = (itemId) => {
     setId(itemId);
   };
-
-  const [Id, setId] = useLocalStorage(
-    "moviesId",
-    []
-  );
-
-
-
   const {
     data: Popular,
     isLoading,
@@ -204,15 +199,16 @@ export default function Popular() {
                   }}
                 />
               )}
+
               <NavLink
-                // to={`/imagecontainer`}
-                // state={{ data: imageData }}
+                to={`/imagecontainer/${Id}`}
+                onClick={() => HandleId(item.id)}
                 className="rounded-md cursor-pointer"
               >
                 <img
                   src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
                   alt="Poster"
-                  onClick={() => HandleId(item.id)}
+                  // onClick={() => HandleId(item.id)}
                 />
               </NavLink>
               <p className=" text-md py-1 capitalize text-gray-300 flex items-center text-slim ">

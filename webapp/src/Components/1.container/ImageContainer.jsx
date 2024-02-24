@@ -1,13 +1,15 @@
+/* eslint-disable react/prop-types */
 // import { IoIosLink } from "react-icons/io";
 // import { PiYoutubeLogoThin } from "react-icons/pi";
 // import { FaImdb } from "react-icons/fa6";
 // import { useLocation } from "react-router-dom";
 // // import Loader from "../../Loaders/Loader";
+import { useQuery } from "@tanstack/react-query";
+import { useLocation, useParams } from "react-router-dom";
+import { fetchImageData } from "../../api/ImageData";
 // export default function ImageContainer() {
 //   const location = useLocation();
 //   const passedData = location.state?.data;
-
-import { useLocation } from "react-router-dom";
 
 //   // if (!passedData ) {
 //   //   return <Loader />;
@@ -112,16 +114,14 @@ import { useLocation } from "react-router-dom";
 // }
 
 export default function ImageContainer() {
-  const location = useLocation();
-  const passedData = location.state?.data;
-  
+  const { Id } = useParams();
   const { data: imageData } = useQuery({
     queryKey: ["ImageId", Id],
     queryFn: () => fetchImageData(Id),
     enabled: !!Id,
   });
 
+  console.log(Id);
   console.log(imageData);
-  console.log(passedData);
   return <div>ImageContainer</div>;
 }

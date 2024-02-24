@@ -64,7 +64,7 @@ const router = createBrowserRouter([
         element: <SeeAllContainer />,
       },
       {
-        path: "imagecontainer",
+        path: "imagecontainer/:id",
         element: <ImageContainer />,
       },
     ],
