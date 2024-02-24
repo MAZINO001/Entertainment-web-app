@@ -86,7 +86,8 @@ export default function SearchBar() {
       />
 
       {Active ? (
-        <NavLink to={`searchcontainer/${query}`}>
+        // <NavLink to={`searchcontainer/${query}`}>
+        <NavLink to={`searchcontainer?q=${query}`}>
           <button
             type="submit"
             className="inline-block py-2 px-4 rounded-md bg-[#5A6A90] hover:placeholder-opacity-15 text-[#fff] font-semibold"

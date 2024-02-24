@@ -40,7 +40,8 @@ const router = createBrowserRouter([
         element: <Library />,
       },
       {
-        path: "searchcontainer/:id",
+        // path: "searchcontainer/:id",
+        path: "searchcontainer?q",
         element: <SearchContainer />,
       },
       {
