@@ -139,11 +139,7 @@ export default function Popular() {
   );
 
   const [ActiveBm, setActiveBm] = useState(false);
-  const [Id, setId] = useState(609681);
-  // const [Id, setId] = useState("");
-  const HandleId = (itemId) => {
-    setId(itemId);
-  };
+
   const {
     data: Popular,
     isLoading,
@@ -201,14 +197,12 @@ export default function Popular() {
               )}
 
               <NavLink
-                to={`/imagecontainer/${Id}`}
-                onClick={() => HandleId(item.id)}
+                to={`/imagecontainer/${item.id}`}
                 className="rounded-md cursor-pointer"
               >
                 <img
                   src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
                   alt="Poster"
-                  // onClick={() => HandleId(item.id)}
                 />
               </NavLink>
               <p className=" text-md py-1 capitalize text-gray-300 flex items-center text-slim ">
