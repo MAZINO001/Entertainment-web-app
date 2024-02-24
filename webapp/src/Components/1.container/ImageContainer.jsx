@@ -14,8 +14,18 @@ export default function ImageContainer() {
     enabled: !!id,
   });
 
-  console.log(id);
-  console.log(imageData);
+  /**************************************** */
+  function toHoursAndMinutes(totalMinutes) {
+    const minutes = totalMinutes % 60;
+    const hours = Math.floor(totalMinutes / 60);
+
+    return `${padTo2Digits(hours)}:${padTo2Digits(minutes)}`;
+  }
+
+  function padTo2Digits(num) {
+    return num.toString().padStart(2, "0");
+  }
+  /**************************************** */
 
   if (isLoading) {
     return <Loader />;
@@ -39,14 +49,16 @@ export default function ImageContainer() {
         {/* rate */}
         <div className="mb-4 ">
           <h2 className="text-3xl inline-flex ">
-            {(imageData.vote_average / 2).toFixed(1)}{" "}
+            {(imageData.vote_average / 2).toFixed(1)} / 5
           </h2>
         </div>
         {/* info */}
         <div className="flex justify-evenly  text-lg font-semibold tracking-wide mb-4">
           <div className="flex flex-col text-center">
             <h2>Length</h2>
-            <h2 className="text-gray-400">{imageData.runtime}</h2>
+            <h2 className="text-gray-400">
+              {toHoursAndMinutes(imageData.runtime)} h
+            </h2>
           </div>
           <div className="flex flex-col text-center">
             <h2>Language</h2>
@@ -93,26 +105,30 @@ export default function ImageContainer() {
               Imdb <IoIosLink className="text-lg" />
             </a>
           </div>
-          <div className="bg-[#5A6A90] text-[#fff] px-4 py-2 rounded-md hover:bg-red-500 duration-300 ">
-            <a
-              href={`https://www.youtube.com/watch?v=${imageData.videos.results[1].key}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex gap-2 items-center justify-center"
-            >
-              Trailer <PiYoutubeLogoThin className="text-lg" />
-            </a>
-          </div>
-          <div className="bg-[#5A6A90] text-[#fff] px-4 py-2 rounded-md hover:bg-red-500 duration-300 ">
-            <a
-              href={`${imageData.homepage}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex gap-2 items-center justify-center"
-            >
-              Website <FaImdb className="text-lg" />
-            </a>
-          </div>
+          {imageData.videos.results[1]?.key && (
+            <div className="bg-[#5A6A90] text-[#fff] px-4 py-2 rounded-md hover:bg-red-500 duration-300 ">
+              <a
+                href={`https://www.youtube.com/watch?v=${imageData.videos.results[1].key}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex gap-2 items-center justify-center"
+              >
+                Trailer <PiYoutubeLogoThin className="text-lg" />
+              </a>
+            </div>
+          )}
+          {imageData.homepage && (
+            <div className="bg-[#5A6A90] text-[#fff] px-4 py-2 rounded-md hover:bg-red-500 duration-300 ">
+              <a
+                href={`${imageData.homepage}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex gap-2 items-center justify-center"
+              >
+                Website <FaImdb className="text-lg" />
+              </a>
+            </div>
+          )}
         </div>
       </div>
     </div>

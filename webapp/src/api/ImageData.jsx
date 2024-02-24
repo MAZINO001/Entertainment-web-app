@@ -2,7 +2,6 @@ export const fetchImageData = async (Id) => {
   if (Id === "") {
     return;
   }
-  console.log(Id);
   const options = {
     method: "GET",
     headers: {
