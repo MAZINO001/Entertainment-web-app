@@ -62,7 +62,7 @@ import { NavLink } from "react-router-dom";
 export default function SearchBar() {
   const [inputValue, setInputValue] = useState("");
   const [query, setquery] = useState("");
-
+  console.log(query);
   const handleChange = (event) => {
     setquery(event.target.value);
   };
