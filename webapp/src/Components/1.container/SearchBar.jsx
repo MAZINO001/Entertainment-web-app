@@ -58,18 +58,18 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 import { CgSearch } from "react-icons/cg";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 export default function SearchBar() {
   const [inputValue, setInputValue] = useState("");
   const [query, setquery] = useState("");
   console.log(query);
+  const navigate = useNavigate();
   const handleChange = (event) => {
     setquery(event.target.value);
   };
-  const [Active, setActive] = useState(false);
   const handleSubmit = (e) => {
     e.preventDefault();
-    setActive(true);
+    navigate(`searchcontainer/${query}`);
   };
   return (
     <form
@@ -84,25 +84,12 @@ export default function SearchBar() {
         placeholder="Search for Movies and tv-shows"
         onChange={handleChange}
       />
-
-      {Active ? (
-        // <NavLink to={`searchcontainer/${query}`}>
-        <NavLink to={`searchcontainer?q=${query}`}>
-          <button
-            type="submit"
-            className="inline-block py-2 px-4 rounded-md bg-[#5A6A90] hover:placeholder-opacity-15 text-[#fff] font-semibold"
-          >
-            Search
-          </button>
-        </NavLink>
-      ) : (
-        <button
-          type="submit"
-          className="inline-block py-2 px-4  rounded-md bg-[#5A6A90] hover:placeholder-opacity-15 text-[#fff] font-semibold"
-        >
-          Search
-        </button>
-      )}
+      <button
+        type="submit"
+        className="inline-block py-2 px-4 rounded-md bg-[#5A6A90] hover:placeholder-opacity-15 text-[#fff] font-semibold"
+      >
+        Search
+      </button>
     </form>
   );
 }
