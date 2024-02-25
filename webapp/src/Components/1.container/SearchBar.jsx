@@ -62,14 +62,17 @@ import { NavLink, useNavigate } from "react-router-dom";
 export default function SearchBar() {
   const [inputValue, setInputValue] = useState("");
   const [query, setquery] = useState("");
+  const [page, setpage] = useState("");
   console.log(query);
   const navigate = useNavigate();
   const handleChange = (event) => {
     setquery(event.target.value);
+    setpage(1);
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate(`searchcontainer/${query}`);
+    // navigate(`searchcontainer/${query}?page=${page}`);
+    navigate(`searchcontainer/${query}/${page}`);
   };
   return (
     <form
