@@ -68,11 +68,15 @@ export default function Trending() {
                     }}
                   />
                   )}
+              <NavLink
+                to={`/imagecontainer/${item.id}`}
+                className="rounded-md cursor-pointer"
+              >
                 <img
-                  className=" rounded-md cursor-pointer   "
                   src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
                   alt="Poster"
                 />
+              </NavLink>
               </div>
               <p className="text-sm py-1 capitalize text-gray-300 flex items-center text-slim absolute bottom-[80px] left-[10px]">
                 <span>{new Date(item.release_date).getFullYear()}</span>

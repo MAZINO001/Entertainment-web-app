@@ -69,11 +69,15 @@ export default function NowPlaying() {
                 />
               )}
 
-              <img
-                className=" rounded-md cursor-pointer   "
-                src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
-                alt="Poster"
-              />
+              <NavLink
+                to={`/imagecontainer/${item.id}`}
+                className="rounded-md cursor-pointer"
+              >
+                <img
+                  src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
+                  alt="Poster"
+                />
+              </NavLink>
               <p className=" text-md py-1 capitalize text-gray-300 flex items-center text-slim ">
                 <span>{new Date(item.release_date).getFullYear()}</span>
 

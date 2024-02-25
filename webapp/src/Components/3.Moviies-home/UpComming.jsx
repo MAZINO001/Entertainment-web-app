@@ -9,7 +9,10 @@ import { useEffect, useState } from "react";
 import useLocalStorage from "../../CustomeHooks/useLocalStorage";
 import { NavLink } from "react-router-dom";
 export default function UpComming() {
-  const [bookmarkedMovies, setBookmarkedMovies] = useLocalStorage("bookmarkedMovies", []);
+  const [bookmarkedMovies, setBookmarkedMovies] = useLocalStorage(
+    "bookmarkedMovies",
+    []
+  );
   const [ActiveBm, setActiveBm] = useState(false);
   const {
     data: UpComming,
@@ -19,8 +22,6 @@ export default function UpComming() {
     queryKey: ["UpComming"],
     queryFn: () => fetchTMDbDataMovies("upComming"),
   });
-
-
 
   if (isLoading) {
     return <Loader />;
@@ -46,7 +47,7 @@ export default function UpComming() {
           .slice(0, 8)
           .map((item) => (
             <div key={item.id} className="relative">
-            {bookmarkedMovies.includes(item.id) ? (
+              {bookmarkedMovies.includes(item.id) ? (
                 <BsBookmarkCheckFill
                   className="absolute top-0 right-[-3px] cursor-pointer text-2xl text-[#FC4747]"
                   onClick={() => {
@@ -68,11 +69,15 @@ export default function UpComming() {
                 />
               )}
 
-            <img
-              className=" rounded-md cursor-pointer   "
-              src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
-              alt="Poster"
-            />
+              <NavLink
+                to={`/imagecontainer/${item.id}`}
+                className="rounded-md cursor-pointer"
+              >
+                <img
+                  src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
+                  alt="Poster"
+                />
+              </NavLink>
               <p className=" text-md py-1 capitalize text-gray-300 flex items-center text-slim ">
                 <span>{new Date(item.release_date).getFullYear()}</span>
 
