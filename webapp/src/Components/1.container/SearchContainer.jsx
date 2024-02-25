@@ -5,16 +5,16 @@ import { MdLocalMovies } from "react-icons/md";
 import { PiTelevisionFill } from "react-icons/pi";
 import { LuDot } from "react-icons/lu";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import Loader from "../../Loaders/Loader";
+
 export default function SearchContainer() {
   const { query, page } = useParams();
-  console.log("Query:", query);
-  console.log("Page Number:", page);
-
-  const [PageNum, setPageNum] = useState(page);
+  const navigate = useNavigate();
+  const [currentPage, setCurrentPage] = useState(Number(page) || 1); // Ensure valid initial page
   const [Data, setData] = useState(null);
-  const [Results, setResults] = useState(null);
-  const [Pages, setPages] = useState(null);
+  const [results, setResults] = useState(null);
+  const [pages, setPages] = useState(null);
 
   useEffect(() => {
     const options = {
@@ -27,7 +27,7 @@ export default function SearchContainer() {
     };
 
     fetch(
-      `https://api.themoviedb.org/3/search/multi?query=${query}&page=${page}`,
+      `https://api.themoviedb.org/3/search/multi?query=${query}&page=${currentPage}`,
       options
     )
       .then((response) => response.json())
@@ -37,26 +37,27 @@ export default function SearchContainer() {
         setResults(responseData.total_results);
       })
       .catch((err) => console.error(err));
-  }, [query, page]);
+  }, [query, currentPage]);
 
-  const TotalResults = Results;
-  const TotalPages = Pages;
-  const [CurrentPage, setCurrentPage] = useState(1);
   const handleNextPage = () => {
-    setPageNum(page);
-    setCurrentPage(page + 1);
+    if (currentPage < pages) {
+      setCurrentPage(currentPage + 1);
+      navigate(`/searchcontainer/${query}/${currentPage + 1}`);
+    }
   };
 
   const handlePrevPage = () => {
-    setPageNum(page);
-    setCurrentPage(page - 1);
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+      navigate(`/searchcontainer/${query}/${currentPage - 1}`);
+    }
   };
 
   return (
     <div className="flex flex-col px-4">
       <div className="flex items-center justify-between">
         <h2 className="title mt-2 mb-4">
-          Found {TotalResults} results for {`'${query}'`}
+          Found {results} results for {`'${query}'`}
         </h2>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  gap-x-8  justify-items-center ">
@@ -91,7 +92,7 @@ export default function SearchContainer() {
             </div>
           ))
         ) : (
-          <p>Data is not an array</p>
+          <Loader />
         )}
       </div>
       <div className="flex justify-center gap-[1rem] mb-4">
@@ -109,16 +110,16 @@ export default function SearchContainer() {
               <IoArrowBackOutline />
             </button>
             <div className="bg-blue-500 px-4 rounded flex justify-center items-center tracking-wide">
-              {page} / {TotalPages}
+              {currentPage} / {pages}
             </div>
             <button
               className={`${
-                page === TotalPages
+                page === pages
                   ? "bg-blue-300 cursor-not-allowed"
                   : "bg-blue-500"
               } text-white font-bold py-2 px-4 rounded flex justify-center gap-[1rem] items-center`}
               onClick={handleNextPage}
-              disabled={page === TotalPages}
+              disabled={page === pages}
             >
               <IoArrowForwardOutline />
             </button>

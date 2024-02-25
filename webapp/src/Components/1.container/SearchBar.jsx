@@ -63,7 +63,6 @@ export default function SearchBar() {
   const [inputValue, setInputValue] = useState("");
   const [query, setquery] = useState("");
   const [page, setpage] = useState("");
-  console.log(query);
   const navigate = useNavigate();
   const handleChange = (event) => {
     setquery(event.target.value);
