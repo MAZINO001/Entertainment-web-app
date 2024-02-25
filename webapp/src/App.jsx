@@ -29,6 +29,12 @@ const router = createBrowserRouter([
       {
         path: "movies",
         element: <Movies />,
+        children: [
+          {
+            path: "resultscontainer/:id/:page",
+            element: <ResultContainer />,
+          },
+        ],
       },
       {
         path: "tvshows",
@@ -39,14 +45,10 @@ const router = createBrowserRouter([
         element: <Library />,
       },
       {
-        // path: "searchcontainer/:query",
         path: "/searchcontainer/:query/:page",
         element: <SearchContainer />,
       },
-      {
-        path: "resultscontainer/:id/:page",
-        element: <ResultContainer />,
-      },
+
       {
         path: "seeallcontainer",
         element: <SeeAllContainer />,
