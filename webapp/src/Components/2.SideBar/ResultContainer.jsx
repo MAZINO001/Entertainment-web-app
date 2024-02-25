@@ -68,24 +68,28 @@
 
 /* eslint-disable react/prop-types */
 import { MdLocalMovies } from "react-icons/md";
-import Loader from "../../Loaders/Loader";
+// import Loader from "../../Loaders/Loader";
 import { LuDot } from "react-icons/lu";
 import { PiTelevisionFill } from "react-icons/pi";
+import { useParams } from "react-router-dom";
 
 export default function ResultContainer() {
+  const { id, page } = useParams();
+  console.log(id);
+  console.log(page);
 
-  const { data: moviesData, isLoading } = useQuery({
-    queryKey: ["movies", gnereId, PageNum],
-    queryFn: () => fetchMoviesTypeData(gnereId, PageNum),
-  });
+  // const { data: moviesData, isLoading } = useQuery({
+  //   queryKey: ["movies", gnereId, PageNum],
+  //   queryFn: () => fetchMoviesTypeData(gnereId, PageNum),
+  // });
 
-  const handleNextPage = () => {
-    setPageNum(PageNum + 1);
-  };
+  // const handleNextPage = () => {
+  //   setPageNum(PageNum + 1);
+  // };
 
-  const handlePrevPage = () => {
-    setPageNum(PageNum - 1);
-  };
+  // const handlePrevPage = () => {
+  //   setPageNum(PageNum - 1);
+  // };
 
   return (
     <div className=" grid grid-cols-1 sm:grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 relative pb-10 mx-4 sm:mx-0">

@@ -145,13 +145,12 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 export default function Movies() {
-  const [gnereId, setgnereId] = useState("");
+  const [gnereId, setgnereId] = useState(278);
   const [PageNum, setPageNum] = useState(1);
   const navigate = useNavigate();
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = () => {
     navigate(`searchcontainer/${gnereId}/${PageNum}`);
-  }; 
+  };
 
   const genres = [
     {
@@ -235,15 +234,14 @@ export default function Movies() {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 pt-4  md:pt-0">
       {genres.map((genre) => (
-        
         <button
           key={genre.name}
           className="bg-blue-500 h-[150px] mx-10  sm:mx-0 rounded-md cursor-pointer text-3xl sm:text-2xl font-semibold capitalize tracking-wider"
-          onClick={() => handleSubmit(genre)}
+          onClick={handleSubmit}
         >
           {genre.name}
         </button>
       ))}
     </div>
   );
-  
+}

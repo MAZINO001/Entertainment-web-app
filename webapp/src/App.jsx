@@ -44,7 +44,7 @@ const router = createBrowserRouter([
         element: <SearchContainer />,
       },
       {
-        path: "resultscontainer/:query/:page",
+        path: "resultscontainer/:id/:page",
         element: <ResultContainer />,
       },
       {
