@@ -141,8 +141,8 @@ import { LuDot } from "react-icons/lu";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 export default function SearchContainer() {
-  const { q } = useParams();
-  console.log(q);
+  const { query } = useParams();
+  console.log(query);
   const [PageNum, setPageNum] = useState(1);
   const [Data, setData] = useState(null);
   const [Results, setResults] = useState(null);
@@ -159,7 +159,7 @@ export default function SearchContainer() {
       };
 
       fetch(
-        `https://api.themoviedb.org/3/search/multi?query=${q}&page=${PageNum}`,
+        `https://api.themoviedb.org/3/search/multi?query=${query}&page=${PageNum}`,
         options
       )
         .then((response) => response.json())
@@ -170,7 +170,7 @@ export default function SearchContainer() {
         })
         .catch((err) => console.error(err));
     };
-  }, [q, PageNum]);
+  }, [query, PageNum]);
 
   const TotalResults = Results;
   const TotalPages = Pages;
@@ -189,7 +189,7 @@ export default function SearchContainer() {
     <div className="flex flex-col px-4">
       <div className="flex items-center justify-between">
         <h2 className="title mt-2 mb-4">
-          Found {TotalResults} results for {`'${q}'`}
+          Found {TotalResults} results for {`'${query}'`}
         </h2>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  gap-x-8  justify-items-center ">
@@ -228,7 +228,7 @@ export default function SearchContainer() {
         )}
       </div>
       <div className="flex justify-center gap-[1rem] mb-4">
-        {q === "" ? (
+        {query === "" ? (
           ""
         ) : (
           <>
