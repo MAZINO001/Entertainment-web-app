@@ -142,16 +142,17 @@
 // }
 
 /* eslint-disable no-unused-vars */
-import { fetchMoviesTypeData } from "../../api/fetchTypeData";
-import { useQuery } from "@tanstack/react-query";
-import { useEffect, useState } from "react";
-import ResultContainer from "./ResultContainer";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 export default function Movies() {
-  const [gnereId, setgnereId] = useState(18);
+  const [gnereId, setgnereId] = useState("");
   const [PageNum, setPageNum] = useState(1);
-  const [Active, setActive] = useState(true);
+  const navigate = useNavigate();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    navigate(`searchcontainer/${gnereId}/${PageNum}`);
+  }; 
 
-  
   const genres = [
     {
       id: 28,
@@ -230,32 +231,19 @@ export default function Movies() {
       name: "Western",
     },
   ];
+
   return (
-    <>
-      {Active ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 pt-4  md:pt-0">
-          {genres.map((genre) => (
-            <button
-              key={genre.name}
-              className="bg-blue-500 h-[150px] mx-10  sm:mx-0 rounded-md cursor-pointer text-3xl sm:text-2xl font-semibold capitalize tracking-wider"
-              onClick={() => handleGenreClick(genre)}
-            >
-              {genre.name}
-            </button>
-          ))}
-        </div>
-      ) : (
-        <div>
-          {moviesData && (
-            <ResultContainer
-              Loading={isLoading}
-              data={moviesData}
-              handlePrevPage={handlePrevPage}
-              handleNextPage={handleNextPage}
-            />
-          )}
-        </div>
-      )}
-    </>
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 pt-4  md:pt-0">
+      {genres.map((genre) => (
+        
+        <button
+          key={genre.name}
+          className="bg-blue-500 h-[150px] mx-10  sm:mx-0 rounded-md cursor-pointer text-3xl sm:text-2xl font-semibold capitalize tracking-wider"
+          onClick={() => handleSubmit(genre)}
+        >
+          {genre.name}
+        </button>
+      ))}
+    </div>
   );
-}
+  
