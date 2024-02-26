@@ -148,7 +148,7 @@ export default function Movies() {
   const [genreId, setgenreId] = useState(278);
   const [pageNum, setpageNum] = useState(1);
   const navigate = useNavigate();
-  const handleSubmit = () => {
+  const handleGenreClick = (genreId) => {
     navigate(`/movies/resultscontainer/${genreId}/${pageNum}`);
   };
 
@@ -237,10 +237,7 @@ export default function Movies() {
         <button
           key={genre.name}
           className="bg-blue-500 h-[150px] mx-10 sm:mx-0 rounded-md cursor-pointer text-3xl sm:text-2xl font-semibold capitalize tracking-wider"
-          onClick={() => {
-            setgenreId(genre.id);
-            handleSubmit();
-          }}
+          onClick={() => handleGenreClick(genre.id)}
         >
           {genre.name}
         </button>
