@@ -57,6 +57,10 @@ const router = createBrowserRouter([
         path: "imagecontainer/:id",
         element: <ImageContainer />,
       },
+      // {
+      //   path: "resultscontainer/:id/:page",
+      //   element: <ResultContainer />,
+      // },
     ],
   },
 ]);
