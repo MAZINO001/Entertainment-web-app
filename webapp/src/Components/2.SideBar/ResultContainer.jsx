@@ -31,13 +31,13 @@ export default function ResultContainer() {
   const handleNextPage = () => {
     setCurrentPage(currentPage + 1);
     const nextPage = parseInt(page) + 1;
-    navigate(`/resultscontainer/${id}/${nextPage}`);
+    navigate(`/resultscontainer/${type}/${id}/${nextPage}`);
   };
 
   const handlePrevPage = () => {
     setCurrentPage(currentPage - 1);
     const nextPage = parseInt(page) - 1;
-    navigate(`/resultscontainer/${id}/${nextPage}`);
+    navigate(`/resultscontainer/${type}/${id}/${nextPage}`);
   };
 
   if (isLoading) {

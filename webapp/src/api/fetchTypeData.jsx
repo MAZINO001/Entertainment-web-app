@@ -45,7 +45,7 @@ export const fetchTvShowsTypeData = async (id, page) => {
   };
 
   try {
-    const response = await fetch(Url.movie, options);
+    const response = await fetch(Url.tvshow, options);
 
     if (!response.ok) {
       throw new Error("Failed to fetch data");
