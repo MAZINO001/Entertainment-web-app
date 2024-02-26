@@ -52,7 +52,7 @@ export const fetchTvShowsTypeData = async (gnereId, PageNum) => {
     }
 
     const data = await response.json();
-    // return console.log(data.results);
+    console.log(data.results);
     return data.results;
   } catch (error) {
     console.error(error);
