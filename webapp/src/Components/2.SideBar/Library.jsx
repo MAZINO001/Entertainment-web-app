@@ -50,20 +50,24 @@
 //     </div>
 //   );
 // }
+
 /* eslint-disable react/prop-types */
 import { LuDot } from "react-icons/lu";
 import { MdLocalMovies } from "react-icons/md";
 import { useQuery } from "@tanstack/react-query";
 import { fetchMoviesLibrary } from "../../api/LibraryData";
 import { BsBookmarkXFill } from "react-icons/bs";
-
+import Loader from "../../Loaders/Loader";
 export default function Library() {
   const bookmarkedMovies = JSON.parse(localStorage.getItem("bookmarkedMovies"));
   console.log(bookmarkedMovies);
-  const { data } = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: ["Bookmarked"],
     queryFn: () => fetchMoviesLibrary(bookmarkedMovies),
   });
+  if (isLoading) {
+    <Loader />;
+  }
   return (
     <div>
       <div className="title">
