@@ -52,7 +52,6 @@ export const fetchTvShowsTypeData = async (id, page) => {
     }
 
     const data = await response.json();
-    // console.log(data.results);
     return data.results;
   } catch (error) {
     console.error(error);

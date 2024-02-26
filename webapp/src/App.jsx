@@ -29,22 +29,22 @@ const router = createBrowserRouter([
       {
         path: "movies",
         element: <Movies />,
-        children: [
-          {
-            path: "resultscontainer/:id/:page",
-            element: <ResultContainer />,
-          },
-        ],
+        // children: [
+        //   {
+        //     path: "resultscontainer/:id/:page",
+        //     element: <ResultContainer />,
+        //   },
+        // ],
       },
       {
         path: "tvshows",
         element: <TvShows />,
-        children: [
-          {
-            path: "resultscontainer/:id/:page",
-            element: <ResultContainer />,
-          },
-        ],
+        // children: [
+        //   {
+        //     path: "resultscontainer/:id/:page",
+        //     element: <ResultContainer />,
+        //   },
+        // ],
       },
       {
         path: "library",
@@ -63,10 +63,10 @@ const router = createBrowserRouter([
         path: "imagecontainer/:id",
         element: <ImageContainer />,
       },
-      // {
-      //   path: "resultscontainer/:id/:page",
-      //   element: <ResultContainer />,
-      // },
+      {
+        path: "resultscontainer/:type/:id/:page",
+        element: <ResultContainer />,
+      },
     ],
   },
 ]);

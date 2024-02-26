@@ -4,20 +4,29 @@ import Loader from "../../Loaders/Loader";
 import { LuDot } from "react-icons/lu";
 import { PiTelevisionFill } from "react-icons/pi";
 import { useNavigate, useParams } from "react-router-dom";
-import { fetchMoviesTypeData } from "../../api/fetchTypeData";
+import {
+  fetchMoviesTypeData,
+  fetchTvShowsTypeData,
+} from "../../api/fetchTypeData";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 
 export default function ResultContainer() {
-  const { id, page } = useParams();
-  console.log("Genre ID:", id);
-  console.log("Page Number:", page);
+  const { id, page, type } = useParams();
+  const handleFnType = async (id, page) => {
+    if (type === "Movies") {
+      return await fetchMoviesTypeData(id, page);
+    } else {
+      return await fetchTvShowsTypeData(id, page);
+    }
+  };
+
   const [currentPage, setCurrentPage] = useState(Number(page) || 1);
   const { data: moviesData, isLoading } = useQuery({
     queryKey: ["movies", id, page],
-    queryFn: () => fetchMoviesTypeData(id, page),
+    queryFn: () => handleFnType(id, page),
   });
-  
+
   const navigate = useNavigate();
   const handleNextPage = () => {
     setCurrentPage(currentPage + 1);
@@ -30,11 +39,10 @@ export default function ResultContainer() {
     const nextPage = parseInt(page) - 1;
     navigate(`/resultscontainer/${id}/${nextPage}`);
   };
+
   if (isLoading) {
     return <Loader />;
   }
-
-  console.log(moviesData);
 
   return (
     <div className=" grid grid-cols-1 sm:grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 relative pb-10 mx-4 sm:mx-0">
@@ -86,12 +94,3 @@ export default function ResultContainer() {
     </div>
   );
 }
-
-// import { useParams } from "react-router-dom";
-// export default function ResultContainer() {
-//   const { id, page } = useParams();
-//   console.log("Genre ID:", id);
-//   console.log("Page Number:", page);
-
-//   return <div>ResultContainer</div>;
-// }
