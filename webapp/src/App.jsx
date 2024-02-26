@@ -39,6 +39,7 @@ const router = createBrowserRouter([
       {
         path: "tvshows",
         element: <TvShows />,
+        
       },
       {
         path: "library",

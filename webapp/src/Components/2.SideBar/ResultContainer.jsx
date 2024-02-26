@@ -11,7 +11,7 @@ import { useQuery } from "@tanstack/react-query";
 export default function ResultContainer() {
   const { id, page } = useParams();
   console.log("Genre ID:", id);
-  console.log("Page Number:", page); 
+  console.log("Page Number:", page);
 
   const { data: moviesData } = useQuery({
     queryKey: ["movies", id, page],
