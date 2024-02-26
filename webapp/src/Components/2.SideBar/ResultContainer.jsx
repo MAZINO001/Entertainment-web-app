@@ -17,20 +17,7 @@ export default function ResultContainer() {
     queryKey: ["movies", id, page],
     queryFn: () => fetchMoviesTypeData(id, page),
   });
-
-  // const handleNextPage = () => {
-  //   if (currentPage < pages) {
-  //     setCurrentPage(currentPage + 1);
-  //     navigate(`/searchcontainer/${query}/${currentPage + 1}`);
-  //   }
-  // };
-
-  // const handlePrevPage = () => {
-  //   if (currentPage > 1) {
-  //     setCurrentPage(currentPage - 1);
-  //     navigate(`/searchcontainer/${query}/${currentPage - 1}`);
-  //   }
-  // };
+  
   const navigate = useNavigate();
   const handleNextPage = () => {
     setCurrentPage(currentPage + 1);

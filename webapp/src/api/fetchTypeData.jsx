@@ -30,7 +30,7 @@ export const fetchMoviesTypeData = async (id, page) => {
 };
 
 /* eslint-disable no-unused-vars */
-export const fetchTvShowsTypeData = async (gnereId, PageNum) => {
+export const fetchTvShowsTypeData = async (id, page) => {
   const options = {
     method: "GET",
     headers: {
@@ -41,7 +41,7 @@ export const fetchTvShowsTypeData = async (gnereId, PageNum) => {
   };
 
   const Url = {
-    movie: `https://api.themoviedb.org/3/discover/tv?with_genres=${gnereId}&language=en-US&page=${PageNum}`,
+    tvshow: `https://api.themoviedb.org/3/discover/tv?with_genres=${id}&language=en-US&page=${page}`,
   };
 
   try {
@@ -52,8 +52,8 @@ export const fetchTvShowsTypeData = async (gnereId, PageNum) => {
     }
 
     const data = await response.json();
-    console.log(data.results);
-    // return data.results;
+    // console.log(data.results);
+    return data.results;
   } catch (error) {
     console.error(error);
     throw new Error("Failed to fetch data");
