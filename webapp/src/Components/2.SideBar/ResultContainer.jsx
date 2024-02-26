@@ -3,32 +3,50 @@ import { MdLocalMovies } from "react-icons/md";
 import Loader from "../../Loaders/Loader";
 import { LuDot } from "react-icons/lu";
 import { PiTelevisionFill } from "react-icons/pi";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { fetchMoviesTypeData } from "../../api/fetchTypeData";
 import { useQuery } from "@tanstack/react-query";
+import { useState } from "react";
 
 export default function ResultContainer() {
   const { id, page } = useParams();
   console.log("Genre ID:", id);
   console.log("Page Number:", page);
-
+  const [currentPage, setCurrentPage] = useState(Number(page) || 1);
   const { data: moviesData, isLoading } = useQuery({
     queryKey: ["movies", id, page],
     queryFn: () => fetchMoviesTypeData(id, page),
   });
 
+  // const handleNextPage = () => {
+  //   if (currentPage < pages) {
+  //     setCurrentPage(currentPage + 1);
+  //     navigate(`/searchcontainer/${query}/${currentPage + 1}`);
+  //   }
+  // };
+
+  // const handlePrevPage = () => {
+  //   if (currentPage > 1) {
+  //     setCurrentPage(currentPage - 1);
+  //     navigate(`/searchcontainer/${query}/${currentPage - 1}`);
+  //   }
+  // };
+  const navigate = useNavigate();
   const handleNextPage = () => {
-    // setPageNum(page + 1);
-    console.log("next");
+    setCurrentPage(currentPage + 1);
+    const nextPage = parseInt(page) + 1;
+    navigate(`/resultscontainer/${id}/${nextPage}`);
   };
 
   const handlePrevPage = () => {
-    // setPageNum(page - 1);
-    console.log("prev");
+    setCurrentPage(currentPage - 1);
+    const nextPage = parseInt(page) - 1;
+    navigate(`/resultscontainer/${id}/${nextPage}`);
   };
   if (isLoading) {
-    <Loader />;
+    return <Loader />;
   }
+
   console.log(moviesData);
 
   return (
