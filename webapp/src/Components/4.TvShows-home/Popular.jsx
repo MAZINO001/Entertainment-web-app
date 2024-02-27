@@ -8,6 +8,7 @@ import { NavLink } from "react-router-dom";
 import { useState } from "react";
 export default function Popular() {
   const [type, settype] = useState("TvShows");
+  const [query, setquery] = useState("Popular");
   const {
     data: Popular,
     isLoading,
@@ -31,7 +32,7 @@ export default function Popular() {
         <h2 className="title ">Popular</h2>
         <span className="typespan ml-[-15px]">TV SERIES</span>
         <NavLink
-          to="seeallcontainer"
+          to={`seeallcontainer/${type}/${query}`}
           state={{ data: Popular }}
           className="text-xl sm:text-lg text-[#FC4747] px-2 py-1 rounded-md"
         >

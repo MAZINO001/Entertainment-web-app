@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { NavLink } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { fetchTMDbDataMovies } from "../../api/FetchDataMovie";
 import { MdLocalMovies } from "react-icons/md";
@@ -17,7 +17,7 @@ export default function Popular() {
 
   const [ActiveBm, setActiveBm] = useState(false);
   const [type, settype] = useState("Movies");
-
+  const [query, setquery] = useState("Popular");
   const {
     data: Popular,
     isLoading,
@@ -40,7 +40,7 @@ export default function Popular() {
         <h2 className="title">Popular</h2>
         <span className="typespan ml-[-15px]">Movies</span>
         <NavLink
-          to="seeallcontainer"
+          to={`seeallcontainer/${type}/${query}`}
           state={{ data: Popular }}
           className="text-xl sm:text-lg text-[#FC4747] px-2 py-1 rounded-md"
         >
@@ -74,11 +74,9 @@ export default function Popular() {
                 />
               )}
 
-              <NavLink
-                to={`/imagecontainer/${type}/${item.id}`}
-                >
+              <NavLink to={`/imagecontainer/${type}/${item.id}`}>
                 <img
-                className="rounded-md cursor-pointer"
+                  className="rounded-md cursor-pointer"
                   src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
                   alt="Poster"
                 />
