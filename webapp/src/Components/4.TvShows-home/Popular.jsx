@@ -3,6 +3,7 @@ import { PiTelevisionFill } from "react-icons/pi";
 import { useQuery } from "@tanstack/react-query";
 import { LuDot } from "react-icons/lu";
 import Loader from "../../Loaders/Loader";
+import { NavLink } from "react-router-dom";
 export default function Popular() {
   const {
     data: Popular,
@@ -35,11 +36,16 @@ export default function Popular() {
           .slice(0, 8)
           .map((item) => (
             <div key={item.id} className="">
-              <img
-                className=" rounded-md cursor-pointer "
-                src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
-                alt="Poster"
-              />
+              <NavLink
+                to={`/imagecontainer/${item.id}`}
+                className="rounded-md cursor-pointer"
+              >
+                <img
+                  src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
+                  alt="Poster"
+                />
+              </NavLink>
+
               <p className="text-sm py-1 capitalize text-gray-300 flex items-center text-slim ">
                 <span>{new Date(item.first_air_date).getFullYear()}</span>
 

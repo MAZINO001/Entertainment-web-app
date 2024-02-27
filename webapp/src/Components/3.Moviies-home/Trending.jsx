@@ -9,7 +9,10 @@ import { useEffect, useState } from "react";
 import useLocalStorage from "../../CustomeHooks/useLocalStorage";
 import { NavLink } from "react-router-dom";
 export default function Trending() {
-  const [bookmarkedMovies, setBookmarkedMovies] = useLocalStorage("bookmarkedMovies", []);
+  const [bookmarkedMovies, setBookmarkedMovies] = useLocalStorage(
+    "bookmarkedMovies",
+    []
+  );
   const [ActiveBm, setActiveBm] = useState(false);
   const {
     data: Trending,
@@ -19,7 +22,6 @@ export default function Trending() {
     queryKey: ["Trending"],
     queryFn: () => fetchTMDbDataMovies("trending"),
   });
- 
 
   if (isLoading) {
     return <Loader />;
@@ -46,7 +48,8 @@ export default function Trending() {
           .slice(0, 10)
           .map((item) => (
             <div key={item.id} className="w-[407px] relative ">
-              <div className="imgShwd rounded-md bg-green-500">
+              {/* <div className="imgShwd rounded-md bg-green-500"> */}
+              <div className=" rounded-md">
                 {bookmarkedMovies.includes(item.id) ? (
                   <BsBookmarkCheckFill
                     className="absolute top-0 right-[-3px] cursor-pointer text-2xl text-[#FC4747] z-50"
@@ -67,16 +70,16 @@ export default function Trending() {
                       setBookmarkedMovies([...bookmarkedMovies, movieId]);
                     }}
                   />
-                  )}
-              <NavLink
-                to={`/imagecontainer/${item.id}`}
-                className="rounded-md cursor-pointer"
-              >
-                <img
-                  src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
-                  alt="Poster"
-                />
-              </NavLink>
+                )}
+                <NavLink
+                  to={`/imagecontainer/${item.id}`}
+                  className="rounded-md cursor-pointer"
+                >
+                  <img
+                    src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
+                    alt="Poster"
+                  />
+                </NavLink>
               </div>
               <p className="text-sm py-1 capitalize text-gray-300 flex items-center text-slim absolute bottom-[80px] left-[10px]">
                 <span>{new Date(item.release_date).getFullYear()}</span>

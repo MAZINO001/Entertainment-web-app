@@ -17,10 +17,10 @@ export default function Home() {
       {/* <PopularMovies /> */}
       {/* <NowPlayingMovies /> */}
       {/* <UpCommingMovies /> */}
-      <TopRatedMovies />
+      {/* <TopRatedMovies /> */}
       <hr className="my-4" />
       {/* <TrendingTv /> */}
-      {/* <PopularTv /> */}
+      <PopularTv />
       {/* <NowPlayingTv /> */}
       {/* <UpCommingTv /> */}
       {/* <TopRatedTv /> */}
