@@ -5,12 +5,20 @@ import { FaImdb } from "react-icons/fa6";
 import Loader from "../../Loaders/Loader";
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
-import { fetchImageData } from "../../api/ImageData";
+import { fetchImageData, fetchImageDataTv } from "../../api/ImageData";
 export default function ImageContainer() {
-  const { id } = useParams();
+  const { type, id } = useParams();
+
+  const handleType = async (id) => {
+    if (type === "Movies") {
+      return await fetchImageData(id);
+    } else {
+      return await fetchImageDataTv(id);
+    }
+  };
   const { data: imageData, isLoading } = useQuery({
     queryKey: ["ImageId", id],
-    queryFn: () => fetchImageData(id),
+    queryFn: () => handleType(id),
     enabled: !!id,
   });
 
@@ -69,7 +77,8 @@ export default function ImageContainer() {
           <div className="flex flex-col text-center">
             <h2>Year</h2>
             <h2 className="text-gray-400">
-              {new Date(imageData.release_date).getFullYear()}
+              {/* {new Date(imageData.release_date).getFullYear()} */}
+              {new Date(imageData.first_air_date).getFullYear()}
             </h2>
           </div>
           <div className="flex flex-col text-center">

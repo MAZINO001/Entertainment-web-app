@@ -1,10 +1,13 @@
+/* eslint-disable no-unused-vars */
 import { fetchTMDbData } from "../../api/fetchDataTv";
 import { PiTelevisionFill } from "react-icons/pi";
 import { useQuery } from "@tanstack/react-query";
 import { LuDot } from "react-icons/lu";
 import Loader from "../../Loaders/Loader";
 import { NavLink } from "react-router-dom";
+import { useState } from "react";
 export default function Popular() {
+  const [type, settype] = useState("TvShows");
   const {
     data: Popular,
     isLoading,
@@ -37,7 +40,7 @@ export default function Popular() {
           .map((item) => (
             <div key={item.id} className="">
               <NavLink
-                to={`/imagecontainer/${item.id}`}
+                to={`/imagecontainer/${type}/${item.id}`}
                 className="rounded-md cursor-pointer"
               >
                 <img
