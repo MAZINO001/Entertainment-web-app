@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { fetchTMDbData } from "../../api/fetchDataTv";
 
 import { PiTelevisionFill } from "react-icons/pi";
