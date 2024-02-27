@@ -41,17 +41,15 @@ export default function Trending() {
           .slice(0, 10)
           .map((item) => (
             <div key={item.id} className="w-[407px] relative ">
-              <div className="imgShwd rounded-md">
-                <NavLink
-                  to={`/imagecontainer/${type}/${item.id}`}
-                  className="rounded-md cursor-pointer"
-                >
+              <NavLink to={`/imagecontainer/${type}/${item.id}`}>
+                <div className="imgShwd rounded-md">
                   <img
+                    className="rounded-md cursor-pointer"
                     src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
                     alt="Poster"
                   />
-                </NavLink>
-              </div>
+                </div>
+              </NavLink>
               <p className="text-sm py-1 capitalize text-gray-300 flex items-center text-slim absolute bottom-[50px] left-[10px]">
                 <span>{new Date(item.first_air_date).getFullYear()}</span>
 

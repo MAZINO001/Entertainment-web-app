@@ -71,11 +71,9 @@ export default function UpComming() {
                 />
               )}
 
-<NavLink
-                to={`/imagecontainer/${type}/${item.id}`}
-                className="rounded-md cursor-pointer"
-              >
+              <NavLink to={`/imagecontainer/${type}/${item.id}`}>
                 <img
+                  className="rounded-md cursor-pointer"
                   src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
                   alt="Poster"
                 />

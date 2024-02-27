@@ -51,7 +51,8 @@ export default function Trending() {
           .map((item) => (
             <div key={item.id} className="w-[407px] relative ">
               {/* <div className="imgShwd rounded-md bg-green-500"> */}
-              <div className=" rounded-md">
+              <NavLink to={`/imagecontainer/${type}/${item.id}`}>
+              <div className=" rounded-md imgShwd">
                 {bookmarkedMovies.includes(item.id) ? (
                   <BsBookmarkCheckFill
                     className="absolute top-0 right-[-3px] cursor-pointer text-2xl text-[#FC4747] z-50"
@@ -73,16 +74,14 @@ export default function Trending() {
                     }}
                   />
                 )}
-                 <NavLink
-                to={`/imagecontainer/${type}/${item.id}`}
-                className="rounded-md cursor-pointer"
-              >
-                <img
-                  src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
-                  alt="Poster"
-                />
-              </NavLink>
+                  <img
+                    className="rounded-md cursor-pointer"
+                    src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
+                    alt="Poster"
+                  />
+                
               </div>
+              </NavLink>
               <p className="text-sm py-1 capitalize text-gray-300 flex items-center text-slim absolute bottom-[80px] left-[10px]">
                 <span>{new Date(item.release_date).getFullYear()}</span>
 

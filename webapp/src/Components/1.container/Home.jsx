@@ -19,7 +19,7 @@ export default function Home() {
       <UpCommingMovies />
       <TopRatedMovies />
       <hr className="my-4" />
-      {/* <TrendingTv /> */}
+      <TrendingTv />
       {/* <PopularTv /> */}
       {/* <NowPlayingTv /> */}
       {/* <UpCommingTv /> */}

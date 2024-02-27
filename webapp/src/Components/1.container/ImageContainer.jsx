@@ -24,6 +24,9 @@ export default function ImageContainer() {
 
   /**************************************** */
   function toHoursAndMinutes(totalMinutes) {
+    if (isNaN(totalMinutes)) {
+      return "00:00"
+    }
     const minutes = totalMinutes % 60;
     const hours = Math.floor(totalMinutes / 60);
 
