@@ -32,9 +32,13 @@ export default function TopRated() {
       <div className="flex justify-between items-center relative ">
         <h2 className="title">TopRated</h2>
         <span className="typespan ml-[7px]">TV SERIES</span>
-        <button className=" text-md text-[#fff] bg-[#FC4747] px-2 py-1  rounded-md ">
+        <NavLink
+          to="seeallcontainer"
+          state={{ data: TopRated }}
+          className="text-xl sm:text-lg text-[#FC4747] px-2 py-1 rounded-md"
+        >
           see all
-        </button>
+        </NavLink>
       </div>
       <div className="   grid grid-cols-1 sm:grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-4 pt-4  md:pt-0 ">
         {" "}

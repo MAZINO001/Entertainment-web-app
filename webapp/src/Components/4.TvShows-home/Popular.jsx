@@ -30,20 +30,22 @@ export default function Popular() {
       <div className="flex justify-between items-center relative ">
         <h2 className="title ">Popular</h2>
         <span className="typespan ml-[-15px]">TV SERIES</span>
-        <button className=" text-md text-[#fff] bg-[#FC4747] px-2 py-1  rounded-md ">
+        <NavLink
+          to="seeallcontainer"
+          state={{ data: Popular }}
+          className="text-xl sm:text-lg text-[#FC4747] px-2 py-1 rounded-md"
+        >
           see all
-        </button>
+        </NavLink>
       </div>
       <div className="   grid grid-cols-1 sm:grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-4 pt-4  md:pt-0 ">
         {Popular.filter((item) => item.backdrop_path)
           .slice(0, 8)
           .map((item) => (
             <div key={item.id} className="">
-              <NavLink
-                to={`/imagecontainer/${type}/${item.id}`}
-                >
+              <NavLink to={`/imagecontainer/${type}/${item.id}`}>
                 <img
-                className="rounded-md cursor-pointer"
+                  className="rounded-md cursor-pointer"
                   src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
                   alt="Poster"
                 />
