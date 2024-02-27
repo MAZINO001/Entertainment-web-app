@@ -15,6 +15,7 @@ export default function NowPlaying() {
   );
   const [ActiveBm, setActiveBm] = useState(false);
   const [type, settype] = useState("Movies");
+  const [query, setquery] = useState("Popular");
 
   const {
     data: NowPlaying,
@@ -37,7 +38,7 @@ export default function NowPlaying() {
         <h2 className="title">Now Playing</h2>
         <span className="typespan ml-[45px]">Movies</span>
         <NavLink
-          to="seeallcontainer"
+        to={`seeallcontainer/${type}/${query}`}
           state={{ data: NowPlaying }}
           className="text-xl sm:text-lg text-[#FC4747] px-2 py-1 rounded-md"
         >

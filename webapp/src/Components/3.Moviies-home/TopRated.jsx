@@ -15,6 +15,7 @@ export default function TopRated() {
   );
   const [ActiveBm, setActiveBm] = useState(false);
   const [type, settype] = useState("Movies");
+  const [query, setquery] = useState("Popular");
 
   const {
     data: TopRated,
@@ -37,7 +38,7 @@ export default function TopRated() {
         <h2 className="title">Top Rated</h2>
         <span className="typespan ml-[15px]">Movies</span>
         <NavLink
-          to="seeallcontainer"
+        to={`seeallcontainer/${type}/${query}`}
           state={{ data: TopRated }}
           className="text-xl sm:text-lg text-[#FC4747] px-2 py-1 rounded-md"
         >
