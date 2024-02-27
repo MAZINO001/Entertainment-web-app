@@ -4,7 +4,11 @@ import { PiTelevisionFill } from "react-icons/pi";
 import { useQuery } from "@tanstack/react-query";
 import { LuDot } from "react-icons/lu";
 import Loader from "../../Loaders/Loader";
+import { NavLink } from "react-router-dom";
+import { useState } from "react";
 export default function Trending() {
+  const [type, settype] = useState("TvShows");
+
   const {
     data: Trending,
     isLoading,
@@ -38,11 +42,15 @@ export default function Trending() {
           .map((item) => (
             <div key={item.id} className="w-[407px] relative ">
               <div className="imgShwd rounded-md">
-                <img
-                  className=" rounded-md cursor-pointer "
-                  src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
-                  alt="Poster"
-                />
+                <NavLink
+                  to={`/imagecontainer/${type}/${item.id}`}
+                  className="rounded-md cursor-pointer"
+                >
+                  <img
+                    src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
+                    alt="Poster"
+                  />
+                </NavLink>
               </div>
               <p className="text-sm py-1 capitalize text-gray-300 flex items-center text-slim absolute bottom-[50px] left-[10px]">
                 <span>{new Date(item.first_air_date).getFullYear()}</span>

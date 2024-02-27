@@ -1,10 +1,15 @@
 import { fetchTMDbData } from "../../api/fetchDataTv";
+/* eslint-disable no-unused-vars */
 
 import { PiTelevisionFill } from "react-icons/pi";
 import { useQuery } from "@tanstack/react-query";
 import { LuDot } from "react-icons/lu";
 import Loader from "../../Loaders/Loader";
+import { NavLink } from "react-router-dom";
+import { useState } from "react";
 export default function TopRated() {
+  const [type, settype] = useState("TvShows");
+
   const {
     data: TopRated,
     isLoading,
@@ -37,11 +42,15 @@ export default function TopRated() {
           .slice(0, 8)
           .map((item) => (
             <div key={item.id} className="">
-              <img
-                className=" rounded-md cursor-pointer "
-                src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
-                alt="Poster"
-              />
+                <NavLink
+                to={`/imagecontainer/${type}/${item.id}`}
+                className="rounded-md cursor-pointer"
+              >
+                <img
+                  src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
+                  alt="Poster"
+                />
+              </NavLink>
               <p className="text-md py-1 capitalize text-gray-300 flex items-center text-slim ">
                 <span>{new Date(item.first_air_date).getFullYear()}</span>
 

@@ -14,6 +14,8 @@ export default function UpComming() {
     []
   );
   const [ActiveBm, setActiveBm] = useState(false);
+  const [type, settype] = useState("Movies");
+
   const {
     data: UpComming,
     isLoading,
@@ -69,8 +71,8 @@ export default function UpComming() {
                 />
               )}
 
-              <NavLink
-                to={`/imagecontainer/${item.id}`}
+<NavLink
+                to={`/imagecontainer/${type}/${item.id}`}
                 className="rounded-md cursor-pointer"
               >
                 <img

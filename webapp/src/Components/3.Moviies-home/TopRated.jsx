@@ -14,6 +14,8 @@ export default function TopRated() {
     []
   );
   const [ActiveBm, setActiveBm] = useState(false);
+  const [type, settype] = useState("Movies");
+
   const {
     data: TopRated,
     isLoading,
@@ -70,7 +72,7 @@ export default function TopRated() {
               )}
 
 <NavLink
-                to={`/imagecontainer/${item.id}`}
+                to={`/imagecontainer/${type}/${item.id}`}
                 className="rounded-md cursor-pointer"
               >
                 <img

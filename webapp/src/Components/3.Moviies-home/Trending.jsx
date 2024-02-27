@@ -14,6 +14,8 @@ export default function Trending() {
     []
   );
   const [ActiveBm, setActiveBm] = useState(false);
+  const [type, settype] = useState("Movies");
+
   const {
     data: Trending,
     isLoading,
@@ -71,15 +73,15 @@ export default function Trending() {
                     }}
                   />
                 )}
-                <NavLink
-                  to={`/imagecontainer/${item.id}`}
-                  className="rounded-md cursor-pointer"
-                >
-                  <img
-                    src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
-                    alt="Poster"
-                  />
-                </NavLink>
+                 <NavLink
+                to={`/imagecontainer/${type}/${item.id}`}
+                className="rounded-md cursor-pointer"
+              >
+                <img
+                  src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
+                  alt="Poster"
+                />
+              </NavLink>
               </div>
               <p className="text-sm py-1 capitalize text-gray-300 flex items-center text-slim absolute bottom-[80px] left-[10px]">
                 <span>{new Date(item.release_date).getFullYear()}</span>

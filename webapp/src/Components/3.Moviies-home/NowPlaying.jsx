@@ -14,6 +14,8 @@ export default function NowPlaying() {
     []
   );
   const [ActiveBm, setActiveBm] = useState(false);
+  const [type, settype] = useState("Movies");
+
   const {
     data: NowPlaying,
     isLoading,
@@ -69,8 +71,8 @@ export default function NowPlaying() {
                 />
               )}
 
-              <NavLink
-                to={`/imagecontainer/${item.id}`}
+<NavLink
+                to={`/imagecontainer/${type}/${item.id}`}
                 className="rounded-md cursor-pointer"
               >
                 <img

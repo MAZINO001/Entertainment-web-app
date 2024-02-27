@@ -51,7 +51,9 @@ export default function ImageContainer() {
       <div className="flex flex-col text-center md:text-left md:w-[60%]">
         {/* title */}
         <div className="mb-5">
-          <h2 className="text-5xl mb-2">{imageData.title}</h2>
+          <h2 className="text-4xl mb-2">
+            {imageData.title ? imageData.title : imageData.name}
+          </h2>
           <span className="text-md text-gray-400 ">{imageData.tagline} </span>
         </div>
         {/* rate */}
@@ -61,29 +63,39 @@ export default function ImageContainer() {
           </h2>
         </div>
         {/* info */}
-        <div className="flex justify-evenly  text-lg font-semibold tracking-wide mb-4">
-          <div className="flex flex-col text-center">
+        <div className="flex justify-evenly  text-lg  font-semibold tracking-wide mb-4">
+          <div className="flex flex-col text-center ">
             <h2>Length</h2>
-            <h2 className="text-gray-400">
-              {toHoursAndMinutes(imageData.runtime)} h
+            <h2 className="text-gray-400 font-normal ">
+              {imageData.runtime ? (
+                <>{toHoursAndMinutes(imageData.runtime)} h</>
+              ) : (
+                <>{toHoursAndMinutes(imageData.episode_run_time[0])} h</>
+              )}
             </h2>
           </div>
           <div className="flex flex-col text-center">
             <h2>Language</h2>
-            <h2 className="text-gray-400">
+            <h2 className="text-gray-400 font-normal">
               {imageData.spoken_languages[0].english_name}
             </h2>
           </div>
           <div className="flex flex-col text-center">
             <h2>Year</h2>
-            <h2 className="text-gray-400">
-              {/* {new Date(imageData.release_date).getFullYear()} */}
-              {new Date(imageData.first_air_date).getFullYear()}
+            <h2 className="text-gray-400 font-normal">
+              {imageData.release_date ? (
+                <>{new Date(imageData.release_date).getFullYear()}</>
+              ) : (
+                <>
+                  {new Date(imageData.first_air_date).getFullYear()} to{" "}
+                  {new Date(imageData.last_air_date).getFullYear()}
+                </>
+              )}
             </h2>
           </div>
           <div className="flex flex-col text-center">
             <h2>Status</h2>
-            <h2 className="text-gray-400">{imageData.status}</h2>
+            <h2 className="text-gray-400 font-normal ">{imageData.status}</h2>
           </div>
         </div>
         {/* genres */}
