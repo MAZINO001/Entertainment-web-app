@@ -15,7 +15,7 @@ export default function NowPlaying() {
   );
   const [ActiveBm, setActiveBm] = useState(false);
   const [type, settype] = useState("Movies");
-  const [query, setquery] = useState("Popular");
+  const [query, setquery] = useState("Now Playing");
 
   const {
     data: NowPlaying,

@@ -15,7 +15,7 @@ export default function Trending() {
   );
   const [ActiveBm, setActiveBm] = useState(false);
   const [type, settype] = useState("Movies");
-  const [query, setquery] = useState("Popular");
+  const [query, setquery] = useState("Trending");
 
   const {
     data: Trending,

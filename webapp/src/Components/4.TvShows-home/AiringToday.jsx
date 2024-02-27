@@ -9,6 +9,7 @@ import { NavLink } from "react-router-dom";
 import { useState } from "react";
 export default function AiringToday() {
   const [type, settype] = useState("TvShows");
+  const [query, setquery] = useState("Airing Today");
 
   const {
     data: AiringToday,
@@ -32,7 +33,7 @@ export default function AiringToday() {
         <h2 className="title">Airing Today</h2>
         <span className="typespan ml-[35px]">TV SERIES</span>
         <NavLink
-          to="seeallcontainer"
+           to={`seeallcontainer/${type}/${query}`}
           state={{ data: AiringToday }}
           className="text-xl sm:text-lg text-[#FC4747] px-2 py-1 rounded-md"
         >

@@ -15,7 +15,7 @@ export default function UpComming() {
   );
   const [ActiveBm, setActiveBm] = useState(false);
   const [type, settype] = useState("Movies");
-  const [query, setquery] = useState("Popular");
+  const [query, setquery] = useState("Up Comming");
 
   const {
     data: UpComming,
@@ -38,7 +38,7 @@ export default function UpComming() {
         <h2 className="title">Up Comming</h2>
         <span className="typespan ml-[50px]">Movies</span>
         <NavLink
-        to={`seeallcontainer/${type}/${query}`}
+          to={`seeallcontainer/${type}/${query}`}
           state={{ data: UpComming }}
           className="text-xl sm:text-lg text-[#FC4747] px-2 py-1 rounded-md"
         >

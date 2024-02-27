@@ -9,6 +9,7 @@ import { NavLink } from "react-router-dom";
 import { useState } from "react";
 export default function OnAir() {
   const [type, settype] = useState("TvShows");
+  const [query, setquery] = useState("On Air");
 
   const {
     data: OnAirData,
@@ -33,7 +34,7 @@ export default function OnAir() {
         <h2 className="title">On Air</h2>
         <span className="typespan ml-[40px]">TV SERIES</span>
          <NavLink
-          to="seeallcontainer"
+           to={`seeallcontainer/${type}/${query}`}
           state={{ data: OnAirData }}
           className="text-xl sm:text-lg text-[#FC4747] px-2 py-1 rounded-md"
         >

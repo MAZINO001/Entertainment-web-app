@@ -9,6 +9,7 @@ import { NavLink } from "react-router-dom";
 import { useState } from "react";
 export default function TopRated() {
   const [type, settype] = useState("TvShows");
+  const [query, setquery] = useState("Top Rated");
 
   const {
     data: TopRated,
@@ -33,7 +34,7 @@ export default function TopRated() {
         <h2 className="title">TopRated</h2>
         <span className="typespan ml-[7px]">TV SERIES</span>
         <NavLink
-          to="seeallcontainer"
+           to={`seeallcontainer/${type}/${query}`}
           state={{ data: TopRated }}
           className="text-xl sm:text-lg text-[#FC4747] px-2 py-1 rounded-md"
         >

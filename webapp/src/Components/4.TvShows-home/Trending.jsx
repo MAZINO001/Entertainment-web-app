@@ -9,6 +9,7 @@ import { NavLink } from "react-router-dom";
 import { useState } from "react";
 export default function Trending() {
   const [type, settype] = useState("TvShows");
+  const [query, setquery] = useState("Trending");
 
   const {
     data: Trending,
@@ -33,7 +34,7 @@ export default function Trending() {
         <h2 className="title">Trending</h2>
         <span className="typespan">TV SERIES</span>
         <NavLink
-          to="seeallcontainer"
+           to={`seeallcontainer/${type}/${query}`}
           state={{ data: Trending }}
           className="text-xl sm:text-lg text-[#FC4747] px-2 py-1 rounded-md"
         >

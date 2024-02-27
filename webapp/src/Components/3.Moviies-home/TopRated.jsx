@@ -15,7 +15,7 @@ export default function TopRated() {
   );
   const [ActiveBm, setActiveBm] = useState(false);
   const [type, settype] = useState("Movies");
-  const [query, setquery] = useState("Popular");
+  const [query, setquery] = useState("Top Rated");
 
   const {
     data: TopRated,
