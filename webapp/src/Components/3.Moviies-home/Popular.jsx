@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
 // /* eslint-disable no-unused-vars */
 // import { NavLink, useParams } from "react-router-dom";
 // import { useEffect, useState } from "react";
@@ -99,20 +101,19 @@
 //   );
 // }
 
-/* eslint-disable no-unused-vars */
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { fetchTMDbDataMovies } from "../../api/FetchDataMovie";
 import { MdLocalMovies } from "react-icons/md";
-import { BsBookmarkPlusFill } from "react-icons/bs";
-import { BsBookmarkCheckFill } from "react-icons/bs";
+import { BsBookmarkPlusFill, BsBookmarkCheckFill } from "react-icons/bs";
 import { LuDot } from "react-icons/lu";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../../Loaders/Loader";
-import useLocalStorage from "../../CustomeHooks/useLocalStorage";
-export default function Popular({ bookmarkedMovies, setBookmarkedMovies }) {
+import { useBookmarks } from "../../CustomeHooks/useLocalStorage";
 
-
+export default function Popular() {
+  const { bookmarkedMovies, addBookmark, removeBookmark } = useBookmarks();
+console.log(bookmarkedMovies)
   const [ActiveBm, setActiveBm] = useState(false);
   const [type, settype] = useState("Movies");
   const [query, setquery] = useState("Popular");
@@ -155,10 +156,7 @@ export default function Popular({ bookmarkedMovies, setBookmarkedMovies }) {
                   className="absolute top-0 right-[-3px] cursor-pointer text-2xl text-[#FC4747]"
                   onClick={() => {
                     setActiveBm((state) => !state);
-                    const movieId = item.id;
-                    setBookmarkedMovies(
-                      bookmarkedMovies.filter((id) => id !== movieId)
-                    );
+                    removeBookmark(item.id); // Remove bookmark
                   }}
                 />
               ) : (
@@ -166,12 +164,10 @@ export default function Popular({ bookmarkedMovies, setBookmarkedMovies }) {
                   className="absolute top-0 right-[-3px] cursor-pointer text-2xl "
                   onClick={() => {
                     setActiveBm((state) => !state);
-                    const movieId = item.id;
-                    setBookmarkedMovies([...bookmarkedMovies, movieId]);
+                    addBookmark(item.id); // Add bookmark
                   }}
                 />
               )}
-
               <NavLink to={`/imagecontainer/${type}/${item.id}`}>
                 <img
                   className="rounded-md cursor-pointer"
@@ -196,4 +192,3 @@ export default function Popular({ bookmarkedMovies, setBookmarkedMovies }) {
     </div>
   );
 }
-

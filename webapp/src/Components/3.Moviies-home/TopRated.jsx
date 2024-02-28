@@ -6,13 +6,11 @@ import { useQuery } from "@tanstack/react-query";
 import Loader from "../../Loaders/Loader";
 import { BsBookmarkCheckFill, BsBookmarkPlusFill } from "react-icons/bs";
 import { useEffect, useState } from "react";
-import useLocalStorage from "../../CustomeHooks/useLocalStorage";
+import useLocalStorage, { useBookmarks } from "../../CustomeHooks/useLocalStorage";
 import { NavLink } from "react-router-dom";
 export default function TopRated() {
-  const [bookmarkedMovies, setBookmarkedMovies] = useLocalStorage(
-    "bookmarkedMovies",
-    []
-  );
+  const { bookmarkedMovies, addBookmark, removeBookmark } = useBookmarks();
+
   const [ActiveBm, setActiveBm] = useState(false);
   const [type, settype] = useState("Movies");
   const [query, setquery] = useState("Top Rated");
@@ -55,10 +53,7 @@ export default function TopRated() {
                   className="absolute top-0 right-[-3px] cursor-pointer text-2xl text-[#FC4747]"
                   onClick={() => {
                     setActiveBm((state) => !state);
-                    const movieId = item.id;
-                    setBookmarkedMovies(
-                      bookmarkedMovies.filter((id) => id !== movieId)
-                    );
+                    removeBookmark(item.id); // Remove bookmark
                   }}
                 />
               ) : (
@@ -66,8 +61,7 @@ export default function TopRated() {
                   className="absolute top-0 right-[-3px] cursor-pointer text-2xl "
                   onClick={() => {
                     setActiveBm((state) => !state);
-                    const movieId = item.id;
-                    setBookmarkedMovies([...bookmarkedMovies, movieId]);
+                    addBookmark(item.id); // Add bookmark
                   }}
                 />
               )}

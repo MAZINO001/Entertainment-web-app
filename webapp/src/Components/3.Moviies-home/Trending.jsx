@@ -6,13 +6,11 @@ import { useQuery } from "@tanstack/react-query";
 import Loader from "../../Loaders/Loader";
 import { BsBookmarkCheckFill, BsBookmarkPlusFill } from "react-icons/bs";
 import { useEffect, useState } from "react";
-import useLocalStorage from "../../CustomeHooks/useLocalStorage";
+import useLocalStorage, { useBookmarks } from "../../CustomeHooks/useLocalStorage";
 import { NavLink } from "react-router-dom";
 export default function Trending() {
-  const [bookmarkedMovies, setBookmarkedMovies] = useLocalStorage(
-    "bookmarkedMovies",
-    []
-  );
+  const { bookmarkedMovies, addBookmark, removeBookmark } = useBookmarks();
+
   const [ActiveBm, setActiveBm] = useState(false);
   const [type, settype] = useState("Movies");
   const [query, setquery] = useState("Trending");
@@ -59,10 +57,7 @@ export default function Trending() {
                     className="absolute top-0 right-[-3px] cursor-pointer text-2xl text-[#FC4747] z-50"
                     onClick={() => {
                       setActiveBm((state) => !state);
-                      const movieId = item.id;
-                      setBookmarkedMovies(
-                        bookmarkedMovies.filter((id) => id !== movieId)
-                      );
+                      removeBookmark(item.id); // Remove bookmark
                     }}
                   />
                 ) : (
@@ -70,8 +65,7 @@ export default function Trending() {
                     className="absolute top-0 right-[-3px] cursor-pointer text-2xl z-50"
                     onClick={() => {
                       setActiveBm((state) => !state);
-                      const movieId = item.id;
-                      setBookmarkedMovies([...bookmarkedMovies, movieId]);
+                      addBookmark(item.id); // Add bookmark
                     }}
                   />
                 )}
