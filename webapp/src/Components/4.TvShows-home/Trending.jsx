@@ -10,6 +10,7 @@ import { useState } from "react";
 export default function Trending() {
   const [type, settype] = useState("TvShows");
   const [query, setquery] = useState("Trending");
+  const { bookmarkedMovies, addBookmark, removeBookmark } = useBookmarks();
 
   const {
     data: Trending,

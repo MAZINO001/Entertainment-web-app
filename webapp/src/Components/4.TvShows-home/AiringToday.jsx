@@ -7,9 +7,11 @@ import { useQuery } from "@tanstack/react-query";
 import Loader from "../../Loaders/Loader";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
+import { useBookmarks } from "../../CustomeHooks/useLocalStorage";
 export default function AiringToday() {
   const [type, settype] = useState("TvShows");
   const [query, setquery] = useState("Airing Today");
+  const { bookmarkedMovies, addBookmark, removeBookmark } = useBookmarks();
 
   const {
     data: AiringToday,

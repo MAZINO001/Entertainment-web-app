@@ -10,6 +10,7 @@ import { useState } from "react";
 export default function OnAir() {
   const [type, settype] = useState("TvShows");
   const [query, setquery] = useState("On Air");
+  const { bookmarkedMovies, addBookmark, removeBookmark } = useBookmarks();
 
   const {
     data: OnAirData,

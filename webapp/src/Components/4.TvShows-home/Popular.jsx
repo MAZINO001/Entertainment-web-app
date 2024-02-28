@@ -9,6 +9,8 @@ import { useState } from "react";
 export default function Popular() {
   const [type, settype] = useState("TvShows");
   const [query, setquery] = useState("Popular");
+  const { bookmarkedMovies, addBookmark, removeBookmark } = useBookmarks();
+
   const {
     data: Popular,
     isLoading,

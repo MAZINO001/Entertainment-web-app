@@ -10,6 +10,7 @@ import { useState } from "react";
 export default function TopRated() {
   const [type, settype] = useState("TvShows");
   const [query, setquery] = useState("Top Rated");
+  const { bookmarkedMovies, addBookmark, removeBookmark } = useBookmarks();
 
   const {
     data: TopRated,
