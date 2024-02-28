@@ -7,20 +7,15 @@ import { MdLocalMovies } from "react-icons/md";
 import { BsBookmarkPlusFill } from "react-icons/bs";
 import { BsBookmarkCheckFill } from "react-icons/bs";
 import { LuDot } from "react-icons/lu";
-import useLocalStorage from "../../CustomeHooks/useLocalStorage";
+import { useBookmarks } from "../../CustomeHooks/useLocalStorage";
 
 export default function seeallcontainer() {
   const { query, type } = useParams();
 
   const location = useLocation();
   const passedData = location.state?.data;
-
-  const [bookmarkedMovies, setBookmarkedMovies] = useLocalStorage(
-    "bookmarkedMovies",
-    []
-  );
+  const { bookmarkedMovies, addBookmark, removeBookmark } = useBookmarks();
   const [ActiveBm, setActiveBm] = useState(false);
-
   return (
     <div className=" flex flex-col my-4">
       <div className="flex justify-between items-center relative title">
@@ -36,10 +31,7 @@ export default function seeallcontainer() {
                   className="absolute top-0 right-[-3px] cursor-pointer text-2xl text-[#FC4747]"
                   onClick={() => {
                     setActiveBm((state) => !state);
-                    const movieId = item.id;
-                    setBookmarkedMovies(
-                      bookmarkedMovies.filter((id) => id !== movieId)
-                    );
+                    removeBookmark(item.id); // Remove bookmark
                   }}
                 />
               ) : (
@@ -47,8 +39,7 @@ export default function seeallcontainer() {
                   className="absolute top-0 right-[-3px] cursor-pointer text-2xl "
                   onClick={() => {
                     setActiveBm((state) => !state);
-                    const movieId = item.id;
-                    setBookmarkedMovies([...bookmarkedMovies, movieId]);
+                    addBookmark(item.id); // Add bookmark
                   }}
                 />
               )}

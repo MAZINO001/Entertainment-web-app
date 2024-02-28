@@ -5,10 +5,16 @@ import { MdLocalMovies } from "react-icons/md";
 import { PiTelevisionFill } from "react-icons/pi";
 import { LuDot } from "react-icons/lu";
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { NavLink, useNavigate, useParams } from "react-router-dom";
 import Loader from "../../Loaders/Loader";
+import { useBookmarks } from "../../CustomeHooks/useLocalStorage";
+import { BsBookmarkCheckFill, BsBookmarkPlusFill } from "react-icons/bs";
 
 export default function SearchContainer() {
+  const { bookmarkedMovies, addBookmark, removeBookmark } = useBookmarks();
+  const [ActiveBm, setActiveBm] = useState(false);
+  const [type, settype] = useState("Movies");
+
   const { query, page } = useParams();
   const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState(Number(page) || 1); // Ensure valid initial page
@@ -63,12 +69,41 @@ export default function SearchContainer() {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  gap-x-8  justify-items-center ">
         {Array.isArray(Data) ? (
           Data.filter((item) => item.backdrop_path).map((item) => (
-            <div key={item.id} className="mb-3 ">
-              <img
-                className="w-full h-auto rounded-lg cursor-pointer"
-                src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
-                alt="Poster"
-              />
+            <div key={item.id} className="mb-3 relative">
+              {bookmarkedMovies.includes(item.id) ? (
+                <BsBookmarkCheckFill
+                  className="absolute top-0 right-[-3px] cursor-pointer text-2xl text-[#FC4747]"
+                  onClick={() => {
+                    setActiveBm((state) => !state);
+                    removeBookmark(item.id); // Remove bookmark
+                  }}
+                />
+              ) : (
+                <BsBookmarkPlusFill
+                  className="absolute top-0 right-[-3px] cursor-pointer text-2xl "
+                  onClick={() => {
+                    setActiveBm((state) => !state);
+                    addBookmark(item.id); // Add bookmark
+                  }}
+                />
+              )}
+              {item.media_type === "movie" ? (
+                <NavLink to={`/imagecontainer/Movies/${item.id}`}>
+                  <img
+                    className="rounded-md cursor-pointer"
+                    src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
+                    alt="Poster"
+                  />
+                </NavLink>
+              ) : (
+                <NavLink to={`/imagecontainer/TvShows/${item.id}`}>
+                  <img
+                    className="rounded-md cursor-pointer"
+                    src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
+                    alt="Poster"
+                  />
+                </NavLink>
+              )}
               <p className="text-sm py-1 capitalize text-gray-300 flex items-center  text-slim ">
                 <span>
                   {item.media_type === "tv"

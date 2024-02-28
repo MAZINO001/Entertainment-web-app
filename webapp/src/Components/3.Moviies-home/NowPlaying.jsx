@@ -111,7 +111,6 @@ import { useBookmarks } from "../../CustomeHooks/useLocalStorage";
 import { NavLink } from "react-router-dom";
 export default function NowPlaying() {
   const { bookmarkedMovies, addBookmark, removeBookmark } = useBookmarks();
-  console.log(bookmarkedMovies);
   const [ActiveBm, setActiveBm] = useState(false);
   const [type, settype] = useState("Movies");
   const [query, setquery] = useState("Now Playing");

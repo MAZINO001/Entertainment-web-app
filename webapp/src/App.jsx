@@ -14,6 +14,7 @@ import SearchBar from "./Components/1.container/SearchBar";
 import { SearchProvider } from "./Components/Context/SearchContext";
 import SeeAllContainer from "./Components/1.container/SeeAllContainer";
 import ImageContainer from "./Components/1.container/ImageContainer";
+import { BookmarksProvider } from "./CustomeHooks/useLocalStorage";
 
 const queryClient = new QueryClient();
 const router = createBrowserRouter([
@@ -60,18 +61,20 @@ const router = createBrowserRouter([
 ]);
 function App() {
   return (
-    <SearchProvider>
-      <QueryClientProvider client={queryClient}>
-        <RouterProvider router={router}>
-          <Wrapper>
-            <OnAir />
-          </Wrapper>
-          <SearchBar />
-          <SearchContainer />
-        </RouterProvider>
-        <ReactQueryDevtools initialIsOpen={false} />
-      </QueryClientProvider>
-    </SearchProvider>
+    <BookmarksProvider>
+      <SearchProvider>
+        <QueryClientProvider client={queryClient}>
+          <RouterProvider router={router}>
+            <Wrapper>
+              <OnAir />
+            </Wrapper>
+            <SearchBar />
+            <SearchContainer />
+          </RouterProvider>
+          <ReactQueryDevtools initialIsOpen={false} />
+        </QueryClientProvider>
+      </SearchProvider>
+    </BookmarksProvider>
   );
 }
 
