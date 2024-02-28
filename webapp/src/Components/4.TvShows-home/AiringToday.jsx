@@ -8,10 +8,12 @@ import Loader from "../../Loaders/Loader";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import { useBookmarks } from "../../CustomeHooks/useLocalStorage";
+import { BsBookmarkCheckFill, BsBookmarkPlusFill } from "react-icons/bs";
 export default function AiringToday() {
   const [type, settype] = useState("TvShows");
   const [query, setquery] = useState("Airing Today");
   const { bookmarkedMovies, addBookmark, removeBookmark } = useBookmarks();
+  const [ActiveBm, setActiveBm] = useState(false);
 
   const {
     data: AiringToday,
@@ -47,7 +49,24 @@ export default function AiringToday() {
         {AiringToday.filter((item) => item.backdrop_path)
           .slice(0, 8)
           .map((item) => (
-            <div key={item.id} className="">
+            <div key={item.id} className="relative">
+               {bookmarkedMovies.includes(item.id) ? (
+                <BsBookmarkCheckFill
+                  className="absolute top-0 right-[-3px] cursor-pointer text-2xl text-[#FC4747]"
+                  onClick={() => {
+                    setActiveBm((state) => !state);
+                    removeBookmark(item.id); // Remove bookmark
+                  }}
+                />
+              ) : (
+                <BsBookmarkPlusFill
+                  className="absolute top-0 right-[-3px] cursor-pointer text-2xl "
+                  onClick={() => {
+                    setActiveBm((state) => !state);
+                    addBookmark(item.id); // Add bookmark
+                  }}
+                />
+              )}
               <NavLink
                 to={`/imagecontainer/${type}/${item.id}`}
                 >

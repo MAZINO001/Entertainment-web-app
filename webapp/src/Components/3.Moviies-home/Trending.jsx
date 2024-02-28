@@ -49,7 +49,6 @@ export default function Trending() {
           .slice(0, 10)
           .map((item) => (
             <div key={item.id} className="w-[407px] relative ">
-              {/* <div className="imgShwd rounded-md bg-green-500"> */}
               <NavLink to={`/imagecontainer/${type}/${item.id}`}>
               <div className=" rounded-md imgShwd">
                 {bookmarkedMovies.includes(item.id) ? (

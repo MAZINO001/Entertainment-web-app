@@ -11,7 +11,7 @@ import { useBookmarks } from "../../CustomeHooks/useLocalStorage";
 
 export default function Popular() {
   const { bookmarkedMovies, addBookmark, removeBookmark } = useBookmarks();
-console.log(bookmarkedMovies)
+  console.log(bookmarkedMovies);
   const [ActiveBm, setActiveBm] = useState(false);
   const [type, settype] = useState("Movies");
   const [query, setquery] = useState("Popular");
