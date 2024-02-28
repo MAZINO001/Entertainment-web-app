@@ -6,7 +6,9 @@ import { useQuery } from "@tanstack/react-query";
 import Loader from "../../Loaders/Loader";
 import { BsBookmarkCheckFill, BsBookmarkPlusFill } from "react-icons/bs";
 import { useEffect, useState } from "react";
-import useLocalStorage, { useBookmarks } from "../../CustomeHooks/useLocalStorage";
+import useLocalStorage, {
+  useBookmarks,
+} from "../../CustomeHooks/useLocalStorage";
 import { NavLink } from "react-router-dom";
 export default function Trending() {
   const { bookmarkedMovies, addBookmark, removeBookmark } = useBookmarks();
@@ -36,7 +38,7 @@ export default function Trending() {
         <h2 className="title">Trending</h2>
         <span className="typespan">Movies</span>
         <NavLink
-        to={`seeallcontainer/${type}/${query}`}
+          to={`seeallcontainer/${type}/${query}`}
           state={{ data: Trending }}
           className="text-xl sm:text-lg text-[#FC4747] px-2 py-1 rounded-md"
         >
@@ -49,32 +51,31 @@ export default function Trending() {
           .slice(0, 10)
           .map((item) => (
             <div key={item.id} className="w-[407px] relative ">
+              {bookmarkedMovies.includes(item.id) ? (
+                <BsBookmarkCheckFill
+                  className="absolute top-0 right-[-3px] cursor-pointer text-2xl text-[#FC4747] z-50"
+                  onClick={() => {
+                    setActiveBm((state) => !state);
+                    removeBookmark(item.id); // Remove bookmark
+                  }}
+                />
+              ) : (
+                <BsBookmarkPlusFill
+                  className="absolute top-0 right-[-3px] cursor-pointer text-2xl z-50"
+                  onClick={() => {
+                    setActiveBm((state) => !state);
+                    addBookmark(item.id); // Add bookmark
+                  }}
+                />
+              )}
               <NavLink to={`/imagecontainer/${type}/${item.id}`}>
-              <div className=" rounded-md imgShwd">
-                {bookmarkedMovies.includes(item.id) ? (
-                  <BsBookmarkCheckFill
-                    className="absolute top-0 right-[-3px] cursor-pointer text-2xl text-[#FC4747] z-50"
-                    onClick={() => {
-                      setActiveBm((state) => !state);
-                      removeBookmark(item.id); // Remove bookmark
-                    }}
-                  />
-                ) : (
-                  <BsBookmarkPlusFill
-                    className="absolute top-0 right-[-3px] cursor-pointer text-2xl z-50"
-                    onClick={() => {
-                      setActiveBm((state) => !state);
-                      addBookmark(item.id); // Add bookmark
-                    }}
-                  />
-                )}
+                <div className=" rounded-md imgShwd">
                   <img
                     className="rounded-md cursor-pointer"
                     src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
                     alt="Poster"
                   />
-                
-              </div>
+                </div>
               </NavLink>
               <p className="text-sm py-1 capitalize text-gray-300 flex items-center text-slim absolute bottom-[80px] left-[10px]">
                 <span>{new Date(item.release_date).getFullYear()}</span>

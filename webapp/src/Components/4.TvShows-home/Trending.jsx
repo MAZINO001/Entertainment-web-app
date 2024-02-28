@@ -51,25 +51,25 @@ export default function Trending() {
           .slice(0, 10)
           .map((item) => (
             <div key={item.id} className="w-[407px] relative ">
+              {bookmarkedMovies.includes(item.id) ? (
+                <BsBookmarkCheckFill
+                  className="absolute top-0 right-[-3px] cursor-pointer text-2xl text-[#FC4747] z-50"
+                  onClick={() => {
+                    setActiveBm((state) => !state);
+                    removeBookmark(item.id); // Remove bookmark
+                  }}
+                />
+              ) : (
+                <BsBookmarkPlusFill
+                  className="absolute top-0 right-[-3px] cursor-pointer text-2xl z-50"
+                  onClick={() => {
+                    setActiveBm((state) => !state);
+                    addBookmark(item.id); // Add bookmark
+                  }}
+                />
+              )}
               <NavLink to={`/imagecontainer/${type}/${item.id}`}>
                 <div className=" rounded-md imgShwd">
-                  {bookmarkedMovies.includes(item.id) ? (
-                    <BsBookmarkCheckFill
-                      className="absolute top-0 right-[-3px] cursor-pointer text-2xl text-[#FC4747] z-"
-                      onClick={() => {
-                        setActiveBm((state) => !state);
-                        removeBookmark(item.id); // Remove bookmark
-                      }}
-                    />
-                  ) : (
-                    <BsBookmarkPlusFill
-                      className="absolute top-0 right-[-3px] cursor-pointer text-2xl z-50"
-                      onClick={() => {
-                        setActiveBm((state) => !state);
-                        addBookmark(item.id); // Add bookmark
-                      }}
-                    />
-                  )}
                   <img
                     className="rounded-md cursor-pointer"
                     src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
