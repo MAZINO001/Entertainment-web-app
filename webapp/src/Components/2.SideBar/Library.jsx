@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import { LuDot } from "react-icons/lu";
 import { MdLocalMovies } from "react-icons/md";
@@ -6,9 +7,11 @@ import { fetchMoviesLibrary } from "../../api/LibraryData";
 import { BsBookmarkXFill } from "react-icons/bs";
 import Loader from "../../Loaders/Loader";
 import { NavLink } from "react-router-dom";
+import { useBookmarks } from "../../CustomeHooks/useLocalStorage";
+import { useState } from "react";
 export default function Library() {
-  const bookmarkedMovies = JSON.parse(localStorage.getItem("bookmarkedMovies"));
-  console.log(bookmarkedMovies);
+  const { bookmarkedMovies, removeBookmark } = useBookmarks();
+  const [ActiveBm, setActiveBm] = useState(false);
   const { data, isLoading } = useQuery({
     queryKey: ["Bookmarked"],
     queryFn: () => fetchMoviesLibrary(bookmarkedMovies),
@@ -16,6 +19,7 @@ export default function Library() {
   if (isLoading) {
     <Loader />;
   }
+  console.log(data);
   return (
     <div>
       <div className="title">
@@ -26,18 +30,29 @@ export default function Library() {
               <div key={item.id} className="relative">
                 <BsBookmarkXFill
                   className="absolute top-0 right-[-3px] cursor-pointer text-2xl text-[#FC4747]"
-                  onClick={() => {}}
+                  onClick={() => {
+                    setActiveBm((state) => !state);
+                    removeBookmark(item.id); // Remove bookmark
+                  }}
                 />
 
-                <NavLink
-                  to={`/imagecontainer/${item.id}`}
-                  className="rounded-md cursor-pointer"
-                >
-                  <img
-                    src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
-                    alt="Poster"
-                  />
-                </NavLink>
+                {item.title ? (
+                  <NavLink to={`/imagecontainer/Movies/${item.id}`}>
+                    <img
+                      className="rounded-md cursor-pointer"
+                      src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
+                      alt="Poster"
+                    />
+                  </NavLink>
+                ) : (
+                  <NavLink to={`/imagecontainer/TvShows/${item.id}`}>
+                    <img
+                      className="rounded-md cursor-pointer"
+                      src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
+                      alt="Poster"
+                    />
+                  </NavLink>
+                )}
 
                 <p className="text-sm py-1 capitalize text-gray-300 flex items-center text-slim">
                   <span>{new Date(item.release_date).getFullYear()}</span>

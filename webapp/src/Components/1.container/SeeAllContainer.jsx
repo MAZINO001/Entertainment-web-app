@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { PiTelevisionFill } from "react-icons/pi";
 /* eslint-disable no-unused-vars */
-import { useLocation, useParams } from "react-router-dom";
+import { NavLink, useLocation, useParams } from "react-router-dom";
 import { useState } from "react";
 import { MdLocalMovies } from "react-icons/md";
 import { BsBookmarkPlusFill } from "react-icons/bs";
@@ -11,7 +11,6 @@ import { useBookmarks } from "../../CustomeHooks/useLocalStorage";
 
 export default function seeallcontainer() {
   const { query, type } = useParams();
-
   const location = useLocation();
   const passedData = location.state?.data;
   const { bookmarkedMovies, addBookmark, removeBookmark } = useBookmarks();
@@ -44,11 +43,13 @@ export default function seeallcontainer() {
                 />
               )}
 
-              <img
-                className=" rounded-md cursor-pointer   "
-                src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
-                alt="Poster"
-              />
+              <NavLink to={`/imagecontainer/${type}/${item.id}`}>
+                <img
+                  className="rounded-md cursor-pointer"
+                  src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
+                  alt="Poster"
+                />
+              </NavLink>
               <p className=" text-md py-1 capitalize text-gray-300 flex items-center text-slim ">
                 <span>
                   {item.release_date
