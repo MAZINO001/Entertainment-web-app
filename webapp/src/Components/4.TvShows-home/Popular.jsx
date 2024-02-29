@@ -11,7 +11,8 @@ import { BsBookmarkCheckFill, BsBookmarkPlusFill } from "react-icons/bs";
 export default function Popular() {
   const [type, settype] = useState("TvShows");
   const [query, setquery] = useState("Popular");
-  const { bookmarkedMovies, addBookmark, removeBookmark } = useBookmarks();
+  const { bookmarkedTvShows, addTvShowBookmark, removeTvShowBookmark } =
+    useBookmarks();
   const [ActiveBm, setActiveBm] = useState(false);
 
   const {
@@ -49,12 +50,12 @@ export default function Popular() {
           .slice(0, 8)
           .map((item) => (
             <div key={item.id} className="relative">
-               {bookmarkedMovies.includes(item.id) ? (
+              {bookmarkedTvShows.includes(item.id) ? (
                 <BsBookmarkCheckFill
                   className="absolute top-0 right-[-3px] cursor-pointer text-2xl text-[#FC4747]"
                   onClick={() => {
                     setActiveBm((state) => !state);
-                    removeBookmark(item.id); // Remove bookmark
+                    removeTvShowBookmark(item.id); // Remove bookmark
                   }}
                 />
               ) : (
@@ -62,7 +63,7 @@ export default function Popular() {
                   className="absolute top-0 right-[-3px] cursor-pointer text-2xl "
                   onClick={() => {
                     setActiveBm((state) => !state);
-                    addBookmark(item.id); // Add bookmark
+                    addTvShowBookmark(item.id); // Add bookmark
                   }}
                 />
               )}

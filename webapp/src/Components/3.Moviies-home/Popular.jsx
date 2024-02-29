@@ -10,7 +10,8 @@ import Loader from "../../Loaders/Loader";
 import { useBookmarks } from "../../CustomeHooks/useLocalStorage";
 
 export default function Popular() {
-  const { bookmarkedMovies, addBookmark, removeBookmark } = useBookmarks();
+  const { bookmarkedMovies, addMovieBookmark, removeMovieBookmark } =
+    useBookmarks();
   const [ActiveBm, setActiveBm] = useState(false);
   const [type, settype] = useState("Movies");
   const [query, setquery] = useState("Popular");
@@ -53,7 +54,7 @@ export default function Popular() {
                   className="absolute top-0 right-[-3px] cursor-pointer text-2xl text-[#FC4747]"
                   onClick={() => {
                     setActiveBm((state) => !state);
-                    removeBookmark(item.id); // Remove bookmark
+                    removeMovieBookmark(item.id); // Remove bookmark
                   }}
                 />
               ) : (
@@ -61,7 +62,7 @@ export default function Popular() {
                   className="absolute top-0 right-[-3px] cursor-pointer text-2xl "
                   onClick={() => {
                     setActiveBm((state) => !state);
-                    addBookmark(item.id); // Add bookmark
+                    addMovieBookmark(item.id); // Add bookmark
                   }}
                 />
               )}
