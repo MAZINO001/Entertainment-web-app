@@ -12,7 +12,8 @@ import { BsBookmarkCheckFill, BsBookmarkPlusFill } from "react-icons/bs";
 export default function AiringToday() {
   const [type, settype] = useState("TvShows");
   const [query, setquery] = useState("Airing Today");
-  const { bookmarkedMovies, addBookmark, removeBookmark } = useBookmarks();
+  const { bookmarkedTvShows, addTvShowBookmark, removeTvShowBookmark } =
+    useBookmarks();
   const [ActiveBm, setActiveBm] = useState(false);
 
   const {
@@ -37,7 +38,7 @@ export default function AiringToday() {
         <h2 className="title">Airing Today</h2>
         <span className="typespan ml-[35px]">TV SERIES</span>
         <NavLink
-           to={`seeallcontainer/${type}/${query}`}
+          to={`seeallcontainer/${type}/${query}`}
           state={{ data: AiringToday }}
           className="text-xl sm:text-lg text-[#FC4747] px-2 py-1 rounded-md"
         >
@@ -50,12 +51,12 @@ export default function AiringToday() {
           .slice(0, 8)
           .map((item) => (
             <div key={item.id} className="relative">
-               {bookmarkedMovies.includes(item.id) ? (
+              {bookmarkedTvShows.includes(item.id) ? (
                 <BsBookmarkCheckFill
                   className="absolute top-0 right-[-3px] cursor-pointer text-2xl text-[#FC4747]"
                   onClick={() => {
                     setActiveBm((state) => !state);
-                    removeBookmark(item.id); // Remove bookmark
+                    addTvShowBookmark(item.id); // Remove bookmark
                   }}
                 />
               ) : (
@@ -63,15 +64,13 @@ export default function AiringToday() {
                   className="absolute top-0 right-[-3px] cursor-pointer text-2xl "
                   onClick={() => {
                     setActiveBm((state) => !state);
-                    addBookmark(item.id); // Add bookmark
+                    removeTvShowBookmark(item.id); // Add bookmark
                   }}
                 />
               )}
-              <NavLink
-                to={`/imagecontainer/${type}/${item.id}`}
-                >
+              <NavLink to={`/imagecontainer/${type}/${item.id}`}>
                 <img
-                className="rounded-md cursor-pointer"
+                  className="rounded-md cursor-pointer"
                   src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
                   alt="Poster"
                 />

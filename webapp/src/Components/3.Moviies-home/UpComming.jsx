@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 import useLocalStorage, { useBookmarks } from "../../CustomeHooks/useLocalStorage";
 import { NavLink } from "react-router-dom";
 export default function UpComming() {
-  const { bookmarkedMovies, addBookmark, removeBookmark } = useBookmarks();
+  const { bookmarkedMovies, addMovieBookmark, removeMovieBookmark } = useBookmarks();
 
   const [ActiveBm, setActiveBm] = useState(false);
   const [type, settype] = useState("Movies");
@@ -53,7 +53,7 @@ export default function UpComming() {
                   className="absolute top-0 right-[-3px] cursor-pointer text-2xl text-[#FC4747]"
                   onClick={() => {
                     setActiveBm((state) => !state);
-                    removeBookmark(item.id); // Remove bookmark
+                    removeMovieBookmark(item.id); // Remove bookmark
                   }}
                 />
               ) : (
@@ -61,7 +61,7 @@ export default function UpComming() {
                   className="absolute top-0 right-[-3px] cursor-pointer text-2xl "
                   onClick={() => {
                     setActiveBm((state) => !state);
-                    addBookmark(item.id); // Add bookmark
+                    addMovieBookmark(item.id); // Add bookmark
                   }}
                 />
               )}

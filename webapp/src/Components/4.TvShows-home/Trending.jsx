@@ -12,7 +12,8 @@ import { BsBookmarkCheckFill, BsBookmarkPlusFill } from "react-icons/bs";
 export default function Trending() {
   const [type, settype] = useState("TvShows");
   const [query, setquery] = useState("Trending");
-  const { bookmarkedMovies, addBookmark, removeBookmark } = useBookmarks();
+  const { bookmarkedTvShows, addTvShowBookmark, removeTvShowBookmark } =
+    useBookmarks();
   const [ActiveBm, setActiveBm] = useState(false);
 
   const {
@@ -51,12 +52,12 @@ export default function Trending() {
           .slice(0, 10)
           .map((item) => (
             <div key={item.id} className="w-[407px] relative ">
-              {bookmarkedMovies.includes(item.id) ? (
+              {bookmarkedTvShows.includes(item.id) ? (
                 <BsBookmarkCheckFill
                   className="absolute top-0 right-[-3px] cursor-pointer text-2xl text-[#FC4747] z-50"
                   onClick={() => {
                     setActiveBm((state) => !state);
-                    removeBookmark(item.id); // Remove bookmark
+                    addTvShowBookmark(item.id); // Remove bookmark
                   }}
                 />
               ) : (
@@ -64,7 +65,7 @@ export default function Trending() {
                   className="absolute top-0 right-[-3px] cursor-pointer text-2xl z-50"
                   onClick={() => {
                     setActiveBm((state) => !state);
-                    addBookmark(item.id); // Add bookmark
+                    removeTvShowBookmark(item.id); // Add bookmark
                   }}
                 />
               )}

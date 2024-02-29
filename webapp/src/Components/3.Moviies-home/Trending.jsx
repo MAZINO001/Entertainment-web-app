@@ -11,7 +11,7 @@ import useLocalStorage, {
 } from "../../CustomeHooks/useLocalStorage";
 import { NavLink } from "react-router-dom";
 export default function Trending() {
-  const { bookmarkedMovies, addBookmark, removeBookmark } = useBookmarks();
+  const { bookmarkedMovies, addMovieBookmark, removeMovieBookmark } = useBookmarks();
 
   const [ActiveBm, setActiveBm] = useState(false);
   const [type, settype] = useState("Movies");
@@ -56,7 +56,7 @@ export default function Trending() {
                   className="absolute top-0 right-[-3px] cursor-pointer text-2xl text-[#FC4747] z-50"
                   onClick={() => {
                     setActiveBm((state) => !state);
-                    removeBookmark(item.id); // Remove bookmark
+                    removeMovieBookmark(item.id); // Remove bookmark
                   }}
                 />
               ) : (
@@ -64,7 +64,7 @@ export default function Trending() {
                   className="absolute top-0 right-[-3px] cursor-pointer text-2xl z-50"
                   onClick={() => {
                     setActiveBm((state) => !state);
-                    addBookmark(item.id); // Add bookmark
+                    addMovieBookmark(item.id); // Add bookmark
                   }}
                 />
               )}
