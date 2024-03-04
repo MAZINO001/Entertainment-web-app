@@ -8,6 +8,7 @@ import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import { useBookmarks } from "../../CustomeHooks/useLocalStorage";
 import { BsBookmarkCheckFill, BsBookmarkPlusFill } from "react-icons/bs";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 export default function AiringToday() {
   const [type, settype] = useState("TvShows");
@@ -69,8 +70,8 @@ export default function AiringToday() {
                 />
               )}
               <NavLink to={`/imagecontainer/${type}/${item.id}`}>
-                <img
-                  className="rounded-md cursor-pointer"
+                <LazyLoadImage
+                  className="rounded-md cursor-pointer "
                   src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
                   alt="Poster"
                 />

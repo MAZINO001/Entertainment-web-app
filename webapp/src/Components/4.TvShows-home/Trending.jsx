@@ -8,6 +8,7 @@ import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import { useBookmarks } from "../../CustomeHooks/useLocalStorage";
 import { BsBookmarkCheckFill, BsBookmarkPlusFill } from "react-icons/bs";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 export default function Trending() {
   const [type, settype] = useState("TvShows");
   const [query, setquery] = useState("Trending");
@@ -70,7 +71,7 @@ export default function Trending() {
               )}
               <NavLink to={`/imagecontainer/${type}/${item.id}`}>
                 <div className=" rounded-md imgShwd">
-                  <img
+                  <LazyLoadImage
                     className="rounded-md cursor-pointer"
                     src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
                     alt="Poster"
