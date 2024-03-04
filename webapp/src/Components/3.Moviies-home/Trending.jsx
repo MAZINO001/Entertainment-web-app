@@ -6,7 +6,7 @@ import { useQuery } from "@tanstack/react-query";
 import Loader from "../../Loaders/Loader";
 import { BsBookmarkCheckFill, BsBookmarkPlusFill } from "react-icons/bs";
 import { useEffect, useState } from "react";
-import useLocalStorage, {
+import  {
   useBookmarks,
 } from "../../CustomeHooks/useLocalStorage";
 import { NavLink } from "react-router-dom";
