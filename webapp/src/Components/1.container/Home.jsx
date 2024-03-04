@@ -15,6 +15,7 @@ export default function Home() {
       <TrendingMovies />
       <PopularMovies />
       <NowPlayingMovies />
+      
       <UpCommingMovies />
       <TopRatedMovies />
       <hr className="my-4" />
