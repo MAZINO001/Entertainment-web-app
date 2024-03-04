@@ -9,7 +9,8 @@ import { BsBookmarkXFill } from "react-icons/bs";
 import Loader from "../../Loaders/Loader";
 import { NavLink } from "react-router-dom";
 import { useBookmarks } from "../../CustomeHooks/useLocalStorage";
-import LazyLoadImage from "react-lazy-load-image-component"
+import { LazyLoadImage } from "react-lazy-load-image-component";
+
 export default function Library() {
   const {
     bookmarkedMovies,
@@ -35,7 +36,7 @@ export default function Library() {
     refetch: tvRefetch,
   } = useQuery({
     queryKey: ["BookmarkedTvShows"],
-    queryFn: () => fetchTvShowsLibrary(bookmarkedTvShows), 
+    queryFn: () => fetchTvShowsLibrary(bookmarkedTvShows),
   });
 
   const handleRemoveMovieBookmark = async (id) => {
@@ -97,7 +98,7 @@ export default function Library() {
                   onClick={() => handleRemoveTvShowBookmark(item.id)}
                 />
                 <NavLink to={`/imagecontainer/TvShows/${item.id}`}>
-                  <img
+                  <LazyLoadImage
                     className="rounded-md cursor-pointer"
                     src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
                     alt="Poster"

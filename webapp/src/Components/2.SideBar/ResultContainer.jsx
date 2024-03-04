@@ -10,7 +10,7 @@ import {
 } from "../../api/fetchTypeData";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
-
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 export default function ResultContainer() {
   const { id, page, type } = useParams();
   const handleFnType = async (id, page) => {
@@ -50,7 +50,7 @@ export default function ResultContainer() {
         .filter((item) => !!item.backdrop_path)
         .map((item) => (
           <div key={item.id} className="">
-            <img
+            <LazyLoadImage
               className=" rounded-md cursor-pointer "
               src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
               alt="Poster"
