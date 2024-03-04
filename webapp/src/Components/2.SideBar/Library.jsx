@@ -105,14 +105,14 @@ export default function Library() {
                   />
                 </NavLink>
                 <p className="text-sm py-1 capitalize text-gray-300 flex items-center text-slim">
-                  <span>{new Date(item.release_date).getFullYear()}</span>
+                  <span>{new Date(item.first_air_date).getFullYear()}</span>
                   <LuDot className="text-xl text-gray-300" />
                   <span className="flex items-center gap-x-1">
                     <MdLocalMovies /> TV Show
                   </span>
                 </p>
                 <h2 className="text-xl font-semibold max-w-[100%]">
-                  {item.title}
+                  {item.name}
                 </h2>
               </div>
             ))}
