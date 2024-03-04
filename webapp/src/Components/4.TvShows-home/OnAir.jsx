@@ -1,8 +1,8 @@
-import { fetchTMDbData } from "../../api/fetchDataTv";
 /* eslint-disable no-unused-vars */
+import { fetchTMDbData } from "../../api/fetchDataTv";
 import { PiTelevisionFill } from "react-icons/pi";
-import { useQuery } from "@tanstack/react-query";
 import { LuDot } from "react-icons/lu";
+import { useQuery } from "@tanstack/react-query";
 import Loader from "../../Loaders/Loader";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
@@ -20,7 +20,7 @@ export default function OnAir() {
     isLoading,
     error,
   } = useQuery({
-    queryKey: ["onAirData"],
+    queryKey: ["OnAirData"],
     queryFn: () => fetchTMDbData("onTheAir"),
   });
 
@@ -37,25 +37,25 @@ export default function OnAir() {
       <div className="flex justify-between items-center relative">
         <h2 className="title">On Air</h2>
         <span className="typespan ml-[40px]">TV SERIES</span>
-         <NavLink
-           to={`seeallcontainer/${type}/${query}`}
+        <NavLink
+          to={`seeallcontainer/${type}/${query}`}
           state={{ data: OnAirData }}
           className="text-xl sm:text-lg text-[#FC4747] px-2 py-1 rounded-md"
         >
           see all
         </NavLink>
       </div>
-      <div className=" grid grid-cols-1 sm:grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-4 pt-4  md:pt-0">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-4 pt-4 md:pt-0">
         {OnAirData?.filter((item) => item.backdrop_path)
           .slice(0, 8)
           .map((item) => (
             <div key={item.id} className="relative">
-               {bookmarkedTvShows.includes(item.id) ? (
+              {bookmarkedTvShows.includes(item.id) ? (
                 <BsBookmarkCheckFill
                   className="absolute top-0 right-[-3px] cursor-pointer text-2xl text-[#FC4747]"
                   onClick={() => {
                     setActiveBm((state) => !state);
-                    addTvShowBookmark(item.id); // Remove bookmark
+                    removeTvShowBookmark(item.id); // Remove bookmark
                   }}
                 />
               ) : (
@@ -63,16 +63,13 @@ export default function OnAir() {
                   className="absolute top-0 right-[-3px] cursor-pointer text-2xl "
                   onClick={() => {
                     setActiveBm((state) => !state);
-                    removeTvShowBookmark(item.id); // Add bookmark
+                    addTvShowBookmark(item.id); // Add bookmark
                   }}
                 />
               )}
-                <NavLink
-                to={`/imagecontainer/${type}/${item.id}`}
-              >
+              <NavLink to={`/imagecontainer/${type}/${item.id}`}>
                 <img
-                className="rounded-md cursor-pointer"
-
+                  className="rounded-md cursor-pointer"
                   src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
                   alt="Poster"
                 />

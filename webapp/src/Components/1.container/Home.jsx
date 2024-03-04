@@ -15,15 +15,14 @@ export default function Home() {
       <TrendingMovies />
       <PopularMovies />
       <NowPlayingMovies />
-      
       <UpCommingMovies />
       <TopRatedMovies />
       <hr className="my-4" />
-      {/* <TrendingTv /> */}
-      {/* <PopularTv /> */}
-      {/* <NowPlayingTv /> */}
-      {/* <UpCommingTv /> */}
-      {/* <TopRatedTv /> */}
+      <TrendingTv />
+      <PopularTv />
+      <NowPlayingTv />
+      <UpCommingTv />
+      <TopRatedTv />
     </div>
   );
 }

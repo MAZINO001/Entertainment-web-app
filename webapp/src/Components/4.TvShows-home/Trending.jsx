@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-vars */
 import { fetchTMDbData } from "../../api/fetchDataTv";
-
 import { PiTelevisionFill } from "react-icons/pi";
 import { useQuery } from "@tanstack/react-query";
 import { LuDot } from "react-icons/lu";
@@ -52,12 +51,12 @@ export default function Trending() {
           .slice(0, 10)
           .map((item) => (
             <div key={item.id} className="w-[407px] relative ">
-              {bookmarkedTvShows.includes(item.id) ? (
+             {bookmarkedTvShows.includes(item.id) ? (
                 <BsBookmarkCheckFill
                   className="absolute top-0 right-[-3px] cursor-pointer text-2xl text-[#FC4747] z-50"
                   onClick={() => {
                     setActiveBm((state) => !state);
-                    addTvShowBookmark(item.id); // Remove bookmark
+                    removeTvShowBookmark(item.id); // Remove bookmark
                   }}
                 />
               ) : (
@@ -65,7 +64,7 @@ export default function Trending() {
                   className="absolute top-0 right-[-3px] cursor-pointer text-2xl z-50"
                   onClick={() => {
                     setActiveBm((state) => !state);
-                    removeTvShowBookmark(item.id); // Add bookmark
+                    addTvShowBookmark(item.id); // Add bookmark
                   }}
                 />
               )}
