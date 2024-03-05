@@ -23,7 +23,7 @@ export default function SideBar() {
           <HiMiniSquares2X2
             className={`w-[1.4rem] h-[1.4rem] sm:w-[1.7rem] sm:h-[1.7rem] ${
               pathname === "/" ? "text-[#FC4747]" : "text-[#5A6A90]"
-            }`}
+            }`} 
           />
         </NavLink>
         <NavLink to="/movies">

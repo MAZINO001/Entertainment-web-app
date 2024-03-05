@@ -11,7 +11,6 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import ResultContainer from "./Components/2.SideBar/ResultContainer";
 import SearchBar from "./Components/1.container/SearchBar";
-import { SearchProvider } from "./Components/Context/SearchContext";
 import SeeAllContainer from "./Components/1.container/SeeAllContainer";
 import ImageContainer from "./Components/1.container/ImageContainer";
 import { BookmarksProvider } from "./CustomeHooks/useLocalStorage";
@@ -62,18 +61,16 @@ const router = createBrowserRouter([
 function App() {
   return (
     <BookmarksProvider>
-      <SearchProvider>
-        <QueryClientProvider client={queryClient}>
-          <RouterProvider router={router}>
-            <Wrapper>
-              <OnAir />
-            </Wrapper>
-            <SearchBar />
-            <SearchContainer />
-          </RouterProvider>
-          <ReactQueryDevtools initialIsOpen={false} />
-        </QueryClientProvider>
-      </SearchProvider>
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router}>
+          <Wrapper>
+            <OnAir />
+          </Wrapper>
+          <SearchBar />
+          <SearchContainer />
+        </RouterProvider>
+        <ReactQueryDevtools initialIsOpen={false} />
+      </QueryClientProvider>
       <ScrollToTop />
     </BookmarksProvider>
   );
