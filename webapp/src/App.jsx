@@ -45,11 +45,11 @@ const router = createBrowserRouter([
       },
 
       {
-        path: "seeAll/:type/:query",
+        path: "all/:type/:query",
         element: <SeeAllContainer />,
       },
       {
-        path: "seeDetails/:type/:id",
+        path: "details/:type/:id",
         element: <ImageContainer />,
       },
       {

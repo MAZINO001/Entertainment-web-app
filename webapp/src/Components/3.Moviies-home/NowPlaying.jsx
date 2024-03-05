@@ -38,7 +38,7 @@ export default function NowPlaying() {
         <h2 className="title">Now Playing</h2>
         <span className="typespan ml-[45px]">Movies</span>
         <NavLink
-          to={`seeAll/${type}/${query}`}
+          to={`all/${type}/${query}`}
           state={{ data: NowPlaying }}
           className="text-xl sm:text-lg text-[#FC4747] px-2 py-1 rounded-md"
         >
@@ -69,7 +69,7 @@ export default function NowPlaying() {
               )}
 
               <NavLink
-                to={`/seeDetails/${type}/${item.id}`}
+                to={`/details/${type}/${item.id}`}
                 className="rounded-md cursor-pointer"
               >
                 <LazyLoadImage

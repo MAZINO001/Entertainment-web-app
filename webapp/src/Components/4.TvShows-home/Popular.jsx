@@ -39,7 +39,7 @@ export default function Popular() {
         <h2 className="title ">Popular</h2>
         <span className="typespan ml-[-15px]">TV SERIES</span>
         <NavLink
-          to={`seeAll/${type}/${query}`}
+          to={`all/${type}/${query}`}
           state={{ data: Popular }}
           className="text-xl sm:text-lg text-[#FC4747] px-2 py-1 rounded-md"
         >
@@ -68,7 +68,7 @@ export default function Popular() {
                   }}
                 />
               )}
-              <NavLink to={`/seeDetails/${type}/${item.id}`}>
+              <NavLink to={`/details/${type}/${item.id}`}>
                 <LazyLoadImage
                   className="rounded-md cursor-pointer"
                   src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}

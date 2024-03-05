@@ -40,7 +40,7 @@ export default function AiringToday() {
         <h2 className="title">Airing Today</h2>
         <span className="typespan ml-[35px]">TV SERIES</span>
         <NavLink
-          to={`seeAll/${type}/${query}`}
+          to={`all/${type}/${query}`}
           state={{ data: AiringToday }}
           className="text-xl sm:text-lg text-[#FC4747] px-2 py-1 rounded-md"
         >
@@ -69,7 +69,7 @@ export default function AiringToday() {
                   }}
                 />
               )}
-              <NavLink to={`/seeDetails/${type}/${item.id}`}>
+              <NavLink to={`/details/${type}/${item.id}`}>
                 <LazyLoadImage
                   className="rounded-md cursor-pointer "
                   src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}

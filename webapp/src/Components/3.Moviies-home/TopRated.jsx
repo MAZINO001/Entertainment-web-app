@@ -39,7 +39,7 @@ export default function TopRated() {
         <h2 className="title">Top Rated</h2>
         <span className="typespan ml-[15px]">Movies</span>
         <NavLink
-          to={`seeAll/${type}/${query}`}
+          to={`all/${type}/${query}`}
           state={{ data: TopRated }}
           className="text-xl sm:text-lg text-[#FC4747] px-2 py-1 rounded-md"
         >
@@ -69,7 +69,7 @@ export default function TopRated() {
                 />
               )}
 
-              <NavLink to={`/seeDetails/${type}/${item.id}`}>
+              <NavLink to={`/details/${type}/${item.id}`}>
                 <LazyLoadImage
                   className="rounded-md cursor-pointer"
                   src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}

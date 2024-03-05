@@ -39,7 +39,7 @@ export default function Trending() {
         <h2 className="title">Trending</h2>
         <span className="typespan">TV SERIES</span>
         <NavLink
-          to={`seeAll/${type}/${query}`}
+          to={`all/${type}/${query}`}
           state={{ data: Trending }}
           className="text-xl sm:text-lg text-[#FC4747] px-2 py-1 rounded-md"
         >
@@ -69,7 +69,7 @@ export default function Trending() {
                   }}
                 />
               )}
-              <NavLink to={`/seeDetails/${type}/${item.id}`}>
+              <NavLink to={`/details/${type}/${item.id}`}>
                 <div className=" rounded-md imgShwd">
                   <LazyLoadImage
                     className="rounded-md cursor-pointer"
