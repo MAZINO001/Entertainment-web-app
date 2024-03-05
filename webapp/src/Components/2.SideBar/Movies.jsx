@@ -35,7 +35,7 @@ export default function Movies() {
   ];
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 pt-4 md:pt-0">
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 pt-4 md:pt-0 mb-4">
       {genres.map((genre) => (
         <button
           key={genre.id}
