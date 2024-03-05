@@ -159,20 +159,3 @@ export default function ImageContainer() {
   );
 }
 
-// export default function ImageContainer() {
-//   const { id } = useParams();
-//   const { data: imageData } = useQuery({
-//     queryKey: ["ImageId", id],
-//     queryFn: () => fetchImageData(id),
-//     enabled: !!id,
-//   });
-
-//   console.log(id);
-//   console.log(imageData);
-//   return (
-//     <div>
-//       <h2>ImageContainer</h2>
-//       <p>ID: {id}</p>
-//     </div>
-//   );
-// }
