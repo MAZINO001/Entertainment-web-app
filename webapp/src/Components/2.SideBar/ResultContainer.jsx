@@ -43,13 +43,13 @@ export default function ResultContainer() {
   const handleNextPage = () => {
     setCurrentPage(currentPage + 1);
     const nextPage = parseInt(page) + 1;
-    navigate(`/resultscontainer/${type}/${id}/${nextPage}`);
+    navigate(`/results/${type}/${id}/${nextPage}`);
   };
 
   const handlePrevPage = () => {
     setCurrentPage(currentPage - 1);
     const nextPage = parseInt(page) - 1;
-    navigate(`/resultscontainer/${type}/${id}/${nextPage}`);
+    navigate(`/results/${type}/${id}/${nextPage}`);
   };
 
   if (isLoading) {
@@ -85,7 +85,7 @@ export default function ResultContainer() {
               />
             )}
             {item.media_type === "movie" ? (
-              <NavLink to={`/imagecontainer/Movies/${item.id}`}>
+              <NavLink to={`/seeDetails/Movies/${item.id}`}>
                 <LazyLoadImage
                   className="rounded-md cursor-pointer"
                   src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
@@ -93,7 +93,7 @@ export default function ResultContainer() {
                 />
               </NavLink>
             ) : (
-              <NavLink to={`/imagecontainer/TvShows/${item.id}`}>
+              <NavLink to={`/seeDetails/TvShows/${item.id}`}>
                 <LazyLoadImage
                   className="rounded-md cursor-pointer"
                   src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}

@@ -8,10 +8,11 @@ import { BsBookmarkCheckFill, BsBookmarkPlusFill } from "react-icons/bs";
 import { useEffect, useState } from "react";
 import { useBookmarks } from "../../CustomeHooks/useLocalStorage";
 import { NavLink } from "react-router-dom";
-import { LazyLoadImage } from 'react-lazy-load-image-component';
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 export default function NowPlaying() {
-  const { bookmarkedMovies, addMovieBookmark, removeMovieBookmark } = useBookmarks();
+  const { bookmarkedMovies, addMovieBookmark, removeMovieBookmark } =
+    useBookmarks();
   const [ActiveBm, setActiveBm] = useState(false);
   const [type, settype] = useState("Movies");
   const [query, setquery] = useState("Now Playing");
@@ -37,7 +38,7 @@ export default function NowPlaying() {
         <h2 className="title">Now Playing</h2>
         <span className="typespan ml-[45px]">Movies</span>
         <NavLink
-          to={`seeallcontainer/${type}/${query}`}
+          to={`seeAll/${type}/${query}`}
           state={{ data: NowPlaying }}
           className="text-xl sm:text-lg text-[#FC4747] px-2 py-1 rounded-md"
         >
@@ -68,7 +69,7 @@ export default function NowPlaying() {
               )}
 
               <NavLink
-                to={`/imagecontainer/${type}/${item.id}`}
+                to={`/seeDetails/${type}/${item.id}`}
                 className="rounded-md cursor-pointer"
               >
                 <LazyLoadImage

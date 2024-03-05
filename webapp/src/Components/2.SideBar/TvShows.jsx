@@ -8,7 +8,7 @@ export default function Movies() {
 
   const navigate = useNavigate();
   const handleGenreClick = (genreId) => {
-    navigate(`/resultscontainer/${type}/${genreId}/${pageNum}`);
+    navigate(`/results/${type}/${genreId}/${pageNum}`);
   };
 
   const genres = [

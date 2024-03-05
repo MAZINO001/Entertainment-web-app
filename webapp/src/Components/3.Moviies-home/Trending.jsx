@@ -6,14 +6,13 @@ import { useQuery } from "@tanstack/react-query";
 import Loader from "../../Loaders/Loader";
 import { BsBookmarkCheckFill, BsBookmarkPlusFill } from "react-icons/bs";
 import { useEffect, useState } from "react";
-import  {
-  useBookmarks,
-} from "../../CustomeHooks/useLocalStorage";
+import { useBookmarks } from "../../CustomeHooks/useLocalStorage";
 import { NavLink } from "react-router-dom";
-import { LazyLoadImage } from 'react-lazy-load-image-component';
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 export default function Trending() {
-  const { bookmarkedMovies, addMovieBookmark, removeMovieBookmark } = useBookmarks();
+  const { bookmarkedMovies, addMovieBookmark, removeMovieBookmark } =
+    useBookmarks();
 
   const [ActiveBm, setActiveBm] = useState(false);
   const [type, settype] = useState("Movies");
@@ -40,7 +39,7 @@ export default function Trending() {
         <h2 className="title">Trending</h2>
         <span className="typespan">Movies</span>
         <NavLink
-          to={`seeallcontainer/${type}/${query}`}
+          to={`seeAll/${type}/${query}`}
           state={{ data: Trending }}
           className="text-xl sm:text-lg text-[#FC4747] px-2 py-1 rounded-md"
         >
@@ -70,7 +69,7 @@ export default function Trending() {
                   }}
                 />
               )}
-              <NavLink to={`/imagecontainer/${type}/${item.id}`}>
+              <NavLink to={`/seeDetails/${type}/${item.id}`}>
                 <div className=" rounded-md imgShwd">
                   <LazyLoadImage
                     className="rounded-md cursor-pointer"
@@ -79,7 +78,7 @@ export default function Trending() {
                   />
                 </div>
               </NavLink>
-              <p className="text-sm py-1 capitalize text-gray-300 flex items-center text-slim absolute bottom-[80px] left-[10px]">
+              <p className="text-sm py-1 capitalize text-gray-300 flex items-center text-slim absolute bottom-[50px] left-[10px]">
                 <span>{new Date(item.release_date).getFullYear()}</span>
 
                 <LuDot className="text-xl text-gray-300 " />

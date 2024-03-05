@@ -39,7 +39,7 @@ export default function Trending() {
         <h2 className="title">Trending</h2>
         <span className="typespan">TV SERIES</span>
         <NavLink
-          to={`seeallcontainer/${type}/${query}`}
+          to={`seeAll/${type}/${query}`}
           state={{ data: Trending }}
           className="text-xl sm:text-lg text-[#FC4747] px-2 py-1 rounded-md"
         >
@@ -52,7 +52,7 @@ export default function Trending() {
           .slice(0, 10)
           .map((item) => (
             <div key={item.id} className="w-[407px] relative ">
-             {bookmarkedTvShows.includes(item.id) ? (
+              {bookmarkedTvShows.includes(item.id) ? (
                 <BsBookmarkCheckFill
                   className="absolute top-0 right-[-3px] cursor-pointer text-2xl text-[#FC4747] z-50"
                   onClick={() => {
@@ -69,7 +69,7 @@ export default function Trending() {
                   }}
                 />
               )}
-              <NavLink to={`/imagecontainer/${type}/${item.id}`}>
+              <NavLink to={`/seeDetails/${type}/${item.id}`}>
                 <div className=" rounded-md imgShwd">
                   <LazyLoadImage
                     className="rounded-md cursor-pointer"

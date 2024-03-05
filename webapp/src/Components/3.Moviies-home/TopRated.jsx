@@ -8,10 +8,11 @@ import { BsBookmarkCheckFill, BsBookmarkPlusFill } from "react-icons/bs";
 import { useEffect, useState } from "react";
 import { useBookmarks } from "../../CustomeHooks/useLocalStorage";
 import { NavLink } from "react-router-dom";
-import { LazyLoadImage } from 'react-lazy-load-image-component';
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 export default function TopRated() {
-  const { bookmarkedMovies, addMovieBookmark, removeMovieBookmark } = useBookmarks();
+  const { bookmarkedMovies, addMovieBookmark, removeMovieBookmark } =
+    useBookmarks();
 
   const [ActiveBm, setActiveBm] = useState(false);
   const [type, settype] = useState("Movies");
@@ -38,7 +39,7 @@ export default function TopRated() {
         <h2 className="title">Top Rated</h2>
         <span className="typespan ml-[15px]">Movies</span>
         <NavLink
-        to={`seeallcontainer/${type}/${query}`}
+          to={`seeAll/${type}/${query}`}
           state={{ data: TopRated }}
           className="text-xl sm:text-lg text-[#FC4747] px-2 py-1 rounded-md"
         >
@@ -68,7 +69,7 @@ export default function TopRated() {
                 />
               )}
 
-              <NavLink to={`/imagecontainer/${type}/${item.id}`}>
+              <NavLink to={`/seeDetails/${type}/${item.id}`}>
                 <LazyLoadImage
                   className="rounded-md cursor-pointer"
                   src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}

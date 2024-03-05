@@ -15,7 +15,7 @@ import { SearchProvider } from "./Components/Context/SearchContext";
 import SeeAllContainer from "./Components/1.container/SeeAllContainer";
 import ImageContainer from "./Components/1.container/ImageContainer";
 import { BookmarksProvider } from "./CustomeHooks/useLocalStorage";
-
+import ScrollToTop from "./Loaders/ScrollToTop";
 const queryClient = new QueryClient();
 const router = createBrowserRouter([
   {
@@ -40,20 +40,20 @@ const router = createBrowserRouter([
         element: <Library />,
       },
       {
-        path: "/searchcontainer/:query/:page",
+        path: "search/:query/:page",
         element: <SearchContainer />,
       },
 
       {
-        path: "seeallcontainer/:type/:query",
+        path: "seeAll/:type/:query",
         element: <SeeAllContainer />,
       },
       {
-        path: "imagecontainer/:type/:id",
+        path: "seeDetails/:type/:id",
         element: <ImageContainer />,
       },
       {
-        path: "resultscontainer/:type/:id/:page",
+        path: "results/:type/:id/:page",
         element: <ResultContainer />,
       },
     ],
@@ -74,6 +74,7 @@ function App() {
           <ReactQueryDevtools initialIsOpen={false} />
         </QueryClientProvider>
       </SearchProvider>
+      <ScrollToTop />
     </BookmarksProvider>
   );
 }

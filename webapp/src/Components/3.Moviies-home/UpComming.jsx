@@ -6,9 +6,7 @@ import { useQuery } from "@tanstack/react-query";
 import Loader from "../../Loaders/Loader";
 import { BsBookmarkCheckFill, BsBookmarkPlusFill } from "react-icons/bs";
 import { useEffect, useState } from "react";
-import  {
-  useBookmarks,
-} from "../../CustomeHooks/useLocalStorage";
+import { useBookmarks } from "../../CustomeHooks/useLocalStorage";
 import { NavLink } from "react-router-dom";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
@@ -41,7 +39,7 @@ export default function UpComming() {
         <h2 className="title">Up Comming</h2>
         <span className="typespan ml-[50px]">Movies</span>
         <NavLink
-          to={`seeallcontainer/${type}/${query}`}
+          to={`seeAll/${type}/${query}`}
           state={{ data: UpComming }}
           className="text-xl sm:text-lg text-[#FC4747] px-2 py-1 rounded-md"
         >
@@ -71,7 +69,7 @@ export default function UpComming() {
                 />
               )}
 
-              <NavLink to={`/imagecontainer/${type}/${item.id}`}>
+              <NavLink to={`/seeDetails/${type}/${item.id}`}>
                 <LazyLoadImage
                   className="rounded-md cursor-pointer"
                   src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}

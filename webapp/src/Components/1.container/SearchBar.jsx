@@ -17,7 +17,7 @@ export default function SearchBar() {
     if (query === "") {
       return;
     } else {
-      navigate(`searchcontainer/${query}/${page}`);
+      navigate(`search/${query}/${page}`);
     }
   };
   return (

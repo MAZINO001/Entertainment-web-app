@@ -9,7 +9,7 @@ import { LuDot } from "react-icons/lu";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../../Loaders/Loader";
 import { useBookmarks } from "../../CustomeHooks/useLocalStorage";
-import { LazyLoadImage } from 'react-lazy-load-image-component';
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 export default function Popular() {
   const { bookmarkedMovies, addMovieBookmark, removeMovieBookmark } =
@@ -39,7 +39,7 @@ export default function Popular() {
         <h2 className="title">Popular</h2>
         <span className="typespan ml-[-15px]">Movies</span>
         <NavLink
-          to={`seeallcontainer/${type}/${query}`}
+          to={`seeAll/${type}/${query}`}
           state={{ data: Popular }}
           className="text-xl sm:text-lg text-[#FC4747] px-2 py-1 rounded-md"
         >
@@ -68,7 +68,7 @@ export default function Popular() {
                   }}
                 />
               )}
-              <NavLink to={`/imagecontainer/${type}/${item.id}`}>
+              <NavLink to={`/seeDetails/${type}/${item.id}`}>
                 <LazyLoadImage
                   className="rounded-md cursor-pointer"
                   src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
