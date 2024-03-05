@@ -14,7 +14,11 @@ export default function SearchBar() {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate(`searchcontainer/${query}/${page}`);
+    if (query === "") {
+      return;
+    } else {
+      navigate(`searchcontainer/${query}/${page}`);
+    }
   };
   return (
     <form

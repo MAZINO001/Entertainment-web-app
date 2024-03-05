@@ -30,11 +30,8 @@ export default function SearchContainer() {
   const [results, setResults] = useState(null);
   const [pages, setPages] = useState(null);
 
-
   useEffect(() => {
-    // if (query === "") {
-    //   return;
-    // }
+    
     const options = {
       method: "GET",
       headers: {
