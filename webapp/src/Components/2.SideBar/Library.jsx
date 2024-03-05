@@ -54,8 +54,8 @@ export default function Library() {
   }
 
   return (
-    <div>
-      <div className="mb-5 mx-4 sm:mx-0">
+    <div className="mx-4 sm:mx-0 mb-4">
+      <div className="mb-5 ">
         <h2 className="title mb-4">Bookmarks for Movies</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-4 pt-4 md:pt-0 ">
           {movieData &&

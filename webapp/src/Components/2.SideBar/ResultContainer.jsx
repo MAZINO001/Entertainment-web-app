@@ -3,15 +3,27 @@ import { MdLocalMovies } from "react-icons/md";
 import Loader from "../../Loaders/Loader";
 import { LuDot } from "react-icons/lu";
 import { PiTelevisionFill } from "react-icons/pi";
-import { useNavigate, useParams } from "react-router-dom";
+import { NavLink, useNavigate, useParams } from "react-router-dom";
 import {
   fetchMoviesTypeData,
   fetchTvShowsTypeData,
 } from "../../api/fetchTypeData";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
-import { LazyLoadImage } from 'react-lazy-load-image-component';
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import { BsBookmarkCheckFill, BsBookmarkPlusFill } from "react-icons/bs";
+import { useBookmarks } from "../../CustomeHooks/useLocalStorage";
 export default function ResultContainer() {
+  const {
+    bookmarkedMovies,
+    addMovieBookmark,
+    removeMovieBookmark,
+    bookmarkedTvShows,
+    addTvShowBookmark,
+    removeTvShowBookmark,
+  } = useBookmarks();
+  // eslint-disable-next-line no-unused-vars
+  const [ActiveBm, setActiveBm] = useState(false);
   const { id, page, type } = useParams();
   const handleFnType = async (id, page) => {
     if (type === "Movies") {
@@ -49,12 +61,46 @@ export default function ResultContainer() {
       {moviesData
         .filter((item) => !!item.backdrop_path)
         .map((item) => (
-          <div key={item.id} className="">
-            <LazyLoadImage
-              className=" rounded-md cursor-pointer "
-              src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
-              alt="Poster"
-            />
+          <div key={item.id} className="mb-3 relative">
+            {bookmarkedMovies.includes(item.id) ||
+            bookmarkedTvShows.includes(item.id) ? (
+              <BsBookmarkCheckFill
+                className="absolute top-0 right-[-3px] cursor-pointer text-2xl text-[#FC4747]"
+                onClick={() => {
+                  setActiveBm((state) => !state);
+                  item.title
+                    ? removeMovieBookmark(item.id)
+                    : removeTvShowBookmark(item.id); // Remove bookmark
+                }}
+              />
+            ) : (
+              <BsBookmarkPlusFill
+                className="absolute top-0 right-[-3px] cursor-pointer text-2xl"
+                onClick={() => {
+                  setActiveBm((state) => !state);
+                  item.title
+                    ? addMovieBookmark(item.id)
+                    : addTvShowBookmark(item.id); // Add bookmark
+                }}
+              />
+            )}
+            {item.media_type === "movie" ? (
+              <NavLink to={`/imagecontainer/Movies/${item.id}`}>
+                <LazyLoadImage
+                  className="rounded-md cursor-pointer"
+                  src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
+                  alt="Poster"
+                />
+              </NavLink>
+            ) : (
+              <NavLink to={`/imagecontainer/TvShows/${item.id}`}>
+                <LazyLoadImage
+                  className="rounded-md cursor-pointer"
+                  src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
+                  alt="Poster"
+                />
+              </NavLink>
+            )}
             <p className=" text-md md:text-sm py-1 capitalize text-gray-300 flex items-center text-slim ">
               <span>
                 {new Date(

@@ -9,7 +9,7 @@ import { NavLink, useNavigate, useParams } from "react-router-dom";
 import Loader from "../../Loaders/Loader";
 import { useBookmarks } from "../../CustomeHooks/useLocalStorage";
 import { BsBookmarkCheckFill, BsBookmarkPlusFill } from "react-icons/bs";
-import { LazyLoadImage } from 'react-lazy-load-image-component';
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 export default function SearchContainer() {
   const {
@@ -25,12 +25,16 @@ export default function SearchContainer() {
 
   const { query, page } = useParams();
   const navigate = useNavigate();
-  const [currentPage, setCurrentPage] = useState(Number(page) || 1); // Ensure valid initial page
+  const [currentPage, setCurrentPage] = useState(Number(page) || 1);
   const [Data, setData] = useState(null);
   const [results, setResults] = useState(null);
   const [pages, setPages] = useState(null);
 
+
   useEffect(() => {
+    // if (query === "") {
+    //   return;
+    // }
     const options = {
       method: "GET",
       headers: {
