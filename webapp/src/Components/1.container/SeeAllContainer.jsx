@@ -51,7 +51,7 @@ export default function SeeAllContainer() {
                   }}
                 />
               )}
-              <NavLink to={`/details/${type}/${item.id}`}>
+              <NavLink to={`/details/${type}/${item.id}`}    aria-label="details">
                 <img
                   className="rounded-md cursor-pointer"
                   src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}

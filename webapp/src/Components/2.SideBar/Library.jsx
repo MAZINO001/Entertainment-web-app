@@ -65,7 +65,7 @@ export default function Library() {
                   className="absolute top-0 right-[-3px] cursor-pointer text-2xl text-[#FC4747]"
                   onClick={() => handleRemoveMovieBookmark(item.id)}
                 />
-                <NavLink to={`/details/Movies/${item.id}`}>
+                <NavLink to={`/details/Movies/${item.id}`} aria-label="details">
                   <LazyLoadImage
                     className="rounded-md cursor-pointer"
                     src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
@@ -97,7 +97,10 @@ export default function Library() {
                   className="absolute top-0 right-[-3px] cursor-pointer text-2xl text-[#FC4747]"
                   onClick={() => handleRemoveTvShowBookmark(item.id)}
                 />
-                <NavLink to={`/details/TvShows/${item.id}`}>
+                <NavLink
+                  to={`/details/TvShows/${item.id}`}
+                  aria-label="details"
+                >
                   <LazyLoadImage
                     className="rounded-md cursor-pointer"
                     src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}

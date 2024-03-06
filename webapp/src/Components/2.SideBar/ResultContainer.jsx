@@ -85,7 +85,7 @@ export default function ResultContainer() {
               />
             )}
             {item.media_type === "movie" ? (
-              <NavLink to={`/details/Movies/${item.id}`}>
+              <NavLink to={`/details/Movies/${item.id}`}    aria-label="details">
                 <LazyLoadImage
                   className="rounded-md cursor-pointer"
                   src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
@@ -93,7 +93,7 @@ export default function ResultContainer() {
                 />
               </NavLink>
             ) : (
-              <NavLink to={`/details/TvShows/${item.id}`}>
+              <NavLink to={`/details/TvShows/${item.id}`}    aria-label="details">
                 <LazyLoadImage
                   className="rounded-md cursor-pointer"
                   src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}

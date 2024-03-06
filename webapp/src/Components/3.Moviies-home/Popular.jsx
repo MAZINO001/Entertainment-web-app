@@ -41,6 +41,7 @@ export default function Popular() {
         <NavLink
           to={`all/${type}/${query}`}
           state={{ data: Popular }}
+          aria-label="all"
           className="text-xl sm:text-lg text-[#FC4747] px-2 py-1 rounded-md"
         >
           see all
@@ -68,7 +69,7 @@ export default function Popular() {
                   }}
                 />
               )}
-              <NavLink to={`/details/${type}/${item.id}`}>
+              <NavLink to={`/details/${type}/${item.id}`}    aria-label="details">
                 <LazyLoadImage
                   className="rounded-md cursor-pointer"
                   src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}

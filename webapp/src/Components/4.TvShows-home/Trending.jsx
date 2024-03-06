@@ -41,6 +41,7 @@ export default function Trending() {
         <NavLink
           to={`all/${type}/${query}`}
           state={{ data: Trending }}
+          aria-label="all"
           className="text-xl sm:text-lg text-[#FC4747] px-2 py-1 rounded-md"
         >
           see all
@@ -69,7 +70,7 @@ export default function Trending() {
                   }}
                 />
               )}
-              <NavLink to={`/details/${type}/${item.id}`}>
+              <NavLink to={`/details/${type}/${item.id}`}    aria-label="details">
                 <div className=" rounded-md imgShwd">
                   <LazyLoadImage
                     className="rounded-md cursor-pointer"

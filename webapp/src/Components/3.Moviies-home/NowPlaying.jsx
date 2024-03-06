@@ -38,6 +38,7 @@ export default function NowPlaying() {
         <h2 className="title">Now Playing</h2>
         <span className="typespan ml-[45px]">Movies</span>
         <NavLink
+          aria-label="all"
           to={`all/${type}/${query}`}
           state={{ data: NowPlaying }}
           className="text-xl sm:text-lg text-[#FC4747] px-2 py-1 rounded-md"
@@ -69,6 +70,7 @@ export default function NowPlaying() {
               )}
 
               <NavLink
+                aria-label="details"
                 to={`/details/${type}/${item.id}`}
                 className="rounded-md cursor-pointer"
               >

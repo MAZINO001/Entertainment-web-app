@@ -23,6 +23,7 @@ export default function NotFound() {
       <p className="mt-4 text-white text-xl flex flex-col items-center justify-center ">
         Go you back
         <NavLink
+           aria-label="home"
           to="/"
           class="ml-1 mt-4 px-2 py-1 rounded-md  capitalize bg-blue-500"
         >
