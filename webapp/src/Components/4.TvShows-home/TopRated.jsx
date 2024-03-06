@@ -43,7 +43,8 @@ export default function TopRated() {
           to={`all/${type}/${query}`}
           state={{ data: TopRated }}
           aria-label="all"
-          className="text-xl sm:text-lg text-[#FC4747] px-2 py-1 rounded-md"
+          className="text-md tracking-wider  sm:text-lg uppercase text-[#FC4747]  rounded-md"
+
         >
           see all
         </NavLink>
