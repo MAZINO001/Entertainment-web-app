@@ -37,7 +37,7 @@ export default function OnAir() {
     <div className="flex flex-col my-4">
       <div className="flex justify-between items-center relative">
         <h2 className="title">On Air</h2>
-        <span className="typespan ml-[40px]">TV SERIES</span>
+        <span className="typespan ml-[-27px]">TV SERIES</span>
         <NavLink
           to={`all/${type}/${query}`}
           state={{ data: OnAirData }}

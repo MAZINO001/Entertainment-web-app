@@ -43,7 +43,6 @@ export default function UpComming() {
           state={{ data: UpComming }}
           aria-label="all"
           className="text-md tracking-wider  sm:text-lg uppercase text-[#FC4747]  rounded-md"
-
         >
           see all
         </NavLink>

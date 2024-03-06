@@ -17,7 +17,7 @@ body {
 *::-webkit-scrollbar {
     width: 8px;
     height: 8px;
-    background: #5A6A90;
+    background: #10141E;
     /* display: none; */
 }
 
@@ -46,12 +46,12 @@ body {
 .typespan {
     padding: 2px 7px;
     font-weight: 400;
-    font-size: 14px;
+    font-size: 10px;
     letter-spacing: 1px;
     border: 2px solid #fff;
     border-radius: 5px;
     position: absolute;
-    left: 120px;
+    left: 110px;
 }
 
 .centered-div {
