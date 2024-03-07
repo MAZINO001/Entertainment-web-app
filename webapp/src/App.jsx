@@ -15,6 +15,7 @@ import SeeAllContainer from "./Components/1.container/SeeAllContainer";
 import ImageContainer from "./Components/1.container/ImageContainer";
 import { BookmarksProvider } from "./CustomeHooks/useLocalStorage";
 import ScrollToTop from "./Loaders/ScrollToTop";
+import Logo from "./Loaders/logo";
 const queryClient = new QueryClient();
 const router = createBrowserRouter([
   {
@@ -72,6 +73,7 @@ function App() {
         <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
       <ScrollToTop />
+      <Logo/>
     </BookmarksProvider>
   );
 }
