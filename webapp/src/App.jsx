@@ -79,5 +79,4 @@ function App() {
 }
 //look for ways to mkae the performence better 
 //find a way to deal with the image problem 
-//get perforece at least to 80 
 export default App;
