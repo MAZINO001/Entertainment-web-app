@@ -77,5 +77,4 @@ function App() {
     </BookmarksProvider>
   );
 }
-//look for ways to mkae the performence better 
 export default App;
