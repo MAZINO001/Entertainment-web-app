@@ -140,3 +140,4 @@ export default function ResultContainer() {
     </div>
   );
 }
+// fix the btns and add curent page and totla pages 
