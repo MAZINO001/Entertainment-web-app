@@ -128,13 +128,13 @@ export default function ResultContainer() {
         ))}
       <div className="flex justify-center items-center gap-4 centered-div">
         <button onClick={handlePrevPage} className="bg-red-500 px-4 capitalize">
-          next
+          next page 
         </button>
         <button
           onClick={handleNextPage}
           className="bg-blue-500 px-4 capitalize"
         >
-          Page
+          prev Page
         </button>
       </div>
     </div>
